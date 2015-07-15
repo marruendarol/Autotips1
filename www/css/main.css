@@ -71,9 +71,7 @@ body{
 img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 
-.ui-page-header-fixed{
-    padding-top: 0px !important; 
-}
+
 
 /* ============================================================
 *	MAIN SCREEN
