@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.nucleo.expoina" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Expo INA</name>
+<widget id="com.nucleo.autotips" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Autotips</name>
     <description>
-       Expo INA 2015
+       Autotips  2015
     </description>
     <author email="dev@n4ymedio.mx" href="n4ymedio.mx">
         Nucleo 4 y Medio
