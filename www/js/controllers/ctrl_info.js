@@ -13,6 +13,7 @@ var ctrl_info = {
 
 		var data  = paramsSuc.data   
 				
+		console.log(data)		
 
 		var mainObj = template.render('#infoT',ctrl_info.pageDiv,data)
 		$(ctrl_info.pageDiv).trigger("create");
@@ -25,7 +26,7 @@ var ctrl_info = {
 		})
 
 		mainObj.on('navigate',function(){
-			window.open("http://maps.google.com/maps?saddr=43.0054446,-87.9678884&daddr=42.9257104,-88.0508355" , '_system');
+			window.open("http://maps.google.com/maps?daddr="+ data.loc[0] +", "+ data.loc[1]+"" , '_system');
 		})
 		
 	}
