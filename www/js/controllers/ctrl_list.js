@@ -31,7 +31,7 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,null); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,null, {timeout: 10000, enableHighAccuracy: true}); 
 	},
 	geoRet : function(location){
 		dbC.query("/api/byGeo","POST",{lat:location.coords.latitude,lng:location.coords.longitude},ctrl_list.render)
@@ -44,7 +44,7 @@ var ctrl_list = {
 	byListaDesc : function(specV){
 
 		spec = specV;
-		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,null); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,null, {timeout: 10000, enableHighAccuracy: true}); 
 	},
 	listaDescLoc : function(location){
 		console.log(spec+"SPECVVV")
@@ -56,7 +56,7 @@ var ctrl_list = {
 	},
 	//------------------------------------------MAYOR PORCENTAJE GEO
 	byPercDesc : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.PercDescLoc,null); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.PercDescLoc,null, {timeout: 10000, enableHighAccuracy: true}); 
 	},
 	PercDescLoc : function(location){
 		dbC.query("/api/byListaPercGeo","POST",
