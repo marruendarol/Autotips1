@@ -1,10 +1,118 @@
 
+* {
+	/***************** Shadows are slow on android *********************************/
+	/***************** Global Shadow Wipe Jutsu!! **********************************/
+	text-shadow: none;
+ 	box-shadow: none;
+ 	-webkit-box-shadow: none;
+}
+
+
+.removeHL { 
+	/* Android input form <input> orange highlighter remover */
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+
+
 body{
 	overflow: hidden;
 	margin: 0px;
 	height: 100%;
+	background-color: #000;
+	color: #fff !important;
 }
 
+
+ul{
+	background-color: #000 !important;
+	color: #fff !important;
+}
+
+li{
+	background-color: #000 !important;
+	color: #fff !important;
+}
+
+
+/* GEN USAGE --------------------------------------------------------- */
+
+.title{
+	width: 100%;
+	color: white;
+	font-size: 22px;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+.conte{
+	padding: 20px;
+}
+
+.labelT{
+	width: 100%;
+	color: white;
+	font-size: 16px;
+}
+
+.linksTexto{
+	color: white !important;
+	text-decoration: none;
+	font-size: 13px;
+
+}
+
+
+.btnNaranja{
+	background-color: #FF6118 !important;
+	color: white !important;
+    text-shadow: none !important;
+    border: 0 solid !important;
+    font-size: 18px;
+}
+
+
+
+/* ------------------------------------------------------------------ */
+.formLabel{
+	color: white;
+}
+
+.bButton{
+	float: left;
+	margin:10px;
+	cursor: pointer;	
+}
+
+ .ui-loader-background {
+			width:100%;
+			height:100%;
+			top:0;
+			margin: 0;
+			background: rgba(0, 0, 0, 0.3);
+			display:none;
+			position: fixed;
+			z-index:100;
+		}
+ 
+		.ui-loading .ui-loader-background {
+			display:block;
+		}
+
+
+#loginImgDiv{
+	 position:fixed;
+   left:0px;
+   bottom:30px;
+}
+#homeImgDiv{
+	 position:fixed;
+   left:0px;
+   bottom:0px;
+   width: 100%;
+   max-height: 300px;
+}
+
+		
 .icoMain{
 	/* font-size: 20px !important; */
 	color: white;
@@ -13,28 +121,33 @@ body{
 	/* text-align: right; */
 }
 
-.icoDiv{
-	border-radius: 40px;
-	background-color: gray;
-	display:inline-block;
-	font-size: 22px;
-	line-height: 40px;
-	background-color:black;
-	color:white;
-	width: 40px;
-	height: 40px;
-	text-align: center;
-	vertical-align: bottom;
-	float: left;
-	margin-right: 15px;
-}
+.icoDiv {
+  
+    display: inline-block;
+    font-size: 22px;
+    line-height: 40px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: bottom;
+    float: left;
+    margin-right: 20px;
+    margin-left: 10px;
 
+  }  
+
+
+.especialidades{
+	margin-top: 30px;
+}
 
 
 #container {
         position: absolute;
         width: 100%;
         height: 100%;
+        background-color: #000 !important;
     }
 
 .ui-icon-bolt:after {
@@ -47,18 +160,37 @@ body{
     background-position: 4px 3px !important;
 }
 
-.ui-mobile-viewport-transitioning,
-.ui-mobile-viewport-transitioning .ui-page {
-    overflow: visible !important;
+
+
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page{
+	background-color: #000 !important;
 }
-.ui-page {
-    -webkit-backface-visibility: hidden !important;
-}
+
+.ui-content .ui-listview, .ui-panel-inner>.ui-listview { margin:0em}
+
+
+ .ui-loader-background {
+			width:100%;
+			height:100%;
+			top:0;
+			margin: 0;
+			background: rgba(0, 0, 0, 0.3);
+			display:none;
+			position: fixed;
+			z-index:100;
+		}
+ 
+		.ui-loading .ui-loader-background {
+			display:block;
+		}
+
 
 .in, .out {
     -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 150ms !important;
+    -webkit-animation-duration: 250ms !important;
 }
+
+
 
 #headerLogo{
 	height: 100px;
@@ -66,11 +198,38 @@ body{
 	border: 1px solid black;
 }
 
-[data-role=page]{height: 100% !important; position:relative !important;}
+/*[data-role=page]{height: 100% !important; position:relative !important;}*/
+.btnGen{
+	background-color: #5F5D50 !important;
+    color: white !important;
+    text-shadow: none !important;
+    border: 0 solid !important;
+}
+
+
+
+.ui-header-fixed {
+    top: -1px;
+    padding-top: 1px;
+    z-index: 1000 !important;
+    background-color: #5F5D50 !important;
+    font-size: 22px;
+    color: white !important;
+    border: 0 solid !important;
+}
+
+ .ui-page > div {
+    
+    }
+.ui-header-fixed .ui-btn-left, .ui-header-fixed .ui-btn-right {
+    margin-top: 8px;
+}
 
 img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
-
+.ui-content .ui-listview, .ui-panel-inner > .ui-listview {
+     margin: 0em !important;
+}
 
 
 /* ============================================================
@@ -87,8 +246,16 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 .listMain:hover{
 	background-color: #E4E4E4;
 	border-radius: 16px;
+	color: black;
 }
 
+
+.autoli{
+	background-color: #000 !important;
+	color: white !important;
+	border: 0px solid !important;
+	border-bottom: 1px solid #3C3C3C !important;
+}
 
 
 #wrapperMain {
@@ -100,15 +267,49 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     /* overflow: hidden; *//*important for iScroll to have the scroller scroll at max to top:45px on position absolute!*/
     position: relative;
     /* float: left; */
-    margin-top: 113px;
+    margin-top: 0px;
 }
 #wrapperList {
     z-index: 0;
-    top: 52px;
+    top: 66px;
     bottom: 0px;
     left: 0;
     width: 100%;
    
+    position: fixed;
+}
+
+#wrapperReg {
+    z-index: 0;
+    top: 66px;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+   margin-bottom: 60px;
+    position: fixed;
+}
+
+
+#comentario{
+
+}
+
+.distancia{
+	margin-top: 15px;
+
+}
+.fNaranja{
+	margin-top: 10px;
+	width: 20px;
+}
+
+.wrapper {
+    z-index: 0;
+    top: 66px;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+   margin-bottom: 60px;
     position: fixed;
 }
 
@@ -136,7 +337,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 	margin-bottom: 0px;
 
 		padding-top: 26px;
-		background-color: #000;
+
 }
 
 #searchBox{
@@ -149,6 +350,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 .mainIcoText{
 	float: left;
+	font-weight: bold;
 }
 
 .mainText{
@@ -184,7 +386,10 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 
 
+.colWrap {
+  word-wrap: break-word;
 
+}
 
 
 
@@ -272,7 +477,7 @@ line-height: 35px;
 .nSucursal{
 	font-size: 18px;
 	font-weight: bold;
-	height: 24px;
+	/* height: 24px; */
 }
 
 .tags{
@@ -287,10 +492,27 @@ line-height: 35px;
 
 
 .info_nSucursal{
+	color: #FF6118;
 	font-size: 18px;
 	font-weight: bold;
-	height: 20px;
+	height: auto;
 	margin-bottom: 15px;
+}
+.info_direccion{
+	color: #FFF;
+	font-size: 18px;
+}
+.info_estado{
+	color: #FFF;
+	font-size: 18px;
+}
+.info_cp{
+	color: #FFF;
+	font-size: 18px;	
+}
+.info_tel1{
+	color: #FFF;
+	font-size: 18px;	
 }
 
 
@@ -302,3 +524,13 @@ line-height: 35px;
 #pac-input{
 	
 }
+
+.listMenu ul{
+
+}
+
+.listMenu li{
+	border: 1px solid #545246 !important;
+	padding: 20px !important;
+}
+

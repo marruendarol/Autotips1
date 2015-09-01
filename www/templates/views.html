@@ -1,59 +1,35 @@
 <!-- FIRST ============================================================-->
 <script id='firstT' type='text/ractive'>
-    
-
-	 <div data-role="header" id="headerLogo" data-position="fixed">
-        <div id="logoHeader">
-		<img src="img/logo.png">
-		</div>
-    </div>
-
-    <div role="main" class="ui-content">
-           <button on-tap="login">Ingresar a mi cuenta</button>
-           <button  on-tap="registro">Registrarme</button>
-    </div><!-- /content -->
-    
-
+           <button class="btnGen" on-tap="login">Ingresar a mi cuenta</button>
+           <button class="btnGen" on-tap="registro">Registrarme</button>
 </script>
 
 <!--  LOGIN ============================================================-->
 <script id='loginT' type='text/ractive'>
-    
-    <div data-role="header" data-position="fixed">
-    <h1>Ingresar</h1>
-    </div>
 
-    <div  role="main" class="ui-content">
-
-	<h2>Ingresar a mi cuenta</h2>
-            <label for="name">Correo:</label>
+	<div class="title">Ingresar a mi cuenta</div>
+            <div class="labelT">Correo:</div>
             <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
-            <label for="password">Contraseña: <a href="#recuperar">¿Olvidaste tu contraseña?</a></label> <a href="#recuperar"></a>
+             <div class="labelT">Contraseña: </div>
             <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-            <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini" on-tap="cancelar">Cancelar</a></div>
-                <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="ingresar">Ingresar</a></div>
-            </div>
-    </div>
-    
+
+                <a href="#" data-rel="close" class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="ingresar">Ingresar</a>    
+
+                <a class="linksTexto" href="#recuperar">¿Olvidaste tu contraseña?</a>
 
 </script>
 
 <!--  Recuperar ============================================================-->
 <script id='recuperarT' type='text/ractive'>
     
-    <div data-role="header" data-position="fixed">
-    <h1>Recuperar</h1>
-    </div>
+
 
     <div  role="main" class="ui-content">
-
-	<h2>Ingresa tu correo y te enviaremos tu contraseña</h2>
-            <label for="name">Correo:</label>
-            <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+      <div class="title">Ingresa tu correo y te enviaremos tu contraseña</div>
+            <div class="labelT">Correo:</div>
+            <input type="text" name="name" id="email" value="" data-clear-btn="true" data-mini="true">
             <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini" on-tap="cancelar">Cancelar</a></div>
-                <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="recuperar">Enviar correo</a></div>
+				<a href="#" data-rel="close" class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="recuperar">Enviar correo</a>
             </div>
     </div>
     
@@ -64,56 +40,64 @@
 <script id='registroT' type='text/ractive'>
     
 
-	  <div data-role="header" data-position="fixed">
-    <a href="#firstP"  data-direction="reverse" data-icon="back">&nbsp;</a>
-    <h1>Registro</h1>
-    </div>
+    <div id="wrapperReg" class="wrapper" >
+	    <div id="scroller" >
 
-    <div  role="main" class="ui-content">
+	<div class="conte">
 
-	<h2>Registro de Usuario</h2>
-            <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
-            
-            <label for="password">Apellido Paterno:</label>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+	
 
+	 <form id="dataForm" data-abide="ajax">
 
-            <label for="password">Apellido Materno:</label>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+	 		<h2>Registro de Usuario</h2>
 
-            <label for="password">Correo elctrónico:</label>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+	 		 <div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Nombre:</div>
+	             <input class="" id="nombre" type="text" value="" />
+          	</div>
 
-            <label for="password">Teléfono Fijo:</label>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+          	 <div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Email:</div>
+	             <input class="" id="email" type="text" value=""  />
+	         </div>   
 
-            <label for="password">Teléfono Móvil:</label>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+	          <div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Elija una contraseña:</div>
+	             <input class="" id="pass" type="password" value=""  />
+	         </div>  
 
-            <label for="password">ID Tarjeta:</label>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+	           <div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Repetir Contraseña:</div>
+	             <input class="" id="cpass" type="password" value=""  />
+	         </div>    
+	             
+          	<div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">ID Tarjeta:</div>
+	             <input class="" id="card" type="text" value=""  />
+          	</div>
 
-            <label for="password">Origen de la  Targeta:</label>
-            <select>
+          	 	<div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Obtuve mi tarjeta en:</div>
+	             <select id="origen">
             	<option>Aseguradora</option>
             	<option>Outsourcing</option>
             	<option>Flotilla Empresa</option>
             	<option>Particular</option>
             </select>
+          	</div>
 
+       <div class="saveBtn small-12 column">
+          <div on-click="validate" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Crear cuenta</div>
+       </div>
 
-            <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini" on-tap="cancelar">Cancelar</a></div>
-                <div class="ui-block-b"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="ingresar">Ingresar</a></div>
-            </div>
+    </form>
+
+     </div>
+
+    	</div>
     </div>
 
-    
-
 </script>
-
-
 
 
 <!--  HOME ============================================================-->
@@ -130,20 +114,46 @@
         <a href="#add-form" data-icon="gear" class="ui-btn-right" data-iconpos="notext">Info</a>
     </div><!-- /header -->
 
-    <div role="main" class="ui-content">
+    <div role="main" >
            <div id="wrapperMain" >
 		       <div id="scroller">
-		             <ul data-role="listview" id="listview">
-		               {{#each items}}
+		             <ul class="listMenu" data-role="listview" id="listview">
 							<li>
-							<div class="listMain" on-tap="getSuc">
-								<div class="icoDiv"><i class="icoMain  fa {{ico}}"></i></div>
-								<div class="mainIcoText"> {{text}}</div>
-
-								
+							<div class="listMain" on-tap="getCerca">
+								<div class="icoDiv"><img src="img/cerca.png"></div>
+								<div class="mainIcoText">Cerca de Mí</div>
 							</div>
 							</li>
-						{{/each}}
+
+							<li>
+							<div class="listMain" on-tap="getZona">
+								<div class="icoDiv"><img src="img/zona.png"></div>
+								<div class="mainIcoText">Zona</div>
+							</div>
+							</li>
+
+							<li>
+							<div class="listMain" on-tap="getDescuentos">
+								<div class="icoDiv"><img src="img/desc.png"></div>
+								<div class="mainIcoText">Descuentos</div>
+							</div>
+							</li>
+
+						
+
+							<li>
+							<div class="listMain" on-tap="getEspecialidad">
+								<div class="icoDiv"><img src="img/espec.png"></div>
+								<div class="mainIcoText">Especialidad</div>
+							</div>
+							</li>
+
+							<li>
+							<div class="listMain" on-tap="getContacto">
+								<div class="icoDiv"><img src="img/contacto.png"></div>
+								<div class="mainIcoText">Contacto</div>
+							</div>
+							</li>
 		             </ul>
 		        </div>
 		</div>
@@ -160,31 +170,32 @@
 <!-- Listado 1  ============================================================-->
 <script id='listT' type='text/ractive'>
 
-	<div data-role="header" data-position="fixed">
-    <a href="#mainScreen"  data-direction="reverse" data-icon="back">&nbsp;</a>
-    <h1>Sucursales</h1>
-    <a href="#mapa" data-icon="check">Mapa</a>
-    </div>
-
-	<div id="wrapperList">
-	    <div id="scroller" data-iscroll>
+	<div id="wrapperList" >
+	    <div id="scroller" >
 	        <ul data-role="listview" id="listview">
-	            {{#each items}}
-	            <li>
-	                <a on-tap="listDetail" data-transition="fade">
-	                    <div class="small-8 column">
-	                        <div class="nSucursal">{{nSucursal}}</div>
+	            {{#items}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="listDetail" data-transition="fade">
+	                    <div class="small-9 column">
+	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
-	                    <div class="small-4 column">
-	                        <div class="distancia">{{distancia}}</div>
+	                    <div class="small-2 column">
+	                    	{{#if distVis}}
+	                        <div class="distancia">{{roundDist(dist)}} Km.</div>
+	                        {{/if}}
+	                    </div>
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
 	                    </div>
 	                </a>
 	            </li>
-	            {{/each}}
+	            {{/items}}
 	        </ul>
 	    </div>
-
+	</div>
 
 
 </script>
@@ -193,50 +204,90 @@
 <!-- Especialidades  ============================================================-->
 <script id='especT' type='text/ractive'>
 
-	<div data-role="header" data-position="fixed">
-    <a href="#mainScreen"  data-direction="reverse" data-icon="back">&nbsp;</a>
-    <h1>Especialidad</h1>
-
-
-	<div id="wrapperList">
-	    <div id="scroller">
+<div id="wrapperEspec" class="wrapper" >
+	    <div id="scroller" >
 	        <ul data-role="listview" id="listview">
-	            {{#each items}}
-	            <li>
-	                <a on-tap="listDetail" data-transition="fade">
-	                    <div class="small-8 column">
-	                        <div on-tap="getSuc" class="nSucursal">{{text}}</div>
-	                       
+	            {{#each data}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="getSuc" data-transition="fade">
+	                    <div class="small-9 column">
+	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
+	                        <div class="tags">{{tags}}</div>
 	                    </div>
-	                    
+	          
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
 	                </a>
 	            </li>
 	            {{/each}}
 	        </ul>
 	    </div>
 	</div>
+
 
 </script>
 
 <!-- Descuento  ============================================================-->
 <script id='descuentoT' type='text/ractive'>
 
-	<div data-role="header" data-position="fixed">
-    <a href="#mainScreen"  data-direction="reverse" data-icon="back">&nbsp;</a>
-    <h1>Descuentos</h1>
-
-
-	<div id="wrapperList">
+	<div id="wrapperDesc" class="wrapper">
 	    <div id="scroller">
 	        <ul data-role="listview" id="listview">
-	            {{#each items}}
-	            <li>
-	                <a on-tap="listDetail" data-transition="fade">
-	                    <div class="small-8 column">
-	                        <div on-tap="getSuc" class="nSucursal">{{text}}</div>
-	                       
+
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="listDesc" data-transition="fade">
+	                    <div class="small-9 column">
+	                        <div class="nSucursal"><p>Todos los descuentos</p></div>
+	                        <div class="tags">{{tags}}</div>
 	                    </div>
-	                    
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> <img src="img/fNaranja.png"></div>
+	                    </div>
+	                </a>
+	            </li>
+
+	             <li  data-icon="false">
+	                <a class="autoli" on-tap="porcDesc" data-transition="fade">
+	                    <div class="small-9 column">
+	                        <div class="nSucursal"><p>Descuentos de Mayor Porcentaje</p></div>
+	                        <div class="tags">{{tags}}</div>
+	                    </div>
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> <img src="img/fNaranja.png"></div>
+	                    </div>
+	                </a>
+	            </li>
+
+	            
+
+	        </ul>
+	    </div>
+	</div>
+
+</script>
+
+
+<!-- Zona  ============================================================-->
+<script id='listDescT' type='text/ractive'>
+
+	<div id="wrapperListDesc" class="wrapper" >
+	    <div id="scroller" >
+	        <ul data-role="listview" id="listview">
+	            {{#each items}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="getList" data-transition="fade">
+	                    <div class="small-11 column">
+	                        <div  class="nSucursal"><p>{{_id}}</p></div>
+	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    </div>
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
 	                </a>
 	            </li>
 	            {{/each}}
@@ -244,15 +295,70 @@
 	    </div>
 	</div>
 
+
+</script>
+
+<!-- Zona  ============================================================-->
+<script id='zonaT' type='text/ractive'>
+
+	<div id="wrapperZona" class="wrapper" >
+	    <div id="scroller" >
+	        <ul data-role="listview" id="listview">
+	            {{#each items}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="getDel" data-transition="fade">
+	                    <div class="small-11 column">
+	                        <div  class="nSucursal"><p>{{_id}}</p></div>
+	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    </div>
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
+	                </a>
+	            </li>
+	            {{/each}}
+	        </ul>
+	    </div>
+	</div>
+
+
+</script>
+
+
+<!-- Zona  ============================================================-->
+<script id='delegacionT' type='text/ractive'>
+
+	<div id="wrapperDel" class="wrapper" >
+	    <div id="scroller" >
+	        <ul data-role="listview" id="listview">
+	            {{#each items}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="getSuc" data-transition="fade">
+	                    <div class="small-11 column">
+	                        <div  class="nSucursal"><p>{{_id}}</p></div>
+	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    </div>
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
+	                </a>
+	            </li>
+	            {{/each}}
+	        </ul>
+	    </div>
+	</div>
+
+
 </script>
 
 <!--  MAPA ============================================================-->
 	<script id='mapaT' type='text/ractive'>
     
-	<div data-role="header" data-position="fixed">
-	    <a href="#infoSuc" data-direction="reverse" data-icon="back">&nbsp;</a>
-	    <h1>Ubicación Sucursal</h1>   
-	</div>
+	
 
 	 <div role="main" class="ui-content">
 	<div style="display:none;"><input  id="pac-input" type="text" placeholder="Escribe tu dirección, Código Postal ó Ciudad" /></div>
@@ -268,32 +374,45 @@
 <!--  Info Sucursal ============================================================-->
 <script id='infoT' type='text/ractive'>
 
-	<div data-role="header" data-position="fixed"  >
-	    <a href="#list"  data-icon="back">&nbsp;</a>
-	    <h1>Información Sucursal</h1>
-	</div>
+	
 	
 	<div  role="main" class="ui-content">
-	    <div class="small-8 column">
-	        <div class="info_nSucursal">{{nSucursal}}</div>
-	        <div class="info_tags">{{tags}}</div>
-	        <div class="info_direccion">{{direccion}}</div>
-	        <div class="info_estado">{{estado}}</div>
-	        <div class="info_cp">{{cp}}</div>
-	        <div class="info_tel1">{{tel1}}</div>
+	    <div class="small-12 column">
+	        <div class="small-12 column info_nSucursal">{{nombre}}</div>
+	        <div class="small-12 column info_direccion">{{direccion}}</div>
+	        <div class="small-12 column info_estado">{{delegacion}} - {{estado}} </div>
+	        <div class="small-12 column info_cp">C.P. {{cp}}</div>
+	        <div class="small-12 column info_tel1">Teléfono {{telefono}}</div>
 	    </div>
+
+	    <div class="small-12 column especialidades">
+	    	 <div class="small-12 column info_nSucursal">Descuentos</div>
+	    	{{#each descuentos}}
+	    		 <div class="small-12 column  info_direccion"><b>{{perc}}% {{espec}}</b>  {{value}} 
+
+	    		 </div>
+	    	{{/each}}
+	    </div>
+
+	    {{#if dist}}
 	    <div class="small-4 column">
 	        <div class="distancia">{{distancia}}</div>
 	    </div>
+	    {{/if}}
+
 	    <div class="small-12 column">
-	        <button on-tap="genMap">Ver mapa de ubicación</button>
+	        <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="genMap">Ver mapa de ubicación</div>
 	    </div>
+
+	     <div class="small-12 column">
+	       <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="navigate">Llévame</div>
+	    </div>
+
+
+	     
 	</div>
 
-	<div data-role="footer" data-position="fixed">
-	    <h4>Autotips</h4>
-	</div>
-      
+	
 </script>
 
 
@@ -312,25 +431,15 @@
 <!--  LOGIN ============================================================-->
 <script id='contactoT' type='text/ractive'>
     
-   <div data-role="header" data-position="fixed">
-	    <a href="#mainScreen"  data-icon="back">&nbsp;</a>
-	    <h1>Contáctanos</h1>
-	</div>
-	
-
-    <div  role="main" class="ui-content">
-
-	<h2>Envía tus comentarios</h2>
-            <label for="name">Correo:</label>
-            <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
-            <label for="password">Comentarios:</label> <a href="#recuperar"></a>
-            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
-            <div class="ui-grid-a">
-                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-mini" on-tap="cancelar">Cancelar</a></div>
-                <div class="ui-block-b"><a href="#contactoListo" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="ingresar">Enviar</a></div>
+			<div class="saveBtn small-12 column">
+			<div class="title">Envía tus comentarios</div>
+	        <div class="formLabel">Comentario:</div>
+            <textarea data-clear-btn="true" cols="40" rows="8" name="textarea" id="comentario" data-mini="true"></textarea>
             </div>
-    </div>
-    
+            
+            <div class="saveBtn small-12 column">
+          		<div on-click="sendComment" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Enviar</div>
+       		</div>
 
 </script>
 
@@ -339,19 +448,18 @@
  
 
 
-    <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="a" id="add-form">
-        <form class="userform">
+    <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
+
             <h2>Usuario</h2>
             <label for="name">Nombre de usuario:</label>
-            <h3>Carlos Zarate Mendoza</h3>
+            <h3>{{userData.username}}</h3>
 
             <label for="name">ID tarjeta:</label>
-            <h3>AT-0014RT2</h3>
+            <h3>{{userData.idCard}}</h3>
             
             
-            <label for="name"><a class="ui-btn" href="#firstP">cerrar sesión</a></label>
+            <button on-tap="cerrarsesion" class="ui-btn" >cerrar sesión</button>
 
-        </form>
     </div><!-- /panel -->
 
 </script>

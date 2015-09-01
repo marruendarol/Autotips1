@@ -14,40 +14,55 @@ var ctrl_home = {
 		$(ctrl_home.pageDiv).empty();
 
 		var data  = {
-			items : [
-				{url:"#list",text: "Cerca de mí", ico : 'fa-map-marker'},
-				{url:"#descuento",text: "Descuentos", ico : 'fa fa-money'},
-				{url:"#especialidad",text: "Servicios por especialidad" , ico : 'fa-tag'},
-				{url:"#list",text: "Por calificación", ico : 'fa-star'},
-				{url:"#contacto",text: "Contacto", ico : 'fa-envelope'}
-			]
+			userData : {
+				nombre 		: window.localStorage.getItem("nombre"),
+				username 	: window.localStorage.getItem("username"),
+				idCard	: window.localStorage.getItem("idCard")
+			}
 		}
 
 
-		console.log($('#menuT').html())
+		console.log(data)
 		var mainObj = template.render('#mainT',ctrl_home.pageDiv,data,null,{menuT : $('#menuT').html()})
 		$(ctrl_home.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
-		mainObj.on('getSuc',function(event){
-			$.mobile.changePage( event.context.url);
+		mainObj.on('getCerca',function(event){
+			paramsPage = { id : event.context._id, type: "cerca" }
+			$.mobile.changePage("#list");
 		})
+		mainObj.on('getDescuentos',function(event){
+			paramsPage = { id : event.context._id, type: "descuentos" }
+			$.mobile.changePage("#descuentos");
+		})
+		mainObj.on('getZona',function(event){
+			$.mobile.changePage("#zona");
+		})
+		mainObj.on('getEspecialidad',function(event){
+			$.mobile.changePage("#especialidad");
+		})
+		mainObj.on('getContacto',function(event){
+			$.mobile.changePage("#contacto");
+		})
+
+
+		mainObj.on('cerrarsesion',function(event){
+			localStorage.clear();
+			$.mobile.changePage("#firstP");
+		})
+
 		
 		 ctrl_home.getLocation();
 
 	},
 	getLocation: function(){
-		var map = L.map('map');
-		map.locate({setView: true, maxZoom: 16});
-
-		map.on('locationfound', ctrl_home.onLocationFound);
-    	map.on('locationerror', ctrl_home.onLocationError);
+		navigator.geolocation.getCurrentPosition(ctrl_home.onLocationFound, ctrl_home.onLocationError,{maximumAge:3000,timeout:35000,enableHighAccuracy:false});
 	},
 	onLocationFound : function(position){
 		
-		var pos = position.latlng;
-		userLat = pos.lat;
-		userLng = pos.lng;
+		var pos = position.coords;
+		userLat = pos.latitude;
+		userLng = pos.longitude;
 
 		console.log(userLat + " - " + userLng + " user found")
 	},

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.nucleo.autotips" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <name>Autotips 2015</name>
+    <description>
+       Autotips  2015
+    </description>
+    <author email="dev@n4ymedio.mx" href="n4ymedio.mx">
+        Nucleo 4 y Medio
+    </author>
+    <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarStyle" value="default" />
+    <preference name="target-device" value="handset" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="com.borismus.webintent" version="3.0.0" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="4000" />
+    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/android/drawable-ldpi/background9.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/android/drawable-mdpi/background9.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/android/drawable-hdpi/background9.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/android/drawable-xhdpi/background9.png" />
+    <icon src="icon.png" />
+    <access origin="*" />
+    <preference name="EnableViewportScale" value="false" />
+    <access launch-external="yes" origin="geo:*" />
+    <access launch-external="yes" origin="google.navigation:*" />
+</widget>

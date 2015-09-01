@@ -9,12 +9,13 @@
 <link rel="stylesheet" href="icos/icon-pack-custom.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-<link rel='stylesheet' href='css/leaflet.css'/>
+<link rel='stylesheet' href='css/jquery.mobile.simultaneous-transitions-replace.css'/>
 
 <!-- JS -->
 <script src="js/lib/iscroll.js"></script>
 <script src="cordova.js"></script>
 <script src="js/lib/jquery-1.11.2.min.js"></script>
+<script src="js/lib/jquery.mobile.simultaneous-transitions-replace.js"></script>
 <script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
 
 <script src="js/lib/foundation/foundation.js"></script>
@@ -23,54 +24,206 @@
 <script src="js/lib/ractive-events-tap.js"></script>
 
 <script src='js/utilities/utilities.js'></script>
-<script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src='js/lib/defiant.js'></script>
-<script src='js/lib/leaflet.js'></script>
-<script src='js/lib/leaflet-providers.js'></script>
-
 
 <!-- CONTROLLERS -->
 <script src="js/controllers/ctrl_core.js"></script>     <!-- ROUTE CONTROLLER -->
 <script src="js/controllers/mainController.js"></script>  <!-- FOUNDATION &  DB CONTROLLER -->
 <script src="js/controllers/ctrl_main.js"></script>   <!-- START CORDOVA CONTROLLER -->
+<script src="js/controllers/ctrl_loginS.js"></script>   <!-- START CORDOVA CONTROLLER -->
 
-<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places'></script>
 
-<script src='js/lib/fastbutton.js'></script>
+<script src='https://maps.googleapis.com/maps/api/js?v=3&libraries=places&sensor=true&key=AIzaSyAd6WIE7iAHbtsh30nbpIdSpGWIEWvVUIM'></script>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta charset="UTF-8">
 <meta name="format-detection" content="telephone=yes" />
 <meta name="msapplication-tap-highlight" content="no" />
 
 
 </head>
-  <body class=''>
+  <body>
 
 
-<div data-role="page" id="firstP"></div>
-<div data-role="page" id="login"></div>
-<div data-role="page" id="registro"></div>
-<div data-role="page" id="recuperar"></div>
-<div data-role="page" id="recuperarListo">
-	  <div data-role="header" data-position="fixed">
+
+<div id="container">
+<!-- ********************************************************************* -->
+<div data-role="page" id="initialBlank"></div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="firstP">
+
+   
+        <div id="logoHeader">
+        <img src="img/logo.png">
+        </div>
+
+    <div role="main" id="firstPCont" class="ui-content"></div><!-- /content -->
+
+    <div id="homeImgDiv"><img src="img/grecas1.png"></div>
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="login">
+     <div data-role="header" data-position="fixed">
+        <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Ingresar</h1>
+    </div>
+
+     <div role="main" id="loginP" class="ui-content"></div><!-- /content -->
+
+     <div id="loginImgDiv"><img src="img/cocheLogin.png"></div>
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="registro">
+     <div data-role="header" data-position="fixed">
+        <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Registro</h1>
+    </div>
+
+    <div role="main" id="registroP" class="ui-content"></div><!-- /content -->
+
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="recuperar">
+       <div data-role="header" data-position="fixed">
+    <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
     <h1>Recuperar</h1>
     </div>
 
+     <div role="main" id="recuperarP" class="ui-content"></div><!-- /content -->
+
+
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="recuperarListo">
+    <div data-role="header" data-position="fixed">
+    <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+    <h1>Enviado</h1>
+    </div>
+
     <div  role="main" class="ui-content">
-    	Se ha enviado un correo con tu contraseña.
-    	<a href="#firstP" class="ui-btn">Regresar a principal</a>
+    <div class="title">Se ha enviado un correo con tu datos</div>
+      <a href="#firstP" class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Regresar a principal</a>
     </div>
 </div>
 <div data-role="page" id="mainScreen"></div>
-<div data-role="page" id="list"></div>
-<div data-role="page" id="especialidad"></div>
-<div data-role="page" id="descuento"></div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="list">
+    <div data-role="header" data-position="fixed">
+        <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1 id="titleList">Sucursales</h1>
+    </div>
+     <div role="main" id="listPCont" class=""></div><!-- /content -->
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="especialidad">
+      
+    <div data-role="header" data-position="fixed">
+         <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Especialidades</h1>
+    </div>
+
+    <div role="main" id="especialidadP" class="ui-content"></div><!-- /content -->
+
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="zona">
+    
+    <div data-role="header" data-position="fixed">
+         <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Estados</h1>
+    </div>
+
+    <div role="main" id="zonaP" class="ui-content"></div><!-- /content -->
+
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="delegacion">
+
+       <div data-role="header" data-position="fixed">
+         <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Delegación / Mun.</h1>
+    </div>
+
+    <div role="main" id="delegacionP" class="ui-content"></div><!-- /content -->
+
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="descuentos">
+      <div data-role="header" data-position="fixed">
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Descuentos</h1>   
+    </div>
+     <div role="main" id="descuentosP" class=""></div><!-- /content -->
+
+</div>
+<!-- LISTADO DE DESCUENTOS ********************************************************************* -->
+<div data-role="page" id="listDesc">
+      <div data-role="header" data-position="fixed">
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Listado Descuentos</h1>   
+    </div>
+     <div role="main" id="listDescP" class=""></div><!-- /content -->
+
+</div>
+<!-- DESCUENTOS POR PORCENTAJE ********************************************************************* -->
+<div data-role="page" id="porcDesc">
+      <div data-role="header" data-position="fixed">
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Descuentos por porcentaje</h1>   
+    </div>
+     <div role="main" id="porcDescP" class=""></div><!-- /content -->
+
+</div>
+<!-- DESCUENTOS POR ESPECIALIDAD *********************************** -->
+<div data-role="page" id="especDesc">
+      <div data-role="header" data-position="fixed">
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Descuentos por Especialidad</h1>   
+    </div>
+     <div role="main" id="especDescP" class=""></div><!-- /content -->
+
+</div>
+
+<!-- DESCUENTOS POR ESPECIALIDAD *********************************** -->
+<div data-role="page" id="zonaDesc">
+      <div data-role="header" data-position="fixed">
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Descuentos por Zona</h1>   
+    </div>
+     <div role="main" id="zonaDescP" class=""></div><!-- /content -->
+
+</div>
+
+<!-- ********************************************************************* -->
 <div data-role="page" id="calificacion"></div>
-<div data-role="page" id="mapa"></div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="mapa">
+    <div data-role="header" data-position="fixed">
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Ubicación Sucursal</h1>   
+    </div>
+     <div role="main" id="mapaP" class=""></div><!-- /content -->
+</div>
+<!-- ********************************************************************* -->
 <div data-role="page" id="mapaSuc"></div>
-<div data-role="page" id="infoSuc"></div>
-<div data-role="page" id="contacto"></div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="infoSuc">
+    <div data-role="header" data-position="fixed"  >
+          <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Información Sucursal</h1>
+    </div>
+     <div role="main" id="infoSucP" class=""></div><!-- /content -->
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="contacto">
+        <div data-role="header" data-position="fixed">
+         <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Contacto</h1>
+    </div>
+
+    <div role="main" id="contactoP" class="ui-content"></div><!-- /content -->
+</div>
+<!-- ********************************************************************* -->
 
 <div data-role="page" id="contactoListo">
 	  <div data-role="header" data-position="fixed">
@@ -78,13 +231,28 @@
     </div>
 
     <div  role="main" class="ui-content">
-    	Se ha enviado un correo con tus comentarios. Te contestaremos a la brevedad.
-    	<a href="#mainScreen" class="ui-btn">Regresar a principal</a>
+    <div class="title">Se ha enviado un correo con tus comentarios. Te contestaremos a la brevedad.</div>
+    	<a href="#mainScreen" class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Regresar a principal</a>
     </div>
 </div>
 
 
+</div> <!-- END CONTAINER -->
+
+
 <div id="templateLoader" style="display:none"></div>
+<div class="ui-loader-background"> </div>
+
+<div data-role="popup" data-transition="pop" id="pop1" data-overlay-theme="b" data-theme="a" data-dismissible="false">
+    <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
+                <h1 id="pop_Title" class="ui-title" role="heading" aria-level="1"></h1>
+            </div>
+    <div role="main" class="ui-content">
+    <p id="pop_text"></p>
+        <a href="#" class="ui-btn ui-corner-all ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="pop">Aceptar</a>
+    </div>
+</div>
+
 
 
   </body>

@@ -10,7 +10,7 @@
     <content src="index.html" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
@@ -32,7 +32,20 @@
     <gap:plugin name="org.apache.cordova.file" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="com.borismus.webintent" version="3.0.0" />
+
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <preference name="SplashScreen" value="screen"/>
+    <preference name="SplashScreenDelay" value="7000" />
+
+    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/android/drawable-ldpi/background9.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/android/drawable-mdpi/background9.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/android/drawable-hdpi/background9.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/android/drawable-xhdpi/background9.png" />
+
     <icon src="icon.png"/>
     <access origin="*" />
     <preference name="EnableViewportScale" value="false" />
+    <access origin="geo:*" launch-external="yes"/>
+    <access origin="google.navigation:*" launch-external="yes"/>
 </widget>

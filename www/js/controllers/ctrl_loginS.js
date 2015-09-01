@@ -3,7 +3,7 @@
 ***********************************************************/
 var ctrl_loginS = {
 	data : {},
-	pageDiv : "#login",
+	pageDiv : "#loginP",
 	init : function(data,template){
 		ctrl_loginS.data = data;
 		ctrl_loginS.render();
@@ -15,24 +15,44 @@ var ctrl_loginS = {
 		var mainObj = template.render('#loginT',ctrl_loginS.pageDiv,{},null)
 
 		mainObj.on('ingresar',function(){
-			$.mobile.changePage( "#mainScreen", {
-			  //transition: "slide",
-			 // reverse: false,
-			 // changeHash: true
-			});
+			var user = $('#name').val();
+			var pass = $('#password').val();
+			jqm.showLoader("ingresando...");
+			ctrl_loginS.checkLogin({username:user,password:pass})
 		});
 
 			mainObj.on('cancelar',function(){
-			$.mobile.changePage( "#firstP", {
-			 // transition: "slide",
-			 // reverse: true,
-			 // changeHash: true
-			});
+			$.mobile.changePage( "#firstP");
 		});
 
 
 
 		$(ctrl_loginS.pageDiv).trigger("create");
 
+	},
+	checkLogin : function(data){
+        $.ajax({
+            type: 'POST',
+            data: data,
+            url: serverURL + '/api/loginiuser',
+            dataType: 'JSON'
+            }).done(function( response ) {
+              	jqm.hideLoader();
+            	if(response!=null){
+            		console.log(response)
+            		window.localStorage.setItem("username", response.username);
+            		window.localStorage.setItem("nombre", response.nombre);
+            		window.localStorage.setItem("idCard", response.idCard);
+    				
+            		ctrl_loginS.changePage();	
+            	}else{
+            		console.log("que onda")
+            		jqm.popup( {text:"Usuario y/o contraseña inválido",title:"Error."})
+            	}
+            	
+        });	
+	},
+	changePage : function(){
+		$.mobile.changePage( "#mainScreen", {});
 	}
 }

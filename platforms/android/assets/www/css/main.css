@@ -1,0 +1,496 @@
+
+* {
+	/***************** Shadows are slow on android *********************************/
+	/***************** Global Shadow Wipe Jutsu!! **********************************/
+	text-shadow: none;
+ 	box-shadow: none;
+ 	-webkit-box-shadow: none;
+}
+
+
+.removeHL { 
+	/* Android input form <input> orange highlighter remover */
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+
+
+body{
+	overflow: hidden;
+	margin: 0px;
+	height: 100%;
+	background-color: #000;
+	color: #fff !important;
+}
+
+
+ul{
+	background-color: #000 !important;
+	color: #fff !important;
+}
+
+li{
+	background-color: #000 !important;
+	color: #fff !important;
+}
+
+
+/* GEN USAGE --------------------------------------------------------- */
+
+.title{
+	width: 100%;
+	color: white;
+	font-size: 22px;
+}
+
+.labelT{
+	width: 100%;
+	color: white;
+	font-size: 16px;
+}
+
+.linksTexto{
+	color: white !important;
+	text-decoration: none;
+	font-size: 13px;
+
+}
+
+
+.btnNaranja{
+	background-color: #FF6118 !important;
+	color: white !important;
+    text-shadow: none !important;
+    border: 0 solid !important;
+    font-size: 18px;
+}
+
+
+
+/* ------------------------------------------------------------------ */
+
+
+.bButton{
+	float: left;
+	margin:10px;
+	cursor: pointer;	
+}
+
+ .ui-loader-background {
+			width:100%;
+			height:100%;
+			top:0;
+			margin: 0;
+			background: rgba(0, 0, 0, 0.3);
+			display:none;
+			position: fixed;
+			z-index:100;
+		}
+ 
+		.ui-loading .ui-loader-background {
+			display:block;
+		}
+
+
+#loginImgDiv{
+	 position:fixed;
+   left:0px;
+   bottom:30px;
+}
+#homeImgDiv{
+	 position:fixed;
+   left:0px;
+   bottom:0px;
+   width: 100%;
+   max-height: 300px;
+}
+
+		
+.icoMain{
+	/* font-size: 20px !important; */
+	color: white;
+	/* margin-right: 10px; */
+	/* width: 30px; */
+	/* text-align: right; */
+}
+
+.icoDiv {
+  
+    display: inline-block;
+    font-size: 22px;
+    line-height: 40px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: bottom;
+    float: left;
+    margin-right: 20px;
+    margin-left: 10px;
+
+  }  
+
+
+.especialidades{
+	margin-top: 30px;
+}
+
+
+#container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #000 !important;
+    }
+
+.ui-icon-bolt:after {
+    background-repeat: no-repeat;
+    background-position: 8px 2px !important;
+}
+
+.ui-icon-gear:after {
+    background-repeat: no-repeat;
+    background-position: 4px 3px !important;
+}
+
+
+
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page{
+	background-color: #000 !important;
+}
+
+.ui-content .ui-listview, .ui-panel-inner>.ui-listview { margin:0em}
+
+
+ .ui-loader-background {
+			width:100%;
+			height:100%;
+			top:0;
+			margin: 0;
+			background: rgba(0, 0, 0, 0.3);
+			display:none;
+			position: fixed;
+			z-index:100;
+		}
+ 
+		.ui-loading .ui-loader-background {
+			display:block;
+		}
+
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 250ms !important;
+}
+
+
+
+#headerLogo{
+	height: 100px;
+	background-color: #000;
+	border: 1px solid black;
+}
+
+/*[data-role=page]{height: 100% !important; position:relative !important;}*/
+.btnGen{
+	background-color: #5F5D50 !important;
+    color: white !important;
+    text-shadow: none !important;
+    border: 0 solid !important;
+}
+
+
+
+.ui-header-fixed {
+    top: -1px;
+    padding-top: 1px;
+    z-index: 1000 !important;
+    background-color: #5F5D50 !important;
+    font-size: 22px;
+    color: white !important;
+    border: 0 solid !important;
+}
+
+ .ui-page > div {
+    
+    }
+.ui-header-fixed .ui-btn-left, .ui-header-fixed .ui-btn-right {
+    margin-top: 8px;
+}
+
+img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
+
+.ui-content .ui-listview, .ui-panel-inner > .ui-listview {
+     margin: 0em !important;
+}
+
+
+/* ============================================================
+*	MAIN SCREEN
+* ============================================================*/
+
+.listMain{
+	cursor: pointer;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	display: block;
+}
+.listMain:hover{
+	background-color: #E4E4E4;
+	border-radius: 16px;
+	color: black;
+}
+
+
+.autoli{
+	background-color: #000 !important;
+	color: white !important;
+	border: 0px solid !important;
+	border-bottom: 1px solid #3C3C3C !important;
+}
+
+
+#wrapperMain {
+    z-index: 1;
+    /* top: 20px; */
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    /* overflow: hidden; *//*important for iScroll to have the scroller scroll at max to top:45px on position absolute!*/
+    position: relative;
+    /* float: left; */
+    margin-top: 0px;
+}
+#wrapperList {
+    z-index: 0;
+    top: 66px;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+   
+    position: fixed;
+}
+
+
+.distancia{
+	margin-top: 15px;
+
+}
+.fNaranja{
+	margin-top: 10px;
+}
+
+.wrapper {
+    z-index: 0;
+    top: 60px;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+   
+    position: fixed;
+}
+
+
+#mainContainer{
+	background-color: #fff;
+
+}
+
+#mainHeader{
+	background-color: #000;
+  	
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	height: 250px;
+}
+
+#logoHeader{
+		width: 250px;
+	
+		height: 86px;
+	margin: 0 auto;
+	margin-bottom: 0px;
+
+		padding-top: 26px;
+
+}
+
+#searchBox{
+	padding: 20px;
+}
+
+.searchInput{
+
+}
+
+.mainIcoText{
+	float: left;
+	font-weight: bold;
+}
+
+.mainText{
+	text-align: center;
+	margin-top: 19px !important;
+	margin-bottom: 20px !important;
+	font-size: 13px !important;
+}
+
+.searchBot{
+	color: #FFF !important;
+	background-color: #00AEEF !important;
+}
+
+
+/* ============================================================
+*	BUSCADOR
+* ============================================================*/
+
+#buscar{
+	background-color: #5E8BB4;
+}
+
+#logoMain{
+	width: 250px;
+	margin: 80px auto 60px;
+	/* margin-left: auto; */
+}
+
+#searchBar{
+	width: 100%;
+}
+
+
+
+.colWrap {
+  word-wrap: break-word;
+
+}
+
+
+
+
+/* ============================================================
+*	LOGIN
+* ============================================================*/
+
+#loginContainer{
+	background-color: #1985D0;
+}
+
+#logoLogin{
+	width: 100px;
+	margin: 0 auto;
+}
+
+
+.facebookButton {
+/* float: right; */
+text-decoration: none;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-transition: all 0.2s,background 1s,background 1s;
+-webkit-transition: all 0.2s,background 1s,background 1s;
+transition: all 0.2s,background 1s,background 1s;
+background: #263E72 url('../img/fb.png') no-repeat bottom left;
+border-bottom: 1px solid #263E72;
+border-left: 1px solid #4462A4;
+border-right: 1px solid #4462A4;
+border-top: 1px solid #5374BC;
+box-shadow: inset rgba(255, 255, 255, 0) 0 1px 0 0,rgba(0, 0, 0, 0.3) 0px 1px 3px 0px;
+color: #FFF;
+font-size: 20px;
+font-weight: bold;
+cursor: pointer;	
+margin: 5px auto;
+padding: 7px 0px -1px 0px;
+padding-right: 11px;
+padding-left: 47px;
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+-webkit-font-smoothing: antialiased;
+max-width: 366px;
+line-height: 35px;
+}
+
+.guestButton {
+/* float: right; */
+text-decoration: none;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-moz-transition: all 0.2s,background 1s,background 1s;
+-webkit-transition: all 0.2s,background 1s,background 1s;
+transition: all 0.2s,background 1s,background 1s;
+background: #263E72 url('../img/guest.png') no-repeat bottom left;
+border-bottom: 1px solid #263E72;
+border-left: -3px solid #4462A4;
+border-right: 1px solid #4462A4;
+border-top: 1px solid #5374BC;
+box-shadow: inset rgba(255, 255, 255, 0) 0 1px 0 0,rgba(0, 0, 0, 0.3) 0px 1px 3px 0px;
+color: #FFF;
+font-size: 20px;
+font-weight: bold;
+cursor: pointer;
+	
+margin: 5px auto;
+/* padding: 7px 0px 9px 33px; */
+padding-right: 11px;
+padding-left: 47px;
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5);
+-webkit-font-smoothing: antialiased;
+max-width: 366px;
+line-height: 35px;
+}
+
+#footerLogin{
+	text-align: center;
+	background-color: rgb(255, 255, 255);
+	color: rgb(115, 115, 115);
+}
+
+
+.nSucursal{
+	font-size: 18px;
+	font-weight: bold;
+	/* height: 24px; */
+}
+
+.tags{
+	font-size: 10px;
+}
+
+.distancia{
+	font-size: 11px;
+	text-align: right;
+}
+
+
+
+.info_nSucursal{
+	font-size: 18px;
+	font-weight: bold;
+	height: auto;
+	margin-bottom: 15px;
+}
+
+
+#ubica{
+	/* height: 100%; */
+	min-height: 800px;
+}
+
+#pac-input{
+	
+}
+
+.listMenu ul{
+
+}
+
+.listMenu li{
+	border: 1px solid #545246 !important;
+	padding: 20px !important;
+}
+

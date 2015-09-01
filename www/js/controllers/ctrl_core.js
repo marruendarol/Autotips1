@@ -8,8 +8,16 @@ var ctrl_core = {
 	id 	 : "",
 	init : function(){	
 		ctrl_core.routeListeners();
-	  		var params = { init : 'ctrl_first.init' }
-	    	ctrl_core.loadController("./js/controllers/ctrl_first.js",params);
+
+		// login?
+			var username= window.localStorage.getItem("username");
+			if(username!=undefined){
+				$.mobile.changePage("#mainScreen")
+			}else{
+				$.mobile.changePage("#firstP")
+			}
+
+	  		
 	},
 	loadController : function(controllerURL,params){
 		$.ajax({
@@ -26,63 +34,99 @@ var ctrl_core = {
 	},
 	routeListeners : function(){
 
-		$(document).on("pageshow","#firstP", function() {
+		
+		$(document).on("pagebeforeshow","#initialBlank", function() {
+	       	var username= window.localStorage.getItem("username");
+			if(username!=undefined){
+				$.mobile.changePage("#mainScreen")
+			}else{
+				$.mobile.changePage("#firstP")
+			}
+	    });
+
+		$(document).on("pagebeforeshow","#firstP", function() {
 	        var params = { init : 'ctrl_first.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_first.js",params);
 	    });
 
-		$(document).on("pageshow","#login", function() {
+		$(document).on("pagebeforeshow","#login", function() {
+	        console.log("invocando login")
 	        var params = { init : 'ctrl_loginS.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_loginS.js",params);
 	    });
 
-		$(document).on("pageshow","#registro", function() {
-	        var params = { init : 'ctrl_registro.init' }
+		$(document).on("pagebeforeshow","#registro", function() {
+	        var params = { init : 'ctrl_registro.init', }
 	    	ctrl_core.loadController("./js/controllers/ctrl_registro.js",params);
 	    });
 
-	    $(document).on("pageshow","#recuperar", function() {
+	    $(document).on("pagebeforeshow","#recuperar", function() {
 	        var params = { init : 'ctrl_recuperar.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_recuperar.js",params);
 	    });
 
-	     $(document).on("pageshow","#recuperarListo", function() {
-	        var params = { init : 'ctrl_recuperarListo.init' }
-	    	ctrl_core.loadController("./js/controllers/ctrl_recuperarListo.js",params);
-	    });
-		
-		$(document).on("pageshow","#mainScreen", function() {
+	
+		$(document).on("pagebeforeshow","#mainScreen", function() {
 	        var params = { init : 'ctrl_home.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_home.js",params);
 	    });
 
-	    $(document).on("pageshow","#list", function() {
+	    $(document).on("pagebeforeshow","#list", function() {
 	      	var params = { init : 'ctrl_list.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_list.js",params);
 	    });
 
-	     $(document).on("pageshow","#especialidad", function() {
+	    $(document).on("pagebeforeshow","#especialidad", function() {
 	      	var params = { init : 'ctrl_espec.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_especialidad.js",params);
 	    });
 
-	    $(document).on("pageshow","#descuento", function() {
+	    $(document).on("pagebeforeshow","#zona", function() {
+	      	var params = { init : 'ctrl_zona.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_zona.js",params);
+	    });
+
+	    $(document).on("pagebeforeshow","#delegacion", function() {
+	      	var params = { init : 'ctrl_delegacion.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_delegacion.js",params);
+	    });
+
+	    $(document).on("pagebeforeshow","#descuentos", function() {
 	      	var params = { init : 'ctrl_descuento.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_descuento.js",params);
 	    });
 
+	    // Descuentos -----------------------------------------------------------------
 
-	    $(document).on("pageshow","#mapa", function() {
+	     $(document).on("pagebeforeshow","#listDesc", function() {
+	      	var params = { init : 'ctrl_listDesc.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_listDesc.js",params);
+	    });
+
+	    $(document).on("pagebeforeshow","#especDesc", function() {
+	      	var params = { init : 'ctrl_especDesc.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_especDesc.js",params);
+	    }); 
+
+	    $(document).on("pagebeforeshow","#zonaDesc", function() {
+	      	var params = { init : 'ctrl_zonaDesc.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_zonaDesc.js",params);
+	    }); 
+
+	    //----------------------------------------------------------------------------
+
+
+	    $(document).on("pagebeforeshow","#mapa", function() {
 	      	var params = { init : 'ctrl_mapa.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_mapa.js",params);
 	    });
 
-	    $(document).on("pageshow","#infoSuc", function() {
+	    $(document).on("pagebeforeshow","#infoSuc", function() {
 	      	var params = { init : 'ctrl_info.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_info.js",params);
 	    });
 
-	    $(document).on("pageshow","#contacto", function() {
+	    $(document).on("pagebeforeshow","#contacto", function() {
 	      	var params = { init : 'ctrl_contacto.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_contacto.js",params);
 	    });

@@ -3,7 +3,7 @@
 ***********************************************************/
 var ctrl_recuperar = {
 	data : {},
-	pageDiv : "#recuperar",
+	pageDiv : "#recuperarP",
 	init : function(data,template){
 		ctrl_recuperar.data = data;
 		ctrl_recuperar.render();
@@ -16,22 +16,21 @@ var ctrl_recuperar = {
 
 
 		mainObj.on('recuperar',function(){
-			$.mobile.changePage( "#recuperarListo", {
-			 // transition: "slide",
-			 // reverse: false,
-			 // changeHash: true
-			});
+			ctrl_recuperar.sendMsg();
 		});
 
-			mainObj.on('cancelar',function(){
-			$.mobile.changePage( "#login", {
-			 //// transition: "slide",
-			  //reverse: false,
-			 // changeHash: true
-			});
-		});
 
 		$(ctrl_recuperar.pageDiv).trigger("create");
 
+	},
+	sendMsg : function(){
+		jqm.showLoader("Enviando mensaje...")
+		
+		var params = {email:$('#email').val()};
+		dbC.query("/api/recovery","POST",params,ctrl_recuperar.msgRet,params,null)
+	},
+	msgRet : function(response){
+		jqm.hideLoader();
+		$.mobile.changePage( "#recuperarListo");
 	}
 }

@@ -3,40 +3,44 @@
 ***********************************************************/
 var ctrl_espec = {
 	data : {},
-	pageDiv : "#especialidad",
+	pageDiv : "#especialidadP",
 	init : function(data,template){
 		ctrl_espec.data = data;
-		ctrl_espec.render();
+		ctrl_espec.getEspec();
+		jqm.showLoader("Generando...");
 	},
-	render : function(){
+	getEspec : function(){
+		$.ajax({
+          type: 'POST',
+            data: {},
+            crossDomain: true,
+            url: serverURL + '/api/readespec/' ,
+            dataType: 'JSON'
+             }).done(function( response ) {
+             ctrl_espec.render(response);
+          }).fail(function( response ) {
+              alert("Error de conexión, intente nuevamente mas tarde.");   
+    	});   
+	},
+	render : function(data){
 
+		jqm.hideLoader();
 
 		$(ctrl_espec.pageDiv).empty();
 
-		var data  = {
-			items : [
-				{text: "Autolavado"},
-				{text: "Bombas y Frenos"},
-				{text: "Bombas gasolina"},
-				{text: "Carter"},
-				{text: "Dirección Hidráulica"},
-				{text: "Espejo"},
-				{text: "Freno"},
-				{text: "Grua"},
-				{text: "Inyección Electrónica"},
-				{text: "Mecánica en General"},
-				
-			]
-		}
+		var dItems = data
 
 		var mainObj = template.render('#especT',ctrl_espec.pageDiv,data)
 		$(ctrl_espec.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 		mainObj.on('getSuc',function(event){
+			paramsPage = { id : event.context.nombre, type: "especialidad" }
 			$.mobile.changePage( "#list");
 		})
 		
+			 myScroll = new IScroll('#wrapperEspec',{  
+		 	click:true })
 
 	},
 }

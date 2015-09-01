@@ -3,7 +3,7 @@
 ***********************************************************/
 var ctrl_contacto = {
 	data : {},
-	pageDiv : "#contacto",
+	pageDiv : "#contactoP",
 	init : function(data,template){
 		ctrl_contacto.data = data;
 		ctrl_contacto.render();
@@ -15,24 +15,28 @@ var ctrl_contacto = {
 		var mainObj = template.render('#contactoT',ctrl_contacto.pageDiv,{},null)
 
 
-		mainObj.on('enviar',function(){
-			$.mobile.changePage( "#mensajeEnviado", {
-			 // transition: "slide",
-			 // reverse: false,
-			 // changeHash: true
-			});
-		});
-
-
-			mainObj.on('cancelar',function(){
-			$.mobile.changePage( "#mainScreen", {
-			 // transition: "slide",
-			 // reverse: true,
-			 // changeHash: true
-			});
+		mainObj.on('sendComment',function(){
+			
+			console.log($('#comentario').val().length)
+			if($('#comentario').val().length>2){
+			ctrl_contacto.sendMsg();}
+			else{
+				jqm.popup( {text:"Mensaje requerido.",title:"Error."})
+			}
 		});
 
 		$(ctrl_contacto.pageDiv).trigger("create");
 
+	},
+	sendMsg : function(){
+		jqm.showLoader("Enviando mensaje...")
+		var msg = "Mensaje de Autotips" + $('#comentario').val();
+		var recipients = "rlopez@rlm.com.mx"
+		var params = {mail:{msg : msg,recipients:recipients,subject:"Noticación Autotips:" + window.localStorage.getItem("username")}};
+		dbC.query("/api/sendNotification","POST",params,ctrl_contacto.msgRet,params)
+	},
+	msgRet : function(response){
+		jqm.hideLoader();
+		$.mobile.changePage( "#contactoListo");
 	}
 }
