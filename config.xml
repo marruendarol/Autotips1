@@ -34,7 +34,7 @@
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="com.borismus.webintent" version="3.0.0" />
-    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.4" />
+    <gap:plugin name="org.apache.cordova.geolocation"  />
 
 
     <gap:plugin name="org.apache.cordova.splashscreen" />
