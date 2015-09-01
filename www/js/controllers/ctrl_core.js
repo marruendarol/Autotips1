@@ -50,8 +50,7 @@ var ctrl_core = {
 	    });
 
 		$(document).on("pagebeforeshow","#login", function() {
-	        console.log("invocando login")
-	        var params = { init : 'ctrl_loginS.init' }
+	        	        var params = { init : 'ctrl_loginS.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_loginS.js",params);
 	    });
 

@@ -530,7 +530,8 @@ line-height: 35px;
 }
 
 .listMenu li{
-	border: 1px solid #545246 !important;
+	border: 0px solid #000;
+	border-bottom: 1px solid #545246 !important;
 	padding: 20px !important;
 }
 

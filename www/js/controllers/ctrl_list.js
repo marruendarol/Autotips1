@@ -4,13 +4,15 @@
 
 distVis = false;
 titleList = "Sucursales";
-var spec = ""
+var spec = "";
 
 var ctrl_list = {
 	data : {},
 	pageDiv : "#listPCont",
 	init : function(data,template){
+		console.log('LOGER')
 		ctrl_list.data = data;
+		//$(ctrl_list.pageDiv).empty();
 		jqm.showLoader("buscando...");
 
 		console.log(paramsPage)
@@ -31,7 +33,7 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,null, {timeout: 10000, enableHighAccuracy: true}); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,null); 
 	},
 	geoRet : function(location){
 		dbC.query("/api/byGeo","POST",{lat:location.coords.latitude,lng:location.coords.longitude},ctrl_list.render)
@@ -44,7 +46,7 @@ var ctrl_list = {
 	byListaDesc : function(specV){
 
 		spec = specV;
-		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,null, {timeout: 10000, enableHighAccuracy: true}); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,null); 
 	},
 	listaDescLoc : function(location){
 		console.log(spec+"SPECVVV")
@@ -56,7 +58,7 @@ var ctrl_list = {
 	},
 	//------------------------------------------MAYOR PORCENTAJE GEO
 	byPercDesc : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.PercDescLoc,null, {timeout: 10000, enableHighAccuracy: true}); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.PercDescLoc,null); 
 	},
 	PercDescLoc : function(location){
 		dbC.query("/api/byListaPercGeo","POST",
@@ -83,9 +85,11 @@ var ctrl_list = {
 	render : function(data){
 
 		jqm.hideLoader();
+
 		
 		var data = { items  : data,
-					distVis : distVis
+					distVis : distVis,
+					empty 	: (data.length==0 ? true : false)
 			}
 
 		$('#titleList').text(titleList)

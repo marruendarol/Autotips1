@@ -26,8 +26,15 @@ var ctrl_info = {
 		})
 
 		mainObj.on('navigate',function(){
-			window.open("http://maps.google.com/maps?daddr="+ data.loc[0] +", "+ data.loc[1]+"" , '_system');
+			jqm.showLoader("Localizando...")
+			navigator.geolocation.getCurrentPosition(ctrl_info.locRet,null); 
+			
 		})
 		
+	},
+	locRet : function(location){
+		var data  = paramsSuc.data  
+		jqm.hideLoader()
+			window.open("http://maps.google.com/maps?saddr="+location.coords.latitude+ ", " + location.coords. longitude+  "&daddr="+ data.loc[0] +", "+ data.loc[1]+"" , '_system');
 	}
 }

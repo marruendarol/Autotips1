@@ -237,7 +237,7 @@ var mMapa = {
                 var pathis = myRoute.steps[i].path;
 	                for (var j = 0; j < pathis.length; j++) {
 
-	                    var pointA =  new google.maps.LatLng(pathis[j].A, pathis[j].F)
+	                    var pointA =  new google.maps.LatLng(pathis[j].G, pathis[j].K)
 	                    	                   // console.log(pathis[j].A +  " - " +  pathis[j].F)
 	                 //  mMapa.bounds.extend(pointA.position);
 	                    pointList.push(pointA);

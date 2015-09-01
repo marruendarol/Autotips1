@@ -28,7 +28,9 @@ var ctrl_home = {
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 		mainObj.on('getCerca',function(event){
+			console.log("entro cercar")
 			paramsPage = { id : event.context._id, type: "cerca" }
+			console.log("entro cercas")
 			$.mobile.changePage("#list");
 		})
 		mainObj.on('getDescuentos',function(event){
