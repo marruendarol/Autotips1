@@ -4,7 +4,7 @@
 
 var userLat = 20.6596
 var userLng = -103.3496
-var serverURL = "http://192.168.100.200:3018";
+var serverURL = "http://autotips.mx:3018";
 var paramsPage = {}
 
 var mainC = {
