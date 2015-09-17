@@ -30,8 +30,8 @@ var ctrl_contacto = {
 	},
 	sendMsg : function(){
 		jqm.showLoader("Enviando mensaje...")
-		var msg = "Mensaje de Autotips" + $('#comentario').val();
-		var recipients = "rlopez@rlm.com.mx"
+		var msg = "Mensaje de Autotips  " + $('#comentario').val();
+		var recipients = "autotips@fte.mx"
 		var params = {mail:{msg : msg,recipients:recipients,subject:"Noticación Autotips:" + window.localStorage.getItem("username")}};
 		dbC.query("/api/sendNotification","POST",params,ctrl_contacto.msgRet,params)
 	},

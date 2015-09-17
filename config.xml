@@ -65,4 +65,9 @@
     <preference name="EnableViewportScale" value="false" />
     <access origin="geo:*" launch-external="yes"/>
     <access origin="google.navigation:*" launch-external="yes"/>
+    <access origin="*://*.googleapis.com/*" subdomains="true" />
+    <access origin="*://*.gstatic.com/*" subdomains="true" />
+    <access origin="*://*.google.com/*" subdomains="true" />
+    <access origin="*://*.googleusercontent.com/*" subdomains="true" />
+    
 </widget>
