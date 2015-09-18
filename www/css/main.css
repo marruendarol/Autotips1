@@ -34,6 +34,11 @@ li{
 }
 
 
+#loginP{
+	z-index: 100;
+	position: relative;
+}
+
 /* GEN USAGE --------------------------------------------------------- */
 
 .title{
@@ -101,8 +106,10 @@ li{
 
 #loginImgDiv{
 	 position:fixed;
-   left:0px;
-   bottom:30px;
+	 left:0px;
+	 bottom:30px;
+	 z-index: 1;
+	 /* max-height: 150px; */
 }
 #homeImgDiv{
 	 position:fixed;

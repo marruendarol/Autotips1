@@ -19,7 +19,7 @@ var ctrl_registro = {
 
 		mainObj.on('validate',function(){
 			jqm.showLoader("verificando tarjeta...");
-			ctrl_registro.validateCard($("#card").val());
+			ctrl_registro.validateCard($("#card").val(),$("#ccv").val());
 		});	
 
 		mainObj.on('cancelar',function(){
@@ -33,9 +33,10 @@ var ctrl_registro = {
  	 
 
 	},
-	validateCard : function(idCard){
+	validateCard : function(idCard,ccv){
 		ctrl_registro.card = idCard;
-		var params = {idCard:idCard};
+		ctrl_registro.ccv = ccv;
+		var params = {idCard:idCard,ccv : ccv};
 		dbC.query("/api/checkCard","POST",params,ctrl_registro.validReturn)
 	},
 	validReturn : function(response){
@@ -43,18 +44,18 @@ var ctrl_registro = {
 		jqm.hideLoader();
 
 		console.log(response)
-		if(response.length==1 && response[0].estatus==0 ){
+		if(response.length==1 && response[0].estatus=="0" ){
 			
 			ctrl_registro.create();
 
 		}
 
 		if(response.length==0){
-			jqm.popup( {text:"El ID de la tarjeta no es válido.",title:"Error."})
+			jqm.popup( {text:"El ID de la tarjeta o el CCV no es válido.",title:"Error."})
 
 		}
 		
-		if(response.length==1 && response[0].estatus==1){
+		if(response.length==1 && response[0].estatus=="1"){
 			jqm.popup( {text:"Esa ya ha sido registrada. verifique de nuevo o pongase en contacto con su proveedor",title:"Error."})	
 		}
 	},
@@ -99,10 +100,11 @@ var ctrl_registro = {
 		params.dataB.userID = "internet"
 		params.dataB.estRCD = 1;
 		params.dataB.idCard = ctrl_registro.card 
+		params.dataB.ccv = ctrl_registro.ccv 
 		dbC.query("/api/createUserMobile","POST",params,ctrl_registro.create_Return)
 	},
 	create_Return : function(data){
-		var params = {idCard:ctrl_registro.card }
+		var params = {idCard:ctrl_registro.card, username : $("#email").val() }
 		dbC.query("/api/updateCard","POST",params,ctrl_registro.updateCardRet)	
 	},
 	updateCardRet : function(){
