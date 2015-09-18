@@ -70,9 +70,10 @@ li{
 .btnNaranja{
 	background-color: #FF6118 !important;
 	color: white !important;
-    text-shadow: none !important;
-    border: 0 solid !important;
-    font-size: 18px;
+	text-shadow: none !important;
+	border: 0 solid !important;
+	font-size: 18px;
+	margin-top: 10px;
 }
 
 

@@ -4,7 +4,7 @@
 
 var userLat = 20.6596
 var userLng = -103.3496
-var serverURL = "https://autotips.mx:3018";
+var serverURL = "http://autotips.mx:3018";
 //var serverURL = "http://localhost:3018";
 var paramsPage = {}
 

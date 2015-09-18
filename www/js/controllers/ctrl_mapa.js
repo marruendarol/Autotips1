@@ -21,20 +21,24 @@ var ctrl_mapa = {
 	
 	},
 	routeInit : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_mapa.routeProc, ctrl_mapa.routeErr,{maximumAge:3000,timeout:35000,enableHighAccuracy:false});
+		//navigator.geolocation.getCurrentPosition(ctrl_mapa.routeProc, ctrl_mapa.routeErr,{maximumAge:3000,timeout:35000,enableHighAccuracy:false});
+		ctrl_mapa.routeProc()
 	},
 	routeProc : function(location){
+		console.log(mapaObj)
+		//mMapa.init(location.coords.latitude,location.coords.longitude);
 
-		mMapa.init(location.coords.latitude,location.coords.longitude);
+		mMapa.init(mapaObj.loc[0],mapaObj.loc[1]);
 
-		var data = [{loc : {lat: mapaObj.lat, lng: mapaObj.lng}, COLOR:"8B1D1B", LOGOTIPO:"",BUSSINESS:{ CATEGORY:1, NAME:"Autotips"}}]
-		mMapa.addPins(data)
+		//var data = [{loc : {lat: mapaObj.lat, lng: mapaObj.lng}, COLOR:"8B1D1B", LOGOTIPO:"",BUSSINESS:{ CATEGORY:1, NAME:"Autotips"}}]
+		//mMapa.addPins(data)
 		
 		// Add Route
-		var params = { start : { lat: location.coords.latitude, lng : location.coords.longitude }, end : {lat: mapaObj.lat, lng: mapaObj.lng }}
-		mMapa.traceRoute(params.start,params.end)
+		//var params = { start : { lat: location.coords.latitude, lng : location.coords.longitude }, end : {lat: mapaObj.lat, lng: mapaObj.lng }}
+		//mMapa.traceRoute(params.start,params.end)
 
-		mMapa.map.fitBounds(mMapa.bounds);
+		//console.log(mMapa.bounds)
+		//mMapa.map.fitBounds(mMapa.bounds);
 	},
 	routeErr : function(err){
 		console.log(err)
@@ -237,7 +241,7 @@ var mMapa = {
                 var pathis = myRoute.steps[i].path;
 	                for (var j = 0; j < pathis.length; j++) {
 
-	                    var pointA =  new google.maps.LatLng(pathis[j].G, pathis[j].K)
+	                    var pointA =  new google.maps.LatLng(pathis[j].A, pathis[j].F)
 	                    	                   // console.log(pathis[j].A +  " - " +  pathis[j].F)
 	                 //  mMapa.bounds.extend(pointA.position);
 	                    pointList.push(pointA);
