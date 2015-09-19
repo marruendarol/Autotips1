@@ -51,6 +51,8 @@ li{
 
 .conte{
 	padding: 20px;
+	overflow-y: auto;
+	height: auto;
 }
 
 .labelT{
@@ -309,6 +311,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 .fNaranja{
 	margin-top: 10px;
 	width: 20px;
+	/* overflow-y: auto; */
 }
 
 .wrapper {
@@ -483,7 +486,7 @@ line-height: 35px;
 
 
 .nSucursal{
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: bold;
 	/* height: 24px; */
 }

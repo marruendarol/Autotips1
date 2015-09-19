@@ -181,15 +181,25 @@
 	            {{#items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="listDetail" data-transition="fade">
+	                   
+	                	{{#if distVis}}
 	                    <div class="small-9 column">
 	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
 	                    <div class="small-2 column">
-	                    	{{#if distVis}}
 	                        <div class="distancia">{{roundDist(dist)}} Km.</div>
-	                        {{/if}}
+	                        </div>
+	                    
+	                   	{{else}}
+
+	                   	<div class="small-11 column">
+	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
+	                        <div class="tags">{{tags}}</div>
 	                    </div>
+	                    	
+	                        {{/if}}
+	                    
 	                    <div class="small-1 column">
 	                        <div class="fNaranja"> 
 	                        <img src="img/fNaranja.png">
@@ -220,7 +230,7 @@
 	            {{#each data}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
-	                    <div class="small-9 column">
+	                    <div class="small-10 column">
 	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
@@ -249,7 +259,7 @@
 
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="listDesc" data-transition="fade">
-	                    <div class="small-9 column">
+	                    <div class="small-10 column">
 	                        <div class="nSucursal"><p>Todos los descuentos</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
@@ -261,7 +271,7 @@
 
 	             <li  data-icon="false">
 	                <a class="autoli" on-tap="porcDesc" data-transition="fade">
-	                    <div class="small-9 column">
+	                    <div class="small-10 column">
 	                        <div class="nSucursal"><p>Descuentos de Mayor Porcentaje</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
@@ -386,10 +396,15 @@
 
 	
 	
-	<div  role="main" class="ui-content">
+	<div id="wrapperInfo" class="wrapper" >
+	    <div id="scroller" >
+
+<div class="conte">
+
 	    <div class="small-12 column">
 	        <div class="small-12 column info_nSucursal">{{nombre}}</div>
 	        <div class="small-12 column info_direccion">{{direccion}}</div>
+	        <div class="small-12 column info_direccion">{{colonia}}</div>
 	        <div class="small-12 column info_estado">{{delegacion}} - {{estado}} </div>
 	        <div class="small-12 column info_cp">C.P. {{cp}}</div>
 	        <div class="small-12 column info_tel1">Teléfono {{telefono1}}</div>
@@ -417,9 +432,9 @@
 	     <div class="small-12 column">
 	       <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="navigate">Llévame</div>
 	    </div>
+</div>
 
-
-	     
+	     </div>
 	</div>
 
 	
