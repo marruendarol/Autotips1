@@ -30,6 +30,7 @@ var ctrl_info = {
 			navigator.geolocation.getCurrentPosition(ctrl_info.locRet,null); 
 			
 		})
+		
 		 myScroll = new IScroll('#wrapperInfo',{  
 		 	click:true })
 		
