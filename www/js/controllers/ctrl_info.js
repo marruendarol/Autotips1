@@ -27,7 +27,7 @@ var ctrl_info = {
 
 		mainObj.on('navigate',function(){
 			jqm.showLoader("Localizando...")
-			navigator.geolocation.getCurrentPosition(ctrl_info.locRet,null); 
+			navigator.geolocation.getCurrentPosition(ctrl_info.locRet,ctrl_info.onLocationError); 
 			
 		})
 		
@@ -40,5 +40,8 @@ var ctrl_info = {
 		var data  = paramsSuc.data  
 		jqm.hideLoader()
 			window.open("http://maps.google.com/maps?saddr="+location.coords.latitude+ ", " + location.coords. longitude+  "&daddr="+ data.loc[0] +", "+ data.loc[1]+"" , '_system');
+	},
+	onLocationError : function(){
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
 	}
 }

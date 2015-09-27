@@ -15,7 +15,7 @@ var ctrl_login = {
 		 $.ajax({
 	        type: 'POST',
 	        data: {},
-	        url: dbC.serverURL + 'api/loginSession',
+	        url: serverURL + 'api/loginSession',
 	        dataType: 'JSON'
 	        }).done(function( response ) {
         		if(response.status=="EXPIRED"){

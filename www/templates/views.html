@@ -183,24 +183,24 @@
 	                <a class="autoli" on-tap="listDetail" data-transition="fade">
 	                   
 	                	{{#if distVis}}
-	                    <div class="small-9 column">
+	                    <div class="small-8 column rPad">
 	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
-	                    <div class="small-2 column">
+	                    <div class="small-2 column rPad">
 	                        <div class="distancia">{{roundDist(dist)}} Km.</div>
 	                        </div>
 	                    
 	                   	{{else}}
 
-	                   	<div class="small-11 column">
+	                   	<div class="small-10 column rPad">
 	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
 	                    	
 	                        {{/if}}
 	                    
-	                    <div class="small-1 column">
+	                    <div class="small-1 column rPad">
 	                        <div class="fNaranja"> 
 	                        <img src="img/fNaranja.png">
 	                        </div>
@@ -226,11 +226,11 @@
 
 <div id="wrapperEspec" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview">
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="Buscar especialidad...">
 	            {{#each data}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
-	                    <div class="small-10 column">
+	                    <div class="small-10 column rPad">
 	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
@@ -259,7 +259,7 @@
 
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="listDesc" data-transition="fade">
-	                    <div class="small-10 column">
+	                    <div class="small-10 column rPad">
 	                        <div class="nSucursal"><p>Todos los descuentos</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
@@ -271,7 +271,7 @@
 
 	             <li  data-icon="false">
 	                <a class="autoli" on-tap="porcDesc" data-transition="fade">
-	                    <div class="small-10 column">
+	                    <div class="small-10 column rPad">
 	                        <div class="nSucursal"><p>Descuentos de Mayor Porcentaje</p></div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
@@ -295,11 +295,11 @@
 
 	<div id="wrapperListDesc" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview">
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="Buscar especialidad..." >
 	            {{#each items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getList" data-transition="fade">
-	                    <div class="small-11 column">
+	                    <div class="small-10 column rPad">
 	                        <div  class="nSucursal"><p>{{_id}}</p></div>
 	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
 	                    </div>
@@ -323,11 +323,11 @@
 
 	<div id="wrapperZona" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview">
+	        <ul data-role="listview"  id="listview" data-filter="true" data-filter-placeholder="Buscar estado..." >
 	            {{#each items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getDel" data-transition="fade">
-	                    <div class="small-11 column">
+	                    <div class="small-10 column rPad">
 	                        <div  class="nSucursal"><p>{{_id}}</p></div>
 	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
 	                    </div>
@@ -356,7 +356,7 @@
 	            {{#each items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
-	                    <div class="small-11 column">
+	                    <div class="small-10 column">
 	                        <div  class="nSucursal"><p>{{_id}}</p></div>
 	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
 	                    </div>

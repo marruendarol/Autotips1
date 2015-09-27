@@ -20,12 +20,13 @@ var ctrl_core = {
 	  		
 	},
 	loadController : function(controllerURL,params){
+		console.log(controllerURL,params)
 		$.ajax({
 	        type: "GET",
 	        url: controllerURL,
 	        dataType: "script",
 	        error: function (XMLHttpRequest, textStatus, errorThrown) {
-	            console.log('error ', textStatus, errorThrown);
+	            console.log(textStatus, errorThrown);
 	        },
 	        success:function(e){
 	         	eval(params.init)(params);
@@ -71,6 +72,7 @@ var ctrl_core = {
 	    });
 
 	    $(document).on("pagebeforeshow","#list", function() {
+	    	console.log("invocando list")
 	      	var params = { init : 'ctrl_list.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_list.js",params);
 	    });

@@ -69,6 +69,6 @@ var ctrl_home = {
 		console.log(userLat + " - " + userLng + " user found")
 	},
 	onLocationError : function(){
-		console.log("drag location not found");
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
 	}
 }

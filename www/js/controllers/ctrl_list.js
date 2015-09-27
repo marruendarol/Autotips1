@@ -12,7 +12,7 @@ var ctrl_list = {
 	init : function(data,template){
 		console.log('LOGER')
 		ctrl_list.data = data;
-		//$(ctrl_list.pageDiv).empty();
+		$(ctrl_list.pageDiv).empty();
 		jqm.showLoader("buscando...");
 
 		console.log(paramsPage)
@@ -33,10 +33,13 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,null); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,ctrl_list.onLocationError); 
 	},
 	geoRet : function(location){
 		dbC.query("/api/byGeo","POST",{lat:location.coords.latitude,lng:location.coords.longitude},ctrl_list.render)
+	},
+	onLocationError : function(){
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
 	},
 	//------------------------------------------ESPECIALIDAD
 	byEspec : function(id){
@@ -46,7 +49,7 @@ var ctrl_list = {
 	byListaDesc : function(specV){
 
 		spec = specV;
-		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,null); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,onLocationError); 
 	},
 	listaDescLoc : function(location){
 		console.log(spec+"SPECVVV")

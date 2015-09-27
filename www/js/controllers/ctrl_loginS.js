@@ -6,9 +6,20 @@ var ctrl_loginS = {
 	pageDiv : "#loginP",
 	init : function(data,template){
 		ctrl_loginS.data = data;
-		ctrl_loginS.render();
+
+		var username= window.localStorage.getItem("username");
+			if(username!=undefined){
+				$.mobile.changePage("#mainScreen")
+			}else{
+				ctrl_loginS.render();
+			}
+
+
+		
 	},
 	render : function(){
+
+
 
 		$(ctrl_loginS.pageDiv).empty();
 
