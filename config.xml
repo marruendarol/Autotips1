@@ -24,12 +24,13 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarStyle" value="default" />
     <preference name="target-device" value="handset" />
+    <preference name="BackgroundColor" value="0x000000"/>
    
      <gap:plugin name="org.apache.cordova.core.geolocation" version="0.3.10" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.device-motion" />
     <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
+   
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="com.borismus.webintent" />
     <gap:plugin name="org.apache.cordova.geolocation"  />
