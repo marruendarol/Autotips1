@@ -29,20 +29,18 @@
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="org.apache.cordova.device-motion" />
     <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="com.borismus.webintent" />
     <gap:plugin name="org.apache.cordova.geolocation"  />
 
 
     <gap:plugin name="org.apache.cordova.splashscreen" />
-    
+
     <preference name="SplashScreen" value="screen"/>
     <preference name="SplashScreenDelay" value="7000" />
 
-     <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.InAppBrowser" />
-    </feature>
+
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
     </feature>
