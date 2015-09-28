@@ -48,7 +48,7 @@
         <param name="ios-package" value="CDVLocation" />
     </feature>
 
-    <preference name='phonegap-version' value='cli-5.1.0' />
+    <preference name='phonegap-version' value='cli-5.2.0' />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
 
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/android/drawable-ldpi/512.9.png" />
