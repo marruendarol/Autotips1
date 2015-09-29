@@ -34,6 +34,8 @@
     <gap:plugin name="org.apache.cordova.network-information" source="npm" />
     <gap:plugin name="org.apache.cordova.geolocation" source="npm" />
 
+    
+
     <gap:plugin name="org.apache.cordova.splashscreen" source="npm"  />
 
     <preference name="SplashScreen" value="splash.png"/>
