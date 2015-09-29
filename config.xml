@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.nucleo.autotips" version="1.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.nucleo.autotips" version="1.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Autotips 2015</name>
     <description>
        Autotips  2015
@@ -26,17 +26,13 @@
     <preference name="target-device" value="handset" />
     <preference name="BackgroundColor" value="0x000000"/>
    
-    <gap:plugin name="cordova-plugin-geolocation@1.0.0" source="npm" />
-    <gap:plugin name="org.apache.cordova.device" source="npm"/> 
-    <gap:plugin name="org.apache.cordova.device-motion" source="npm" />
-    <gap:plugin name="org.apache.cordova.file" source="npm" />
+    <gap:plugin name="cordova-plugin-geolocation" source="npm" />
+    <gap:plugin name="cordova-plugin-device" source="npm"/> 
+    <gap:plugin name="cordova-plugin-device-motion" source="npm" />
+    <gap:plugin name="cordova-plugin-file" source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="org.apache.cordova.network-information" source="npm" />
-    <gap:plugin name="org.apache.cordova.geolocation" source="npm" />
-
-    
-
-    <gap:plugin name="org.apache.cordova.splashscreen" source="npm"  />
+    <gap:plugin name="cordova-plugin-network-information" source="npm" />
+    <gap:plugin name="cordova-plugin-splashscreen" source="npm"  />
 
     <preference name="SplashScreen" value="splash.png"/>
     <preference name="SplashScreenDelay" value="7000" />
