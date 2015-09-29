@@ -26,19 +26,22 @@
     <preference name="target-device" value="handset" />
     <preference name="BackgroundColor" value="0x000000"/>
    
-    <gap:plugin name="org.apache.cordova.core.geolocation" version="0.3.10" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.device-motion" />
-    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.core.geolocation" source="npm" />
+    <gap:plugin name="org.apache.cordova.device" source="npm" />
+    <gap:plugin name="org.apache.cordova.device-motion" source="npm" />
+    <gap:plugin name="org.apache.cordova.file" source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="com.borismus.webintent" />
-    <gap:plugin name="org.apache.cordova.geolocation"  />
+    <gap:plugin name="org.apache.cordova.network-information" source="npm" />
+    <gap:plugin name="com.borismus.webintent" source="npm" />
+    <gap:plugin name="org.apache.cordova.geolocation" source="npm" />
 
-    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm"  />
 
-    <preference name="SplashScreen" value="screen"/>
+    <preference name="SplashScreen" value="splash.png"/>
     <preference name="SplashScreenDelay" value="7000" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashScreenBackgroundColor" value="black" /> 
 
 
     <feature name="Geolocation">

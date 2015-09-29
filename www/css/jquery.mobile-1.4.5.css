@@ -3577,6 +3577,8 @@ fieldset.ui-controlgroup {
 	overflow: visible;
 	height: auto;
 	overflow: auto;
+	/* white-space: normal; */
+	/* font-size: small; */
 }
 .ui-listview > .ui-li-static,
 .ui-listview > .ui-li-divider,

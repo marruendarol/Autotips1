@@ -67,8 +67,8 @@ var ctrl_home = {
 		userLng = pos.longitude;
 
 		console.log(userLat + " - " + userLng + " user found")
-	},
-	onLocationError : function(){
+	},onLocationError : function(){
 		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
 	}
+	
 }
