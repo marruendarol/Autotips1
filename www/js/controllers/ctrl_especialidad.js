@@ -40,7 +40,7 @@ var ctrl_espec = {
 		})
 		
 			 myScroll = new IScroll('#wrapperEspec',{  
-		 	click:true })
+		 	click:true,bounce:false,bindToWrapper: true })
 
 	},
 }

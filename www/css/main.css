@@ -544,7 +544,7 @@ line-height: 35px;
 
 
 .nSucursal{
-	font-size: 15px;
+	font-size: 17px;
 	font-weight: normal;
 	/* height: 24px; */
 	/* width: 100%; */
@@ -615,6 +615,6 @@ line-height: 35px;
 .listMenu li{
 	border: 0px solid #000;
 	border-bottom: 1px solid #545246 !important;
-	padding: 20px !important;
+	/* padding: 20px !important; */
 }
 

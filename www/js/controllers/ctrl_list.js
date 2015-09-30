@@ -49,7 +49,7 @@ var ctrl_list = {
 	byListaDesc : function(specV){
 
 		spec = specV;
-		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,onLocationError); 
+		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,ctrl_list.onLocationError); 
 	},
 	listaDescLoc : function(location){
 		console.log(spec+"SPECVVV")
@@ -110,7 +110,7 @@ var ctrl_list = {
 		$(ctrl_list.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		 myScroll = new IScroll('#wrapperList',{  
-		 	click:true })
+		 	click:true,useTransition:true })
 		
 
 	}

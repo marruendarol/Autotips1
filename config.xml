@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.nucleo.autotips" version="1.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Autotips 2015</name>
+    <name>Autotips</name>
     <description>
-       Autotips  2015
+       Autotips
     </description>
     <author email="dev@n4ymedio.mx" href="n4ymedio.mx">
         Nucleo 4 y Medio

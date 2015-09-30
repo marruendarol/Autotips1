@@ -42,7 +42,7 @@ var ctrl_zona = {
 		})
 
 		 myScroll = new IScroll('#wrapperZona',{  
-		 	click:true })
+		 	click:true,useTransition:true })
 		
 
 	},

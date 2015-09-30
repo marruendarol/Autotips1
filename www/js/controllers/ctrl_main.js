@@ -43,7 +43,7 @@ function initApp(){
    		mainC.init(ctrl_core.init)
 
 
-  $('.bButton').click(function(){
+  $('.bButton').bind( "tap",function(){
       $.mobile.back();
   })
 
