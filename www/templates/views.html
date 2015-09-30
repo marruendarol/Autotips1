@@ -211,7 +211,7 @@
 	        </ul>
 
 	        {{#if empty}}
-	        	<h2 style="margin:20px;"> Sin Resultados, intente otra búsqueda</h2>
+	        	<h4 style="margin:20px;"> Sin Resultados, intente otra búsqueda</h4>
 	        {{/if}}
 
 	    </div>
@@ -300,8 +300,14 @@
 	                <a class="autoli" on-tap="getList" data-transition="fade">
 	                    <div class="small-10 column rPad">
 	                        <div  class="nSucursal">{{_id}}</div>
-	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                        
 	                    </div>
+
+	                      <div class="small-1 column rPad">
+	                       <span style="margin-top:6px;" class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    
+	                        </div>
+
 	                    <div class="small-1 column">
 	                        <div class="fNaranja"> 
 	                        <img src="img/fNaranja.png">
@@ -328,8 +334,12 @@
 	                <a class="autoli" on-tap="getDel" data-transition="fade">
 	                    <div class="small-10 column rPad">
 	                        <div  class="nSucursal">{{_id}}</div>
-	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                       
 	                    </div>
+	                      <div class="small-1 column rPad">
+	                       <span style="margin-top:6px;" class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    
+	                        </div>
 	                    <div class="small-1 column">
 	                        <div class="fNaranja"> 
 	                        <img src="img/fNaranja.png">
@@ -357,8 +367,12 @@
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
 	                    <div class="small-10 column">
 	                        <div  class="nSucursal">{{_id}}</div>
-	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                       
 	                    </div>
+	                      <div class="small-1 column rPad">
+	                       <span style="margin-top:6px;" class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    
+	                        </div>
 	                    <div class="small-1 column">
 	                        <div class="fNaranja"> 
 	                        <img src="img/fNaranja.png">
@@ -412,10 +426,11 @@
 	    <div class="small-12 column especialidades">
 	    	 <div class="small-12 column info_nSucursal">Descuentos disponibles</div>
 	    	{{#each descuentos}}
-	    		 <div class="small-12 column  info_direccion"><b>{{perc}}%</b> {{espec}}  {{value}} 
-
+	    		 <div class="small-12 column  info_desc">
+	    		 	<b>{{perc}}%</b> {{espec}}  {{value}} 
 	    		 </div>
 	    	{{/each}}
+
 	    </div>
 
 	    {{#if dist}}

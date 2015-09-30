@@ -194,9 +194,21 @@ li{
   }  
 
 
+.ui-li-static {
+    padding: .4em 1em !important;
+}
+
 .especialidades{
 	margin-top: 30px;
 }
+
+.ui-btn, label.ui-btn {
+    font-weight: bold;
+    border-width: 0px !important;
+
+
+
+}    
 
 
 #container {
@@ -578,7 +590,7 @@ line-height: 35px;
 	font-size: 18px;
 	font-weight: bold;
 	height: auto;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 .info_direccion{
 	color: #FFF;
@@ -596,7 +608,11 @@ line-height: 35px;
 	color: #FFF;
 	font-size: 18px;	
 }
-
+.info_desc{
+	color: #FFF;
+	font-size: 14px;
+	/* margin-left: 10px; */
+}
 
 #ubica{
 	height: auto;
