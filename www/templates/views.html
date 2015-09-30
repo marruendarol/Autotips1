@@ -116,7 +116,7 @@
 	</div>
 
      <!--   <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>  -->
-        <a href="#add-form" data-icon="gear" class="ui-btn-right" data-iconpos="notext">Info</a>
+        <a href="#add-form" data-icon="gear" data-theme="a" class="ui-btn-right" data-iconpos="notext">Info</a>
     </div><!-- /header -->
 
     <div role="main" >
@@ -184,7 +184,7 @@
 	                   
 	                	{{#if distVis}}
 	                    <div class="small-8 column rPad">
-	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
 	                    <div class="small-2 column rPad">
@@ -194,7 +194,7 @@
 	                   	{{else}}
 
 	                   	<div class="small-10 column rPad">
-	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
 	                    	
@@ -226,12 +226,12 @@
 
 <div id="wrapperEspec" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="Buscar especialidad...">
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar especialidad...">
 	            {{#each data}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
 	                    <div class="small-10 column rPad">
-	                        <div class="nSucursal"><p>{{correctCase(nombre)}}</p></div>
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
 	                        <div class="tags">{{tags}}</div>
 	                    </div>
 	          
@@ -295,12 +295,12 @@
 
 	<div id="wrapperListDesc" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="Buscar especialidad..." >
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar especialidad..." >
 	            {{#each items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getList" data-transition="fade">
 	                    <div class="small-10 column rPad">
-	                        <div  class="nSucursal"><p>{{_id}}</p></div>
+	                        <div  class="nSucursal">{{_id}}</div>
 	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
 	                    </div>
 	                    <div class="small-1 column">
@@ -323,12 +323,12 @@
 
 	<div id="wrapperZona" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview"  id="listview" data-filter="true" data-filter-placeholder="Buscar estado..." >
+	        <ul data-role="listview"  id="listview" data-filter="true" data-filter-placeholder="buscar estado..." >
 	            {{#each items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getDel" data-transition="fade">
 	                    <div class="small-10 column rPad">
-	                        <div  class="nSucursal"><p>{{_id}}</p></div>
+	                        <div  class="nSucursal">{{_id}}</div>
 	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
 	                    </div>
 	                    <div class="small-1 column">
@@ -357,7 +357,7 @@
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
 	                    <div class="small-10 column">
-	                        <div  class="nSucursal"><p>{{_id}}</p></div>
+	                        <div  class="nSucursal">{{_id}}</div>
 	                        <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
 	                    </div>
 	                    <div class="small-1 column">
@@ -403,17 +403,17 @@
 
 	    <div class="small-12 column">
 	        <div class="small-12 column info_nSucursal">{{nombre}}</div>
-	        <div class="small-12 column info_direccion">{{direccion}}</div>
-	        <div class="small-12 column info_direccion">{{colonia}}</div>
-	        <div class="small-12 column info_estado">{{delegacion}} - {{estado}} </div>
-	        <div class="small-12 column info_cp">C.P. {{cp}}</div>
-	        <div class="small-12 column info_tel1">Teléfono {{telefono1}}</div>
+	        <div class="small-12 column info_direccion"><b>Dirección:</b> {{direccion}}</div>
+	        <div class="small-12 column info_direccion"><b>Colonia:</b> {{colonia}}</div>
+	        <div class="small-12 column info_estado"><b>Población:</b> {{delegacion}} - {{estado}} </div>
+	        <div class="small-12 column info_cp"><b>C.P.: </b>{{cp}}</div>
+	        <div class="small-12 column info_tel1"><b>Teléfono:</b> {{telefono1}}</div>
 	    </div>
 
 	    <div class="small-12 column especialidades">
-	    	 <div class="small-12 column info_nSucursal">Descuentos</div>
+	    	 <div class="small-12 column info_nSucursal">Descuentos disponibles</div>
 	    	{{#each descuentos}}
-	    		 <div class="small-12 column  info_direccion"><b>{{perc}}% {{espec}}</b>  {{value}} 
+	    		 <div class="small-12 column  info_direccion"><b>{{perc}}%</b> {{espec}}  {{value}} 
 
 	    		 </div>
 	    	{{/each}}
@@ -459,11 +459,13 @@
 			<div class="saveBtn small-12 column">
 			<div class="title">Envía tus comentarios</div>
 	        <div class="formLabel">Comentario:</div>
-            <textarea data-clear-btn="true" cols="40" rows="8" name="textarea" id="comentario" data-mini="true"></textarea>
+            <textarea data-clear-btn="true"  style="margin-left:0px !important;" rows="8" name="textarea" id="comentario" data-mini="true"></textarea>
+
+            <div on-tap="sendComment" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Enviar</div>
             </div>
             
             <div class="saveBtn small-12 column">
-          		<div on-tap="sendComment" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Enviar</div>
+          		
        		</div>
 
 </script>

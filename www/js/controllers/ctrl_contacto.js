@@ -32,7 +32,7 @@ var ctrl_contacto = {
 		jqm.showLoader("Enviando mensaje...")
 		var msg = "Mensaje de Autotips  " + $('#comentario').val();
 		var recipients = "autotips@fte.mx"
-		var params = {mail:{msg : msg,recipients:recipients,subject:"Noticación Autotips:" + window.localStorage.getItem("username")}};
+		var params = {mail:{msg : msg,recipients:recipients,subject:"Noticación Autotips:" + window.localStorage.getItem("username") + "/ TARJETA:" + window.localStorage.getItem("idCard") }};
 		dbC.query("/api/sendNotification","POST",params,ctrl_contacto.msgRet,params)
 	},
 	msgRet : function(response){
