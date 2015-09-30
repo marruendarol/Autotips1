@@ -28,8 +28,6 @@
    
     <gap:plugin name="cordova-plugin-geolocation" source="npm" />
     <gap:plugin name="cordova-plugin-device" source="npm"/> 
-    <gap:plugin name="cordova-plugin-device-motion" source="npm" />
-    <gap:plugin name="cordova-plugin-file" source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="cordova-plugin-network-information" source="npm" />
     <gap:plugin name="cordova-plugin-splashscreen" source="npm"  />
@@ -39,8 +37,6 @@
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashScreenBackgroundColor" value="black" /> 
-    <preference name="SplashReloadOnOrientationChange" value="true"/>
-
 
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
