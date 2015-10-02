@@ -39,7 +39,7 @@ li{
 }
 
 .ui-input-text, .ui-input-search {
-    margin: .5em 0;
+    margin: .7em 0;
     /* border-width: 1px; */
     /* border-style: solid; */
     margin-left: 10px !important;
@@ -48,19 +48,19 @@ li{
 
 .ui-li-count {
     position: absolute;
-    font-size: 10px;
+    font-size: 12px;
     /* font-weight: bold; */
     text-align: center;
     border-width: 1px;
     /* border-style: solid; */
     padding: 0 .48em;
-    line-height: 1.6em;
+    line-height: 21px;
     min-height: 1.6em;
     min-width: .64em;
     right: .8em;
     top: 50%;
     margin-top: -.88em;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 0px solid transparent;
 }
 
@@ -120,7 +120,11 @@ li{
 	margin-top: 10px;
 }
 
-
+.titleList{
+	text-align: center;
+	/* padding-top: 8px; */
+	line-height: 48px;
+}
 
 /* ------------------------------------------------------------------ */
 .formLabel{
@@ -128,13 +132,27 @@ li{
 }
 
 .bButton{
-	float: left;
+	/* float: left; */
 	/* margin: 12px; */
 	cursor: pointer;
 	width: 25px;
 	margin-bottom: 0px;
-	line-height: 40px;
+	line-height: 48px;
 	margin-left: 10px;
+	/* display: inline-block; */
+	/* text-align: left; */
+}
+
+.hButton{
+	float: right;
+	/* margin: 12px; */
+	cursor: pointer;
+	width: 25px;
+	margin-bottom: 0px;
+	line-height: 48px;
+	margin-right: 10px;
+	/* display: inline-block; */
+	/* position: relative; */
 }
 
  .ui-loader-background {
@@ -281,9 +299,11 @@ li{
     padding-top: 1px;
     z-index: 1000 !important;
     background-color: #5F5D50 !important;
-    font-size: 22px;
+    font-size: 20px;
     color: white !important;
     border: 0 solid !important;
+    display: inline-flex;
+    height: 48px;
 }
 
  .ui-page > div {
@@ -340,7 +360,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 }
 #wrapperList {
     z-index: 0;
-    top: 40px;
+    top: 48px;
     bottom: 0px;
     left: 0;
     width: 100%;
@@ -536,11 +556,11 @@ line-height: 35px;
 
 
 .ui-header .ui-title, .ui-footer .ui-title {
-    font-size: 16px !important;
+    font-size: 18px !important;
     min-height: 1.1em;
     text-align: center;
     display: block;
-    margin: 0 30%;
+    margin: 0 0%;
     padding: .7em 0;
     text-overflow: ellipsis;
     overflow: hidden;

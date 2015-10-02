@@ -77,6 +77,11 @@ var ctrl_core = {
 	    	ctrl_core.loadController("./js/controllers/ctrl_list.js",params);
 	    });
 
+	    $(document).on("pagebeforeshow","#especialidadR", function() {
+	      	var params = { init : 'ctrl_especR.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_especialidadR.js",params);
+	    });
+
 	    $(document).on("pagebeforeshow","#especialidad", function() {
 	      	var params = { init : 'ctrl_espec.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_especialidad.js",params);

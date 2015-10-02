@@ -47,6 +47,10 @@ function initApp(){
       $.mobile.back();
   })
 
+  $('.hButton').bind( "tap",function(){
+      $.mobile.changePage("#mainScreen")
+  })
+
  
 }
 

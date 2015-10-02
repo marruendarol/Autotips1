@@ -1,23 +1,23 @@
 /**********************************************************
 *	MAIN SCREEN CONTROLLER
 ***********************************************************/
-var ctrl_espec = {
+var ctrl_especR = {
 	data : {},
-	pageDiv : "#especialidadP",
+	pageDiv : "#especialidadRP",
 	init : function(data,template){
-		ctrl_espec.data = data;
-		ctrl_espec.getEspec();
+		ctrl_especR.data = data;
+		ctrl_especR.getEspec();
 		jqm.showLoader("Generando...");
 	},
 	getEspec : function(){
 		$.ajax({
           type: 'POST',
-            data: {id:paramsPage.id},
+            data: {},
             crossDomain: true,
-            url: serverURL + '/api/readespec/' ,
+            url: serverURL + '/api/readespecR/' ,
             dataType: 'JSON'
              }).done(function( response ) {
-             ctrl_espec.render(response);
+             ctrl_especR.render(response);
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
     	});   
@@ -26,17 +26,17 @@ var ctrl_espec = {
 
 		jqm.hideLoader();
 
-		$(ctrl_espec.pageDiv).empty();
+		$(ctrl_especR.pageDiv).empty();
 
 		var dItems = data
 
-		var mainObj = template.render('#especT',ctrl_espec.pageDiv,data)
-		$(ctrl_espec.pageDiv).trigger("create");
+		var mainObj = template.render('#especT',ctrl_especR.pageDiv,data)
+		$(ctrl_especR.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 		mainObj.on('getSuc',function(event){
 			paramsPage = { id : event.context.nombre, type: "especialidad" }
-			$.mobile.changePage( "#list");
+			$.mobile.changePage( "#especialidad");
 		})
 		
 			 myScroll = new IScroll('#wrapperEspec',{  

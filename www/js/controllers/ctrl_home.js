@@ -41,7 +41,7 @@ var ctrl_home = {
 			$.mobile.changePage("#zona");
 		})
 		mainObj.on('getEspecialidad',function(event){
-			$.mobile.changePage("#especialidad");
+			$.mobile.changePage("#especialidadR");
 		})
 		mainObj.on('getContacto',function(event){
 			$.mobile.changePage("#contacto");
