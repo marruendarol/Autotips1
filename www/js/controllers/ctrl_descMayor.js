@@ -48,10 +48,10 @@ var ctrl_descMayor = {
 		$(ctrl_descMayor.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
-		mainObj.on('getList',function(event){
+		mainObj.on('getSuc',function(event){
 			console.log(event.context._id +"MAMAMIA")
-			paramsPage = { id : event.context._id, type: "descListado" }
-			$.mobile.changePage( "#list");
+			paramsSuc = { data : event.context }
+			$.mobile.changePage( "#infoSuc");
 		})
 
 		 myScroll = new IScroll('#wrapperListDesc',{  
