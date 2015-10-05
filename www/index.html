@@ -17,6 +17,8 @@
 <script src="js/lib/jquery-1.11.2.min.js"></script>
 <script src="js/lib/jquery.mobile.simultaneous-transitions-replace.js"></script>
 <script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/lib/jquery.animate-colors-min.js"></script>
+
 
 <script src="js/lib/foundation/foundation.js"></script>
 <script src="js/lib/ractive.js"></script>
@@ -108,7 +110,11 @@
       <a href="#firstP" class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Regresar a principal</a>
     </div>
 </div>
-<div data-role="page" id="mainScreen"></div>
+
+
+<div data-role="page" id="mainScreen">
+  
+</div>
 <!-- MAIN LIST ********************************************************************* -->
 
 
@@ -230,6 +236,25 @@
      <div role="main" id="listDescP" class=""></div><!-- /content -->
 
 </div>
+
+<!-- LISTADO DE DESCUENTOS ********************************************************************* -->
+<div data-role="page" id="descMayor">
+     <div data-role="header" data-position="fixed">
+      <div class="small-2 column rPad">
+            <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        </div>
+         <div class="small-8 column rPad">
+              <div id="titleList" class="titleList">Mayor Porcentaje</div>
+         </div>
+         <div class="small-2 column rPad">
+            <div class="hButton"  data-direction="reverse"><img src="img/home.png"></div>
+        </div>   
+    </div>
+     <div role="main" id="listMayorP" class=""></div><!-- /content -->
+
+</div>
+
+
 <!-- DESCUENTOS POR PORCENTAJE ********************************************************************* -->
 <div data-role="page" id="porcDesc">
      <div data-role="header" data-position="fixed">

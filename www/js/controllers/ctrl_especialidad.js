@@ -14,7 +14,7 @@ var ctrl_espec = {
           type: 'POST',
             data: {id:paramsPage.id},
             crossDomain: true,
-            url: serverURL + '/api/readespec/' ,
+            url: serverURL + '/api/readespecApp' ,
             dataType: 'JSON'
              }).done(function( response ) {
              ctrl_espec.render(response);

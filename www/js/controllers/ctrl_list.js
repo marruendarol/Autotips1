@@ -97,12 +97,10 @@ var ctrl_list = {
 
 		$('#titleList').text(titleList)
 
-
-				console.log(data)
-
 		var mainObj = template.render('#listT',ctrl_list.pageDiv,data)
 
 		mainObj.on('listDetail',function(event){
+			mainC.clickAnim(event.node)
 			paramsSuc = { data : event.context }
 			$.mobile.changePage( "#infoSuc");
 		});

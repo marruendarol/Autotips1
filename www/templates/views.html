@@ -116,7 +116,7 @@
 	</div>
 
      <!--   <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>  -->
-        <a href="#add-form" data-icon="gear" data-theme="a" class="ui-btn-right" data-iconpos="notext">Info</a>
+        <a href="#add-form" data-icon="gear" data-theme="a" class="gearIco ui-btn-right" data-iconpos="notext">Info</a>
     </div><!-- /header -->
 
     <div role="main" >
@@ -249,12 +249,53 @@
 
 </script>
 
+<!-- Especialidades  ============================================================-->
+<script id='especRT' type='text/ractive'>
+
+<div id="wrapperEspecR" class="wrapper" >
+	    <div id="scroller" >
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar especialidad...">
+	            {{#each data}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="getSuc" data-transition="fade">
+	                    <div class="small-10 column rPad">
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+	                    </div>
+	          
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
+	                </a>
+	            </li>
+	            {{/each}}
+	        </ul>
+	    </div>
+	</div>
+
+
+</script>
+
 <!-- Descuento  ============================================================-->
 <script id='descuentoT' type='text/ractive'>
 
 	<div id="wrapperDesc" class="wrapper">
 	    <div id="scroller">
 	        <ul data-role="listview" id="listview">
+
+	        	  <li  data-icon="false">
+	                <a class="autoli" on-tap="porcDesc" data-transition="fade">
+	                    <div class="small-10 column rPad">
+	                        <div class="nSucursal">Mayor Porcentaje</div>
+	                        
+	                    </div>
+	                    <div class="small-1 column">
+	                        <div class="fNaranja"> <img src="img/fNaranja.png"></div>
+	                    </div>
+	                </a>
+	            </li>
+
 
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="listDesc" data-transition="fade">
@@ -268,17 +309,7 @@
 	                </a>
 	            </li>
 
-	             <li  data-icon="false">
-	                <a class="autoli" on-tap="porcDesc" data-transition="fade">
-	                    <div class="small-10 column rPad">
-	                        <div class="nSucursal">Descuentos de Mayor Porcentaje</div>
-	                        
-	                    </div>
-	                    <div class="small-1 column">
-	                        <div class="fNaranja"> <img src="img/fNaranja.png"></div>
-	                    </div>
-	                </a>
-	            </li>
+	           
 
 	            
 
@@ -316,6 +347,51 @@
 	                </a>
 	            </li>
 	            {{/each}}
+	        </ul>
+	    </div>
+	</div>
+
+
+</script>
+
+
+<!-- Zona  ============================================================-->
+<script id='listMayorT' type='text/ractive'>
+
+	<div id="wrapperListDesc" class="wrapper" >
+	    <div id="scroller" >
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar..." >
+	           {{#items}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="listDetail" data-transition="fade">
+	                   
+	                	{{#if distVis}}
+	                    <div class="small-8 column rPad">
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+	                        <div class="tags">{{descuentos[0].espec}} {{descuentos[0].perc}}%</div>
+	                      
+	                    </div>
+	                    <div class="small-2 column rPad">
+	                        <div class="distancia">{{roundDist(dist)}} Km.</div>
+	                        </div>
+	                    
+	                   	{{else}}
+
+	                   	<div class="small-10 column rPad">
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+	                        
+	                    </div>
+	                    	
+	                        {{/if}}
+	                    
+	                    <div class="small-1 column rPad">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
+	                </a>
+	            </li>
+	            {{/items}}
 	        </ul>
 	    </div>
 	</div>

@@ -4,8 +4,8 @@
 
 var userLat = 20.6596
 var userLng = -103.3496
-var serverURL = "http://autotips.mx:3018";
-//var serverURL = "http://localhost:3018";
+//var serverURL = "http://autotips.mx:3018";
+var serverURL = "http://localhost:3018";
 var paramsPage = {}
 
 var mainC = {
@@ -38,6 +38,9 @@ var mainC = {
 		if(extra.defaultVal!=null){
 			$(extra.div).val(extra.defaultVal);
 		}
+	},
+	clickAnim : function(el){
+		$(el).animate({backgroundColor: '#666'},200, function(){ $(el).animate({backgroundColor: '#000'}, 'slow', function(){  }) })
 	}
 }
 

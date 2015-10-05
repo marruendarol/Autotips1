@@ -24,8 +24,8 @@ var ctrl_descuento = {
 			$.mobile.changePage("#listDesc");
 		})
 		mainObj.on('porcDesc',function(event){
-			paramsPage = { type: "descPorc" }
-			$.mobile.changePage("#list");
+			paramsPage = { type: "DescMayor" }
+			$.mobile.changePage("#descMayor");
 		})
 		mainObj.on('especDesc',function(event){
 			$.mobile.changePage("#especDesc");

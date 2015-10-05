@@ -109,6 +109,11 @@ var ctrl_core = {
 	    	ctrl_core.loadController("./js/controllers/ctrl_listDesc.js",params);
 	    });
 
+	      $(document).on("pagebeforeshow","#descMayor", function() {
+	      	var params = { init : 'ctrl_descMayor.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_descMayor.js",params);
+	    });
+
 	    $(document).on("pagebeforeshow","#especDesc", function() {
 	      	var params = { init : 'ctrl_especDesc.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_especDesc.js",params);

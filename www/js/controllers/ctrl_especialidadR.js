@@ -30,7 +30,7 @@ var ctrl_especR = {
 
 		var dItems = data
 
-		var mainObj = template.render('#especT',ctrl_especR.pageDiv,data)
+		var mainObj = template.render('#especRT',ctrl_especR.pageDiv,data)
 		$(ctrl_especR.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
@@ -39,7 +39,7 @@ var ctrl_especR = {
 			$.mobile.changePage( "#especialidad");
 		})
 		
-			 myScroll = new IScroll('#wrapperEspec',{  
+			 myScroll = new IScroll('#wrapperEspecR',{  
 		 	click:true,bounce:false,bindToWrapper: true })
 
 	},

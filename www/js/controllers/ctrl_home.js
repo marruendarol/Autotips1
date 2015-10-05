@@ -28,27 +28,33 @@ var ctrl_home = {
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 		mainObj.on('getCerca',function(event){
-			console.log("entro cercar")
+			
+			mainC.clickAnim(event.node)
 			paramsPage = { id : event.context._id, type: "cerca" }
 			console.log("entro cercas")
 			$.mobile.changePage("#list");
 		})
 		mainObj.on('getDescuentos',function(event){
+			mainC.clickAnim(event.node)
 			paramsPage = { id : event.context._id, type: "descuentos" }
 			$.mobile.changePage("#descuentos");
 		})
 		mainObj.on('getZona',function(event){
+			mainC.clickAnim(event.node)
 			$.mobile.changePage("#zona");
 		})
 		mainObj.on('getEspecialidad',function(event){
+			mainC.clickAnim(event.node)
 			$.mobile.changePage("#especialidadR");
 		})
 		mainObj.on('getContacto',function(event){
+			mainC.clickAnim(event.node)
 			$.mobile.changePage("#contacto");
 		})
 
 
 		mainObj.on('cerrarsesion',function(event){
+			mainC.clickAnim(event.node)
 			localStorage.clear();
 			$.mobile.changePage("#firstP");
 		})
