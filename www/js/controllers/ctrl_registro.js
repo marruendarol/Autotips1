@@ -5,6 +5,7 @@ var ctrl_registro = {
 	data : {},
 	pageDiv : "#registroP",
 	card : {},
+	life : "",
 	init : function(data,template){
 		ctrl_registro.data = data;
 		ctrl_registro.render();
@@ -43,7 +44,10 @@ var ctrl_registro = {
 
 		jqm.hideLoader();
 
+		ctrl_registro.life = response[0].end; 
+
 		console.log(response)
+
 		if(response.length==1 && response[0].estatus=="0" ){
 			
 			ctrl_registro.create();
@@ -99,6 +103,7 @@ var ctrl_registro = {
 		params.dataB.clients = [item];
 		params.dataB.userID = "internet"
 		params.dataB.estRCD = 1;
+		params.dataB.end  = ctrl_registro.life;
 		params.dataB.idCard = ctrl_registro.card 
 		params.dataB.ccv = ctrl_registro.ccv 
 		dbC.query("/api/createUserMobile","POST",params,ctrl_registro.create_Return)

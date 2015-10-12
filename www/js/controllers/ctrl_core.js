@@ -10,6 +10,17 @@ var ctrl_core = {
 		ctrl_core.routeListeners();
 
 		// login?
+			var endDate = window.localStorage.getItem("end");
+
+			console.log(utils.generateTS())
+			console.log(parseInt(endDate))
+
+			if(utils.generateTS()>parseInt(endDate))
+			{
+				alert("Tarjeta Vencida, por favor registre una nueva tarjeta")
+				$.mobile.changePage("#firstP")
+			}
+
 			var username= window.localStorage.getItem("username");
 			if(username!=undefined){
 				$.mobile.changePage("#mainScreen")

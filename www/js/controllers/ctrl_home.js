@@ -17,7 +17,8 @@ var ctrl_home = {
 			userData : {
 				nombre 		: window.localStorage.getItem("nombre"),
 				username 	: window.localStorage.getItem("username"),
-				idCard	: window.localStorage.getItem("idCard")
+				idCard		: window.localStorage.getItem("idCard"),
+				end			: window.localStorage.getItem("end")
 			}
 		}
 

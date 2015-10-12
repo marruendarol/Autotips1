@@ -54,6 +54,7 @@ var ctrl_loginS = {
             		window.localStorage.setItem("username", response.username);
             		window.localStorage.setItem("nombre", response.nombre);
             		window.localStorage.setItem("idCard", response.idCard);
+            		window.localStorage.setItem("end", response.end);
     				
             		ctrl_loginS.changePage();	
             	}else{
