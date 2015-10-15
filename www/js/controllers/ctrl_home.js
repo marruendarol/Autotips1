@@ -24,6 +24,9 @@ var ctrl_home = {
 
 
 		console.log(data)
+
+
+
 		var mainObj = template.render('#mainT',ctrl_home.pageDiv,data,null,{menuT : $('#menuT').html()})
 		$(ctrl_home.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
@@ -61,7 +64,7 @@ var ctrl_home = {
 		})
 
 		
-		 ctrl_home.getLocation();
+		 //ctrl_home.getLocation();
 
 	},
 	getLocation: function(){
