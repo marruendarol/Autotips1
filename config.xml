@@ -26,7 +26,7 @@
     <preference name="target-device" value="handset" />
     <preference name="BackgroundColor" value="0x0000"/>
    
-
+    <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.device"  />
     <gap:plugin name="cordova-plugin-geolocation" source="npm" version="1.0.1" />
     <gap:plugin name="org.apache.cordova.network-information"  />
