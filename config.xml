@@ -54,7 +54,7 @@
     <preference name="SplashScreenDelay" value="7000" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="SplashScreenBackgroundColor" value="#000" /> 
+    <preference name="SplashScreenBackgroundColor" value="0x0000" /> 
    
     <icon src="icon.png"/>
     <access origin="*" />
