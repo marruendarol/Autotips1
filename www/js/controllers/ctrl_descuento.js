@@ -1,3 +1,5 @@
+
+
 /**********************************************************
 *	MAIN SCREEN CONTROLLER
 ***********************************************************/
@@ -10,6 +12,7 @@ var ctrl_descuento = {
 	},
 	render : function(){
 
+		descVar = ""
 
 		$(ctrl_descuento.pageDiv).empty();
 
@@ -19,21 +22,26 @@ var ctrl_descuento = {
 		$(ctrl_descuento.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
-		mainObj.on('listDesc',function(event){
-			paramsPage = {  type: "listDesc" }
-			$.mobile.changePage("#listDesc");
-		})
 		mainObj.on('porcDesc',function(event){
 			paramsPage = { type: "DescMayor" }
-			$.mobile.changePage("#descMayor");
+			descVar = "mayor";
+			//$.mobile.changePage("#descMayor");
+			$.mobile.changePage("#especialidadR");
 		})
+		mainObj.on('listDesc',function(event){
+			paramsPage = {  type: "listDesc" }
+			descVar = "cercania";
+			//$.mobile.changePage("#listDesc");
+			$.mobile.changePage("#especialidadR");
+		})
+		/*
 		mainObj.on('especDesc',function(event){
 			$.mobile.changePage("#especDesc");
 		})
 		mainObj.on('zonaDesc',function(event){
 			$.mobile.changePage("#zonaDesc");
 		})
-		
+		*/
 
 	},
 }

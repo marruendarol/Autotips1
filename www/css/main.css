@@ -15,6 +15,52 @@
 	/* Android input form <input> orange highlighter remover */
 	-webkit-tap-highlight-color: rgba(0,0,0,0); 
 }
+/*
+@media only screen and (min-width: 1025px){
+        .ui-page {
+            width: 960px !important;
+            margin: 0 auto !important;
+            position: relative !important;
+        }
+        .ui-header-fixed {
+	    top: -1px;
+	    padding-top: 1px;
+	    z-index: 1000 !important;
+	    background-color: #5F5D50 !important;
+	    font-size: 20px;
+	    color: white !important;
+	    border: 0 solid !important;
+	    display: inline-flex;
+	    height: 48px;
+	     width: 960px; 
+	     margin: 0 auto;
+		}
+		.wrapper {
+		    z-index: 0;
+		    top: 44px;
+		    bottom: 0px;
+		    width: 960px !important;
+		    margin-bottom: 60px;
+		    position: fixed;
+		}
+		#wrapperList {
+		        z-index: 0;
+			    top: 48px;
+			    bottom: 0px;
+			    width: 960px !important;
+			    position: fixed;
+		}
+
+		#wrapperReg {
+		    z-index: 0;
+		    top: 66px;
+		    bottom: 0px;
+		    
+		    width: 960px !important;
+		   margin-bottom: 60px;
+		    position: fixed;
+		}
+}*/
 
 
 body{
@@ -235,6 +281,15 @@ li{
         background-color: #000 !important;
     }
 
+
+ #container2 {
+        position: absolute;
+        width: 1024px;
+        height: 100%;
+        background-color: #000 !important;
+        margin: 0 auto;
+    }   
+
 .ui-icon-bolt:after {
     background-repeat: no-repeat;
     background-position: 8px 2px !important;
@@ -358,7 +413,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     z-index: 1;
     /* top: 20px; */
     bottom: 0px;
-    left: 0;
+
     width: 100%;
     /* overflow: hidden; *//*important for iScroll to have the scroller scroll at max to top:45px on position absolute!*/
     position: relative;
@@ -369,7 +424,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     z-index: 0;
     top: 48px;
     bottom: 0px;
-    left: 0;
+   
     width: 100%;
     position: fixed;
 }
@@ -378,7 +433,6 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     z-index: 0;
     top: 66px;
     bottom: 0px;
-    left: 0;
     width: 100%;
    margin-bottom: 60px;
     position: fixed;
@@ -404,7 +458,6 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     z-index: 0;
     top: 44px;
     bottom: 0px;
-    left: 0;
     width: 100%;
     margin-bottom: 60px;
     position: fixed;

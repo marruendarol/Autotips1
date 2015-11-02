@@ -8,13 +8,17 @@ var ctrl_listDesc = {
 	pageDiv : "#listDescP",
 	init : function(data,template){
 		ctrl_listDesc.data = data;
-		ctrl_listDesc.getQuery();
+		ctrl_listDesc.getLoc();
 		jqm.showLoader("Generando...");
 	},
-	getQuery : function(){
+	getLoc : function(){
+		navigator.geolocation.getCurrentPosition(ctrl_listDesc.getQuery,null); 
+	},
+	getQuery : function(position){
+		console.log(position)
 		$.ajax({
           type: 'POST',
-            data: {},
+            data: {spec:paramsPage.id,lat:position.coords.latitude,lng:position.coords.longitude},
             url: serverURL + '/api/byListaDesc',
             crossDomain: true,
             dataType: 'JSON'
@@ -28,7 +32,26 @@ var ctrl_listDesc = {
 		jqm.hideLoader();
 		$(ctrl_listDesc.pageDiv).empty();
 
-		var dItems = { items : data}
+		for (var i = 0; i < data.length; i++) {
+			
+			//search Item
+			for (var a = 0; a < data[i].descuentos.length; a++) {
+				if(data[i].descuentos[a].espec == paramsPage.id){
+						data[i].descuentos.move(a,0)
+				}
+			};
+
+			data[i].perc = parseInt(data[i].descuentos[0].perc);
+		};
+
+		data.sort(byProperty('perc'))
+		data.reverse();
+
+		data.sort(byProperty('dist'))
+
+
+
+		var dItems = { items : data,  distVis:true}
 
 		console.log(dItems)
 
@@ -48,3 +71,30 @@ var ctrl_listDesc = {
 
 	},
 }
+
+Array.prototype.move = function (old_index, new_index) {
+    if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+            this.push(undefined);
+        }
+    }
+    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+    return this; // for testing purposes
+};
+
+function dataType(arr){
+	for (var i = 0; i < arr.descuentos.length; i++) {
+		arr[i].perc = parseInt(arr[i].perc)
+	};
+}
+
+var byProperty = function(prop) {
+    return function(a,b) {
+        if (typeof a[prop] == "number") {
+            return (a[prop] - b[prop]);
+        } else {
+            return ((a[prop] < b[prop]) ? -1 : ((a[prop] > b[prop]) ? 1 : 0));
+        }
+    };
+};

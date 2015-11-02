@@ -36,7 +36,19 @@ var ctrl_espec = {
 		
 		mainObj.on('getSuc',function(event){
 			paramsPage = { id : event.context.nombre, type: "especialidad" }
-			$.mobile.changePage( "#list");
+			if(descVar==""){
+					$.mobile.changePage( "#list");	
+			}
+			else{
+				if(descVar=="mayor"){
+					paramsPage = { type: "DescMayor",id : event.context.nombre }
+					$.mobile.changePage("#descMayor");
+				}
+				if(descVar=="cercania"){
+					paramsPage = {  type: "listDesc",id : event.context.nombre }
+					$.mobile.changePage("#listDesc");
+				}
+			}
 		})
 		
 			 myScroll = new IScroll('#wrapperEspec',{  

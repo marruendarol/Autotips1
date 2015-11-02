@@ -5,6 +5,7 @@ var ctrl_especR = {
 	data : {},
 	pageDiv : "#especialidadRP",
 	init : function(data,template){
+		console.log(paramsPage,"DATA PROV")
 		ctrl_especR.data = data;
 		ctrl_especR.getEspec();
 		jqm.showLoader("Generando...");

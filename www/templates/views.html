@@ -300,7 +300,7 @@
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="listDesc" data-transition="fade">
 	                    <div class="small-10 column rPad">
-	                        <div class="nSucursal">Todos los descuentos</div>
+	                        <div class="nSucursal">Por cercanía</div>
 	                        
 	                    </div>
 	                    <div class="small-1 column">
@@ -325,31 +325,42 @@
 
 	<div id="wrapperListDesc" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar especialidad..." >
-	            {{#each items}}
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar..." >
+	           {{#items}}
 	            <li  data-icon="false">
-	                <a class="autoli" on-tap="getList" data-transition="fade">
-	                    <div class="small-10 column rPad">
-	                        <div  class="nSucursal">{{_id}}</div>
+	                <a class="autoli" on-tap="getSuc" data-transition="fade">
+	                   
+	                	{{#if distVis}}
+	                    <div class="small-8 column rPad">
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+	                        <div class="tags">{{descuentos[0].espec}} {{descuentos[0].perc}}%</div>
+	                      
+	                    </div>
+	                    <div class="small-2 column rPad">
+	                       <div class="distancia">{{roundDist(dist)}} Km.</div> 
+	                        </div>
+	                    
+	                   	{{else}}
+
+	                   	<div class="small-10 column rPad">
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
 	                        
 	                    </div>
-
-	                      <div class="small-1 column ">
-	                       <span style="margin-top:6px;" class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{count}}</span>
+	                    	
+	                        {{/if}}
 	                    
-	                        </div>
-
-	                    <div class="small-1 column">
+	                    <div class="small-1 column rPad">
 	                        <div class="fNaranja"> 
 	                        <img src="img/fNaranja.png">
 	                        </div>
 	                    </div>
 	                </a>
 	            </li>
-	            {{/each}}
+	            {{/items}}
 	        </ul>
 	    </div>
 	</div>
+
 
 
 </script>
@@ -372,7 +383,7 @@
 	                      
 	                    </div>
 	                    <div class="small-2 column rPad">
-	                        <div class="distancia">{{roundDist(dist)}} Km.</div>
+	                       <!-- <div class="distancia">{{roundDist(dist)}} Km.</div> -->
 	                        </div>
 	                    
 	                   	{{else}}

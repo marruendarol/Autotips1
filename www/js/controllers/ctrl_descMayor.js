@@ -8,16 +8,16 @@ var ctrl_descMayor = {
 	pageDiv : "#listMayorP",
 	init : function(data,template){
 		ctrl_descMayor.data = data;
-		ctrl_descMayor.getLoc();
+		ctrl_descMayor.getQuery(paramsPage.id);
 		jqm.showLoader("Generando...");
 	},
 	getLoc : function(){
 		navigator.geolocation.getCurrentPosition(ctrl_descMayor.getQuery,null); 
 	},
-	getQuery : function(location){
+	getQuery : function(spec){
 		$.ajax({
           type: 'POST',
-            data: {lat:location.coords.latitude,lng:location.coords.longitude},
+            data: {spec:spec},
             url: serverURL + '/api/byMayorDesc',
             crossDomain: true,
             dataType: 'JSON'
@@ -28,17 +28,38 @@ var ctrl_descMayor = {
     	});   
 	},
 	render : function(data){
+
+		console.log(data)
 		jqm.hideLoader();
 		$(ctrl_descMayor.pageDiv).empty();
 
+
 		for (var i = 0; i < data.length; i++) {
+			
+			//search Item
+			for (var a = 0; a < data[i].descuentos.length; a++) {
+				if(data[i].descuentos[a].espec == paramsPage.id){
+						data[i].descuentos.move(a,0)
+				}
+			};
+
+			data[i].perc = parseInt(data[i].descuentos[0].perc);
+		};
+
+		data.sort(byProperty('perc'))
+		data.reverse();
+
+
+
+
+/*for (var i = 0; i < data.length; i++) {
 			dataType(data[i].descuentos)
 			data[i].descuentos.sort(byProperty('perc'))
 			data[i].descuentos.reverse();
 		};
+*/
 
-
-		data.sort(byProperty('dist'))
+		//data.sort(byProperty('dist'))
 
 		var dItems = { items : data, distVis:true}
 
@@ -63,7 +84,7 @@ var ctrl_descMayor = {
 
 
 function dataType(arr){
-	for (var i = 0; i < arr.length; i++) {
+	for (var i = 0; i < arr.descuentos.length; i++) {
 		arr[i].perc = parseInt(arr[i].perc)
 	};
 }
@@ -76,4 +97,16 @@ var byProperty = function(prop) {
             return ((a[prop] < b[prop]) ? -1 : ((a[prop] > b[prop]) ? 1 : 0));
         }
     };
+};
+
+
+Array.prototype.move = function (old_index, new_index) {
+    if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+            this.push(undefined);
+        }
+    }
+    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+    return this; // for testing purposes
 };
