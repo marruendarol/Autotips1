@@ -43,7 +43,7 @@ var ctrl_listDesc = {
 		})
 
 		 myScroll = new IScroll('#wrapperListDesc',{  
-		 	click:true })
+		 	click:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 		
 
 	},

@@ -108,7 +108,7 @@ var ctrl_list = {
 		$(ctrl_list.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		 myScroll = new IScroll('#wrapperList',{  
-		 	click:true,useTransition:true })
+		 	click:true,useTransition:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 		
 
 	}

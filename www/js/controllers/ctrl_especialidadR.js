@@ -41,7 +41,7 @@ var ctrl_especR = {
 		})
 		
 			 myScroll = new IScroll('#wrapperEspecR',{  
-		 	click:true,bounce:false,bindToWrapper: true })
+		 	click:true,bounce:false,bindToWrapper: true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 
 	},
 }

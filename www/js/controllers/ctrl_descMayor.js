@@ -76,7 +76,7 @@ var ctrl_descMayor = {
 		})
 
 		 myScroll = new IScroll('#wrapperListDesc',{  
-		 	click:true })
+		 	click:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 		
 
 	},

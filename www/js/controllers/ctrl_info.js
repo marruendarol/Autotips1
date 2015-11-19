@@ -32,7 +32,7 @@ var ctrl_info = {
 		})
 		
 		 myScroll = new IScroll('#wrapperInfo',{  
-		 	click:true })
+		 	click:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 		
 		console.log("AQUI----------------------")
 	},

@@ -520,10 +520,66 @@
 	"buffers":
 	[
 		{
-			"file": "www/js/controllers/ctrl_especialidad.js",
+			"file": "www/js/controllers/ctrl_core.js",
 			"settings":
 			{
-				"buffer_size": 1581,
+				"buffer_size": 5228,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/Z/web/AutoTips Backend/routes/api.js",
+			"settings":
+			{
+				"buffer_size": 38796,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/templates/views.html",
+			"settings":
+			{
+				"buffer_size": 19491,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/controllers/ctrl_descuento.js",
+			"settings":
+			{
+				"buffer_size": 1173,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/controllers/ctrl_listDesc.js",
+			"settings":
+			{
+				"buffer_size": 2653,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/css/main.css",
+			"settings":
+			{
+				"buffer_size": 12437,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/controllers/ctrl_descMayor.js",
+			"settings":
+			{
+				"buffer_size": 2749,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n/* ---------------------------------------------------\n* Listado Descuentos\n*----------------------------------------------------*/\nrouter.post('/byMayorDesc', function(req, res) {\n\n    var qObj    = {};\n    var lat     =  parseFloat(req.body.lat);\n    var lng     =  parseFloat(req.body.lng);\n    var dist = 1;\n\n    console.log(lat,lng)\n    var collection = db.collection(\"sucursales\");\n    var criteria = {};\n\n    var retFields = {nombre:1,descuentos:1,_id:1,loc:1,direccion:1,colonia:1,delegacion:1,cp:1,telefono1:1,telefono2:1,estado:1};\n\n  collection.find({loc:{$near:[parseFloat(lat), parseFloat(lng)], $maxDistance:dist}},retFields).sort('_id').limit(100).toArray(function (err, items) {\n\n                for (var i =0; i< items.length; i++) {\n                    var start = {\n                      latitude: lat,\n                      longitude: lng\n                    };\n                    \n                    var end = {\n                      latitude: items[i].loc[0],\n                      longitude: items[i].loc[1]\n                    };\n                    var dist = haversine(start, end, {unit: 'km'});\n                    console.log(items[i].loc[0],items[i].loc[1],dist)\n                    items[i].dist = dist;\n                };\n       //items.sort(byProperty(\"descuentos.perc\"));        \n        res.json(items);\n        });\n});\n/* ---------------------------------------------------\n* Listado Descuentos\n*----------------------------------------------------*/\nrouter.post('/byListaDesc', function(req, res) {\n\n    var qObj    = {};\n    var spec = req.body.id\n\n    var collection = db.collection(\"sucursales\");\n    var criteria = {};\n\n     db.collection('sucursales').aggregate(\n             [\n               { $unwind: \"$descuentos\" },\n               { $match : { estRCD :'1' , descuentos: {$exists: true, $not: {$size: 0}}} },\n               { $group: { \"_id\":\"$descuentos.espec\", \"count\": { $sum: 1 } } },\n               {$sort : { _id: 1}},\n             ],function(err,result){\n                console.log(err,result)\n              res.json(result)\n            }) \n\n\n  /*var criteria = { estRCD : \"1\", descuentos: {$exists: true, $not: {$size: 0}}};\n\n      collection.find(criteria, function(err, result) {\n        res.json(result);\n    });\n*/\n});",
+			"settings":
+			{
+				"buffer_size": 2279,
 				"line_ending": "Windows"
 			}
 		},
@@ -532,6 +588,22 @@
 			"settings":
 			{
 				"buffer_size": 1352,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/controllers/ctrl_especialidad.js",
+			"settings":
+			{
+				"buffer_size": 1633,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/controllers/mainController.js",
+			"settings":
+			{
+				"buffer_size": 3870,
 				"line_ending": "Windows"
 			}
 		}
@@ -597,6 +669,7 @@
 	},
 	"file_history":
 	[
+		"/Z/web/Autotips/www/css/style.css",
 		"/Z/web/GNODE 4.0/public/js/controllers/ctrl_base.js",
 		"/Z/web/GNODE 4.0/routes/user.js",
 		"/Z/web/GNODE 4.0/routes/node.js",
@@ -669,7 +742,6 @@
 		"/Z/web/AutoTips Backend/public/views/core.html",
 		"/C/Users/Rodrigo/AppData/Local/Temp/fz3temp-1/trivia.html",
 		"/Z/web/Autotips/www/css/main.css",
-		"/Z/web/Autotips/www/css/style.css",
 		"/Z/web/Autotips/www/js/controllers/ctrl_info.js",
 		"/Z/web/Autotips/www/js/controllers/ctr_mapa.js",
 		"/Z/web/Autotips/www/js/controllers/ctr_mapaSuc.js",
@@ -728,7 +800,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -742,6 +814,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			");\n",
+			"listMayor",
+			"byMayor",
 			"0",
 			"byMayor",
 			"\");\n",
@@ -866,10 +941,7 @@
 			"dist",
 			"mayor",
 			"dist",
-			"mayor",
-			"listMayor",
-			"byProperty",
-			"by"
+			"mayor"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -937,19 +1009,142 @@
 			[
 				{
 					"buffer": 0,
-					"file": "www/js/controllers/ctrl_especialidad.js",
+					"file": "www/js/controllers/ctrl_core.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1581,
+						"buffer_size": 5228,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								4054,
+								4054
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1344.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Z/web/AutoTips Backend/routes/api.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11415,
+								11415
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4821.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/templates/views.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19491,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11444,
+								11444
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4455.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "www/js/controllers/ctrl_descuento.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1173,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1166,
+								1166
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "www/js/controllers/ctrl_listDesc.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2653,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1404,
+								1404
 							]
 						],
 						"settings":
@@ -957,14 +1152,99 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 279.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 5,
+					"file": "www/css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12437,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1401,
+								1401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "www/js/controllers/ctrl_descMayor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2749,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1490,
+								1520
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2279,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1352,
+								187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "www/js/controllers/ctrl_especialidadR.js",
 					"semi_transient": false,
 					"settings":
@@ -988,6 +1268,63 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "www/js/controllers/ctrl_especialidad.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1633,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1525,
+								1525
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "www/js/controllers/mainController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1301,
+								1301
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
 					"type": "text"
 				}
@@ -996,7 +1333,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 44.0
 	},
 	"input":
 	{
@@ -1011,11 +1348,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.397123893805,
 			1.0
 		],
 		"rows":
@@ -1067,7 +1411,7 @@
 		],
 		"width": 392.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},

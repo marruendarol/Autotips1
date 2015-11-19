@@ -52,7 +52,7 @@ var ctrl_espec = {
 		})
 		
 			 myScroll = new IScroll('#wrapperEspec',{  
-		 	click:true,bounce:false,bindToWrapper: true })
+		 	click:true,bounce:false,bindToWrapper: true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 
 	},
 }

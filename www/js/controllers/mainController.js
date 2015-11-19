@@ -7,6 +7,7 @@ var userLng = -103.3496
 var serverURL = "http://autotips.mx:3018";
 //var serverURL = "http://localhost:3018";
 var paramsPage = {}
+var scrolls = false;
 
 var mainC = {
 	init: function(callback){
