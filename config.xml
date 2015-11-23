@@ -82,7 +82,9 @@
 <splash src="Default-Landscape@2x.png" platform="ios" width="2048" height="1536" />
 
 
-
+<platform name="ios">
+  <hook type="after_prepare" src="hook_scripts/ios-remote-notification-fix.js" />
+</platform>
 
 
     <access origin="*" />
