@@ -58,6 +58,7 @@
    
     <icon src="icon.png"/>
     <icon src="iconIOS.png" gap:platform="ios" width="57" height="57"/>
+    <icon src="iconIOS2.png" gap:platform="ios" width="120" height="120"/>
 
 
 <!-- iPhone and iPod touch -->
