@@ -48,9 +48,7 @@ function initApp(){
 
 
   $('.bButton').bind( "tap",function(){
-       if(device.platform === "iOS" && parseInt(device.version) === 9){
-              console.log("version" + device.version);
-                console.log("iOS 9");
+       if(device.platform === "iOS"){
                  history.go(0); 
                //write your code here                 
            }
