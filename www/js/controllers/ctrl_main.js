@@ -36,24 +36,26 @@ $(document).ready(function() {
 function initApp(){
 
 
-   $.mobile.hashListeningEnabled = false;
-   $.mobile.pushStateEnabled = false;
+  $(document).bind("mobileinit", function(){
+      $.mobile.hashListeningEnabled = false;
+  });
+
 
    $.mobile.pageContainer = $('#container');
-   $.mobile.defaultPageTransition = 'none'; //slideoverleft
+   $.mobile.defaultPageTransition = 'none';
    //$.mobile.defaultHomeScroll = 0;
    $( "#pop1" ).popup();
 
    		mainC.init(ctrl_core.init)
 
-var that = this
 
   $('.bButton').bind( "tap",function(){
-    
-                nav.app.backHistory();
+      
+               history.go(0)
+               //write your code here                 
+
+          //window.history.back();
           
-            //    window.history.back();
-          //
   })
 
   $('.hButton').bind( "tap",function(){
