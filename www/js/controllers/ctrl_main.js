@@ -35,12 +35,12 @@ $(document).ready(function() {
 
 function initApp(){
 
-  if ( device.platform === "iOS" ) {
+
    $.mobile.hashListeningEnabled = false;
-}
+   $.mobile.pushStateEnabled = false;
 
    $.mobile.pageContainer = $('#container');
-   $.mobile.defaultPageTransition = 'slideoverleft';
+   $.mobile.defaultPageTransition = 'none'; //slideoverleft
    //$.mobile.defaultHomeScroll = 0;
    $( "#pop1" ).popup();
 
@@ -49,15 +49,11 @@ function initApp(){
 var that = this
 
   $('.bButton').bind( "tap",function(){
-      var nav = window.navigator;
-            if( that.phonegapNavigationEnabled &&
-                nav &&
-                nav.app &&
-                nav.app.backHistory ){
+    
                 nav.app.backHistory();
-            } else {
-                window.history.back();
-            }
+          
+            //    window.history.back();
+          //
   })
 
   $('.hButton').bind( "tap",function(){
