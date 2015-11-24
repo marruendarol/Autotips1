@@ -36,7 +36,7 @@ $(document).ready(function() {
 function initApp(){
 
   if ( device.platform === "iOS" ) {
-  $.mobile.hashListeningEnabled=false;
+   $.mobile.hashListeningEnabled = false;
 }
 
    $.mobile.pageContainer = $('#container');
@@ -48,7 +48,15 @@ function initApp(){
 
 
   $('.bButton').bind( "tap",function(){
-      $.mobile.back();
+       if(device.platform === "iOS" && parseInt(device.version) === 9){
+              console.log("version" + device.version);
+                console.log("iOS 9");
+                 history.go(0); 
+               //write your code here                 
+           }
+       else{
+          window.history.back();
+           }
   })
 
   $('.hButton').bind( "tap",function(){
