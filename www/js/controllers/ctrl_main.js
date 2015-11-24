@@ -46,15 +46,18 @@ function initApp(){
 
    		mainC.init(ctrl_core.init)
 
+var that = this
 
   $('.bButton').bind( "tap",function(){
-       if(device.platform === "iOS"){
-                 history.go(0); 
-               //write your code here                 
-           }
-       else{
-          window.history.back();
-           }
+      var nav = window.navigator;
+            if( that.phonegapNavigationEnabled &&
+                nav &&
+                nav.app &&
+                nav.app.backHistory ){
+                nav.app.backHistory();
+            } else {
+                window.history.back();
+            }
   })
 
   $('.hButton').bind( "tap",function(){
