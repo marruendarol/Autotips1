@@ -35,6 +35,10 @@ $(document).ready(function() {
 
 function initApp(){
 
+  if ( device.platform === "iOS" ) {
+  $.mobile.hashListeningEnabled=false;
+}
+
    $.mobile.pageContainer = $('#container');
    $.mobile.defaultPageTransition = 'slideoverleft';
    //$.mobile.defaultHomeScroll = 0;
