@@ -14,6 +14,11 @@
 <script src="cordova.js"></script>
 
 <script src="js/lib/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+   $(document).bind("mobileinit", function(){
+     $.mobile.hashListeningEnabled = false;
+   });
+</script>
 <script src="js/lib/jquery.mobile.simultaneous-transitions-replace.js"></script>
 <script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/lib/jquery.animate-colors-min.js"></script>

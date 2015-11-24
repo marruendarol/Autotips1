@@ -36,9 +36,7 @@ $(document).ready(function() {
 function initApp(){
 
 
-  $(document).bind("mobileinit", function(){
-      $.mobile.hashListeningEnabled = false;
-  });
+  
 
 
    $.mobile.pageContainer = $('#container');
@@ -51,9 +49,9 @@ function initApp(){
 
   $('.bButton').bind( "tap",function(){
       
-               history.go(0)
+              // history.go(0)
                //write your code here                 
-
+               $.mobile.back()
           //window.history.back();
           
   })
