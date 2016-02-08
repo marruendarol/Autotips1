@@ -4,8 +4,8 @@
 
 var userLat = 20.6596
 var userLng = -103.3496
-var serverURL = "http://autotips.mx:3018";
-//var serverURL = "http://localhost:3018";
+//var serverURL = "http://autotips.mx:3018";
+var serverURL = "http://localhost:3018";
 var paramsPage = {}
 var scrolls = false;
 
@@ -149,6 +149,22 @@ var rh = {
 	},
 	roundDist : function(value){
 		return value.toFixed(2);
+	},
+	restantes : function(value){
+		var date1 = new Date(parseInt(value)*1000);
+		var date2 = new Date();
+		var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+
+		if(utils.generateTS()>parseInt(value)){
+			return "TARJETA VENCIDA";
+		}else{
+			return diffDays;
+		}
+
+	
+
+		
 	}
 }
 

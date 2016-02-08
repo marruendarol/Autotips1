@@ -534,9 +534,9 @@
 	        <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="genMap">Ver mapa de ubicación</div>
 	    </div>
 
-	   <!--  <div class="small-12 column">
+	    <div class="small-12 column">
 	       <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="navigate">Llévame</div>
-	    </div> -->
+	    </div> 
 </div>
 
 	     </div>
@@ -588,6 +588,9 @@
 
             <label for="name">ID tarjeta:</label>
             <h3>{{userData.idCard}}</h3>
+
+            <label for="name">Días restantes:</label>
+            <h3>{{restantes(userData.end)}}</h3>
             
             
             <button on-tap="cerrarsesion" class="ui-btn" >cerrar sesión</button>
