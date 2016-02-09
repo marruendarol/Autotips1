@@ -27,7 +27,8 @@ var ctrl_info = {
 
 		mainObj.on('navigate',function(){
 			jqm.showLoader("Localizando...")
-			navigator.geolocation.getCurrentPosition(ctrl_info.locRet,ctrl_info.onLocationError); 
+			ctrl_info.locRet()
+			//navigator.geolocation.getCurrentPosition(ctrl_info.locRet,ctrl_info.onLocationError); 
 			
 		})
 		
@@ -36,7 +37,7 @@ var ctrl_info = {
 		
 		console.log("AQUI----------------------")
 	},
-	locRet : function(location){
+	locRet : function(){
 		var data  = paramsSuc.data  
 		jqm.hideLoader()
 
@@ -44,12 +45,14 @@ var ctrl_info = {
 
 		// Android
 
+		console.log(addressLongLat)
+
 		window.open("geo:"+addressLongLat);
 			
 		// IOS 
 
 		//window.open("http://maps.apple.com/?q="+addressLongLat, '_system');
-		
+
 			/*window.open("http://maps.google.com/maps?saddr=My+Location&daddr="+ data.loc[0] +", "+ data.loc[1]+"&sensor=true" , '_system');
 			window.open("geo:"+addressLongLat);
 			console.log("http://maps.google.com/maps?saddr="+location.coords.latitude+ ", " + location.coords. longitude+  "&daddr="+ data.loc[0] +", "+ data.loc[1]+"&sensor=true")*/
