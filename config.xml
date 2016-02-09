@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.nucleo.autotips" version="1.4.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.nucleo.autotips" version="1.4.9" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Autotips</name>
     <description>
        Autotips
@@ -29,9 +29,10 @@
     <preference name="ios-statusbarstyle"    value="black-opaque" />
    
     <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
-    <gap:plugin name="org.apache.cordova.device"  />
+    <gap:plugin name="cordova-plugin-device" source="npm" />
+    <gap:plugin name="cordova-plugin-network-information" source="npm" />
+    <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
     <gap:plugin name="cordova-plugin-geolocation" source="npm" version="1.0.1" />
-    <gap:plugin name="org.apache.cordova.network-information"  />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
 
 
