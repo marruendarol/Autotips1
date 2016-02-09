@@ -43,13 +43,13 @@ var ctrl_info = {
 
 		var geocoords =data.loc[0] +','+data.loc[1];
 
-		if (device.platform=="iOS") {
-		  window.open('maps://?q=' + geocoords, '_system');
-		}
-		else {
-		  var label = encodeURI('Negocio Autotips'); // encode the label!
-		  window.open('geo:0,0?q=' + geocoords + '(' + label + ')', '_system');
-		}
+		//if (device.platform=="iOS") {
+		//  window.open('maps://?q=' + geocoords, '_system');
+		//}
+		//else {
+		  //var label = encodeURI('Negocio Autotips'); // encode the label!
+		  window.open('geo:0,0?q=' + geocoords, '_system');
+		//}
 
 			/*window.open("http://maps.google.com/maps?saddr=My+Location&daddr="+ data.loc[0] +", "+ data.loc[1]+"&sensor=true" , '_system');
 			window.open("geo:"+addressLongLat);
