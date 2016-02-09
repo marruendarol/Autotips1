@@ -41,17 +41,14 @@ var ctrl_info = {
 		var data  = paramsSuc.data  
 		jqm.hideLoader()
 
-		var addressLongLat =data.loc[0] +','+data.loc[1];
+		var geocoords =data.loc[0] +','+data.loc[1];
 
-		// Android
-
-		console.log(addressLongLat)
-
-		window.open("geo:"+addressLongLat);
-			
-		// IOS 
-
-		//window.open("http://maps.apple.com/?q="+addressLongLat, '_system');
+		if (iOS) {
+		  window.open('maps://?q=' + geocoords, '_system');
+		}
+		else {
+		  var label = encodeURI('Negocio Autotips'); // encode the label!
+		  window.open('geo:0,0?q=' + geocoords + '(' + label + ')', '_system');
 
 			/*window.open("http://maps.google.com/maps?saddr=My+Location&daddr="+ data.loc[0] +", "+ data.loc[1]+"&sensor=true" , '_system');
 			window.open("geo:"+addressLongLat);
