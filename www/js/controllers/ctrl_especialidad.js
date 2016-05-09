@@ -36,7 +36,7 @@ var ctrl_espec = {
 		
 		mainObj.on('getSuc',function(event){
 			paramsPage = { id : event.context.nombre, type: "especialidad" }
-			if(descVar==""){
+			if(descVar==''){
 					$.mobile.changePage( "#list");	
 			}
 			else{

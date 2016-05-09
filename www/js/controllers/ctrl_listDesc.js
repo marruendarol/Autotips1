@@ -12,7 +12,7 @@ var ctrl_listDesc = {
 		jqm.showLoader("Generando...");
 	},
 	getLoc : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_listDesc.getQuery,null); 
+		getLastKnownLocation(ctrl_listDesc.getQuery,ctrl_listDesc.onLocationError,false)	
 	},
 	getQuery : function(position){
 		console.log(position)
@@ -27,6 +27,9 @@ var ctrl_listDesc = {
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
     	});   
+	},
+	onLocationError : function(err){
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
 	},
 	render : function(data){
 		jqm.hideLoader();
@@ -51,25 +54,52 @@ var ctrl_listDesc = {
 
 
 
-		var dItems = { items : data,  distVis:true}
+		var dItems = { items : data,  distVis:true , img 		: "noimage.png"}
 
 		console.log(dItems)
 
-		var mainObj = template.render('#listDescT',ctrl_listDesc.pageDiv,dItems)
+		ctrl_listDesc.mainObj = template.render('#listDescT',ctrl_listDesc.pageDiv,dItems)
 		$(ctrl_listDesc.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
-		mainObj.on('getList',function(event){
+		ctrl_listDesc.mainObj.on('getList',function(event){
 			console.log(event.context._id +"MAMAMIA")
 			paramsPage = { id : event.context._id, type: "descListado" }
 			$.mobile.changePage( "#list");
 		})
 
+		ctrl_listDesc.mainObj.on('getSuc',function(event){
+			console.log(event.context._id +"MAMAMIA")
+			paramsSuc = { data : event.context }
+			$.mobile.changePage( "#infoSuc");
+		})
+
 		 myScroll = new IScroll('#wrapperListDesc',{  
 		 	click:true ,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
+
+		  ctrl_listDesc.mainObj.on('openLink',function(event){
+				window.open(event.context.urlLink, '_system')
+			});
+
+		 ctrl_listDesc.getBanner();
 		
 
 	},
+	getBanner : function(){
+		$.ajax({
+          type: 'POST',
+            data: {},
+            url: serverURL + '/api/getBanner',
+            crossDomain: true,
+            dataType: 'JSON'
+             }).done(function( response ) {
+             	ctrl_listDesc.mainObj.set('img',response.imagenes[0].url)
+             	ctrl_listDesc.mainObj.set('urlLink',response.imagenes[0].urlLink)
+              	
+          }).fail(function( response ) {
+              console.log("banner error ")  
+    	});   
+	}
 }
 
 Array.prototype.move = function (old_index, new_index) {

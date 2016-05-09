@@ -1,6 +1,8 @@
 /**********************************************************
 *	MAIN SCREEN CONTROLLER
 ***********************************************************/
+descVar = ""
+
 var ctrl_home = {
 	data : {},
 	pageDiv : "#mainScreen",
@@ -13,56 +15,73 @@ var ctrl_home = {
 
 		$(ctrl_home.pageDiv).empty();
 
-		var data  = {
+		ctrl_home.data  = {
 			userData : {
 				nombre 		: window.localStorage.getItem("nombre"),
 				username 	: window.localStorage.getItem("username"),
 				idCard		: window.localStorage.getItem("idCard"),
-				end			: window.localStorage.getItem("end")
-			}
+				cardHypen   : window.localStorage.getItem("idCard").replace(/(.{4})(.{4})(.{4})/,'$1 $2 $3 '),
+				end			: window.localStorage.getItem("end"),
+				vencimiento : utils.dateConv(window.localStorage.getItem("end")),
+				ccv 		: window.localStorage.getItem("ccv"),
+				
+			},
+			img 		: "noimage.png",
+		}
+
+		// check vencida
+
+		var restantes = rh.restantes(ctrl_home.data.userData.end);
+		if(restantes=="TARJETA VENCIDA"){
+			alert("Tarjeta Vencida, por favor registre una nueva tarjeta")
+				$.mobile.changePage("#insertCard")
+		}else{
+			 ctrl_home.mainObj = template.render('#mainT',ctrl_home.pageDiv,ctrl_home.data,null,{menuT : $('#menuT').html()})
+			$(ctrl_home.pageDiv).trigger("create");
+			//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+			
+			ctrl_home.mainObj.on('getCerca',function(event){
+				
+				mainC.clickAnim(event.node)
+				paramsPage = { id : event.context._id, type: "cerca" }
+				console.log("entro cercas")
+				$.mobile.changePage("#list");
+			})
+			ctrl_home.mainObj.on('getDescuentos',function(event){
+				mainC.clickAnim(event.node)
+				paramsPage = { id : event.context._id, type: "descuentos" }
+				$.mobile.changePage("#descuentos");
+			})
+			ctrl_home.mainObj.on('getZona',function(event){
+				mainC.clickAnim(event.node)
+				$.mobile.changePage("#zona");
+			})
+			ctrl_home.mainObj.on('getEspecialidad',function(event){
+				mainC.clickAnim(event.node)
+				$.mobile.changePage("#especialidadR");
+			})
+			ctrl_home.mainObj.on('getContacto',function(event){
+				mainC.clickAnim(event.node)
+				$.mobile.changePage("#contacto");
+			})
+
+
+			ctrl_home.mainObj.on('cerrarsesion',function(event){
+				mainC.clickAnim(event.node)
+				localStorage.clear();
+				$.mobile.changePage("#firstP");
+			});
+
+			ctrl_home.mainObj.on('openLink',function(event){
+				window.open(event.context.urlLink, '_system')
+			});
+
 		}
 
 
-		console.log(data)
 
-
-
-		var mainObj = template.render('#mainT',ctrl_home.pageDiv,data,null,{menuT : $('#menuT').html()})
-		$(ctrl_home.pageDiv).trigger("create");
-		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		ctrl_home.getBanner();
 		
-		mainObj.on('getCerca',function(event){
-			
-			mainC.clickAnim(event.node)
-			paramsPage = { id : event.context._id, type: "cerca" }
-			console.log("entro cercas")
-			$.mobile.changePage("#list");
-		})
-		mainObj.on('getDescuentos',function(event){
-			mainC.clickAnim(event.node)
-			paramsPage = { id : event.context._id, type: "descuentos" }
-			$.mobile.changePage("#descuentos");
-		})
-		mainObj.on('getZona',function(event){
-			mainC.clickAnim(event.node)
-			$.mobile.changePage("#zona");
-		})
-		mainObj.on('getEspecialidad',function(event){
-			mainC.clickAnim(event.node)
-			$.mobile.changePage("#especialidadR");
-		})
-		mainObj.on('getContacto',function(event){
-			mainC.clickAnim(event.node)
-			$.mobile.changePage("#contacto");
-		})
-
-
-		mainObj.on('cerrarsesion',function(event){
-			mainC.clickAnim(event.node)
-			localStorage.clear();
-			$.mobile.changePage("#firstP");
-		})
-
 		
 		 //ctrl_home.getLocation();
 
@@ -79,6 +98,21 @@ var ctrl_home = {
 		console.log(userLat + " - " + userLng + " user found")
 	},onLocationError : function(){
 		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
+	},
+	getBanner : function(){
+		$.ajax({
+          type: 'POST',
+            data: {},
+            url: serverURL + '/api/getBanner',
+            crossDomain: true,
+            dataType: 'JSON'
+             }).done(function( response ) {
+             	ctrl_home.mainObj.set('img',response.imagenes[0].url)
+             	ctrl_home.mainObj.set('urlLink',response.imagenes[0].urlLink)
+              	
+          }).fail(function( response ) {
+              console.log("banner error ")  
+    	});   
 	}
 	
 }

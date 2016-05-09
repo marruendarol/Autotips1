@@ -40,7 +40,7 @@ function initApp(){
 
 
    $.mobile.pageContainer = $('#container');
-   $.mobile.defaultPageTransition = 'none';
+   $.mobile.defaultPageTransition = 'slide';
    //$.mobile.defaultHomeScroll = 0;
    $( "#pop1" ).popup();
 
@@ -63,6 +63,37 @@ function initApp(){
  
 }
 
+
+function getLastKnownLocation(callback,errorF,refresh){
+
+  var options = {
+  enableHighAccuracy: false,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+  var errorF = errorF
+  if(errorF==undefined) { errorF = function(){}}
+
+    console.log(typeof localStorage.lastKnownPosition)
+  console.log(localStorage.lastKnownPosition)
+    console.log("COOKIE LOC")
+
+    if(typeof localStorage.lastKnownPosition == "undefined" || refresh){
+          navigator.geolocation.getCurrentPosition(
+          function(position){
+           var objPos = {
+              coords : {
+              latitude : position.coords.latitude,
+              longitude : position.coords.longitude }
+           }
+              localStorage.lastKnownPosition = JSON.stringify(objPos);
+              callback(position); 
+          },errorF);
+    }else{
+        callback(JSON.parse(localStorage.lastKnownPosition)); 
+    } 
+}
 
 //keytool -genkey -v -keystore expoina.keystore -alias expoina -keyalg RSA -keysize 2048 -validity 10000
 //pabloneruda14

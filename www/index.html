@@ -27,12 +27,14 @@
 <script src="js/lib/foundation/foundation.js"></script>
 <script src="js/lib/ractive.js"></script>
 
+
 <script src="js/lib/ractive-events-keys.js"></script>
 <script src="js/lib/ractive-events-tap.js"></script>
+<script src="js/lib/ractive-events-hover.js"></script>
 <script src="js/lib/tappy.js"></script>
+<script src="js/lib/jquery.maskedinput-1.4.min.js"></script>
 
 <script src='js/utilities/utilities.js'></script>
-
 
 <!-- CONTROLLERS -->
 <script src="js/controllers/ctrl_core.js"></script>     <!-- ROUTE CONTROLLER -->
@@ -42,7 +44,8 @@
 
 
 
-<script src='https://maps.googleapis.com/maps/api/js?v=3&libraries=places&sensor=true&key=AIzaSyBcrQxNRRRn5djIHjj5fXV7TP8dLz0WqN8'></script>
+
+<script src='https://maps.googleapis.com/maps/api/js?v=3&libraries=places&key=AIzaSyBcrQxNRRRn5djIHjj5fXV7TP8dLz0WqN8'></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta charset="UTF-8">
@@ -61,7 +64,6 @@
 <!-- ********************************************************************* -->
 <div data-role="page" id="firstP">
 
-   
         <div id="logoHeader">
         <img src="img/logo.png">
         </div>
@@ -89,6 +91,16 @@
     </div>
 
     <div role="main" id="registroP" class="ui-content"></div><!-- /content -->
+
+</div>
+<!-- ********************************************************************* -->
+<div data-role="page" id="insertCard">
+     <div data-role="header" data-position="fixed">
+        <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        <h1>Agregar Tarjeta</h1>
+    </div>
+
+    <div role="main" id="insertCardP" class="ui-content"></div><!-- /content -->
 
 </div>
 <!-- ********************************************************************* -->
@@ -359,6 +371,23 @@
     </div>
 
     <div role="main" id="contactoP" class="ui-content"></div><!-- /content -->
+</div>
+
+<!-- ********************************************************************* -->
+<div data-role="page" id="incidencia">
+       <div data-role="header" data-position="fixed">
+      <div class="small-2 column rPad">
+            <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        </div>
+         <div class="small-8 column rPad">
+              <div id="titleList" class="titleList">Incidencia</div>
+         </div>
+         <div class="small-2 column rPad">
+            <div class="hButton"  data-direction="reverse"><img src="img/home.png"></div>
+        </div>   
+    </div>
+
+    <div role="main" id="incidenciaP" class="ui-content"></div><!-- /content -->
 </div>
 <!-- ********************************************************************* -->
 

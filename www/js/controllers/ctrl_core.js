@@ -6,6 +6,7 @@ var ctrl_core = {
 
 	path : "",
 	id 	 : "",
+	loadedControllers : [],
 	init : function(){	
 		ctrl_core.routeListeners();
 
@@ -17,22 +18,23 @@ var ctrl_core = {
 
 			if(utils.generateTS()>parseInt(endDate))
 			{
-				alert("Tarjeta Vencida, por favor registre una nueva tarjeta")
-				$.mobile.changePage("#firstP")
+				//alert("Tarjeta Vencida, por favor registre una nueva tarjeta")
+				
 			}
 
 			var username= window.localStorage.getItem("username");
 			if(username!=undefined){
-				$.mobile.changePage("#mainScreen")
+				ctrl_loginS.checkLogin({username:window.localStorage.getItem("username"),password:window.localStorage.getItem("password")})
 			}else{
 				$.mobile.changePage("#firstP")
 			}
 
 	  		
 	},
-	loadController : function(controllerURL,params){
-		console.log(controllerURL,params)
-		$.ajax({
+	loadController : function(controllerURL,params,reload){
+		
+		if(reload || ctrl_core.loadedControllers.indexOf(controllerURL)==-1){
+			$.ajax({
 	        type: "GET",
 	        url: controllerURL,
 	        dataType: "script",
@@ -42,7 +44,12 @@ var ctrl_core = {
 	        success:function(e){
 	         	eval(params.init)(params);
 	        }
-    	});
+    		});
+		}else{
+			eval(params.init)(params);
+		}
+		ctrl_core.loadedControllers.push(controllerURL)
+		
 	},
 	routeListeners : function(){
 
@@ -66,7 +73,12 @@ var ctrl_core = {
 	    	ctrl_core.loadController("./js/controllers/ctrl_loginS.js",params);
 	    });
 
-		$(document).on("pagebeforeshow","#registro", function() {
+		$(document).on("pagebeforeshow","#insertCard", function() {
+	        var params = { init : 'ctrl_anadir.init', }
+	    	ctrl_core.loadController("./js/controllers/ctrl_anadir.js",params);
+	    });
+
+	    $(document).on("pagebeforeshow","#registro", function() {
 	        var params = { init : 'ctrl_registro.init', }
 	    	ctrl_core.loadController("./js/controllers/ctrl_registro.js",params);
 	    });
@@ -100,7 +112,7 @@ var ctrl_core = {
 
 	    $(document).on("pagebeforeshow","#zona", function() {
 	      	var params = { init : 'ctrl_zona.init' }
-	    	ctrl_core.loadController("./js/controllers/ctrl_zona.js",params);
+	    	ctrl_core.loadController("./js/controllers/ctrl_zona.js",params,false);
 	    });
 
 	    $(document).on("pagebeforeshow","#delegacion", function() {
@@ -151,6 +163,11 @@ var ctrl_core = {
 	    $(document).on("pagebeforeshow","#contacto", function() {
 	      	var params = { init : 'ctrl_contacto.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_contacto.js",params);
+	    });
+
+	     $(document).on("pagebeforeshow","#incidencia", function() {
+	      	var params = { init : 'ctrl_incidencia.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_incidencia.js",params);
 	    });
 	}
 

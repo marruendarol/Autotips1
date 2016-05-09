@@ -4,8 +4,8 @@
 
 var userLat = 20.6596
 var userLng = -103.3496
-var serverURL = "http://autotips.mx:3018";
-//var serverURL = "http://localhost:3018";
+//var serverURL = "http://autotips.mx:3018";
+var serverURL = "http://192.168.100.15:3018";
 var paramsPage = {}
 var scrolls = false;
 
@@ -150,6 +150,9 @@ var rh = {
 	roundDist : function(value){
 		return value.toFixed(2);
 	},
+	maskTel : function(value){
+		return value.replace(/(.{2})(.{4})(.{4})/,'$1 $2 $3 ');
+	},
 	restantes : function(value){
 		var date1 = new Date(parseInt(value)*1000);
 		var date2 = new Date();
@@ -162,10 +165,11 @@ var rh = {
 			return diffDays;
 		}
 
-	
-
 		
-	}
+	},
+	cCase  : function(str){
+		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	},
 }
 
 

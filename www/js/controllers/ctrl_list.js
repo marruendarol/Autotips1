@@ -33,13 +33,13 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,ctrl_list.onLocationError); 
+		getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,false); 
 	},
 	geoRet : function(location){
 		dbC.query("/api/byGeo","POST",{lat:location.coords.latitude,lng:location.coords.longitude},ctrl_list.render)
 	},
-	onLocationError : function(){
-		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
+	onLocationError : function(err){
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
 	},
 	//------------------------------------------ESPECIALIDAD
 	byEspec : function(id){
@@ -49,7 +49,7 @@ var ctrl_list = {
 	byListaDesc : function(specV){
 
 		spec = specV;
-		navigator.geolocation.getCurrentPosition(ctrl_list.listaDescLoc,ctrl_list.onLocationError); 
+		getLastKnownLocation(ctrl_list.listaDescLoc,ctrl_list.onLocationError,false); 
 	},
 	listaDescLoc : function(location){
 		console.log(spec+"SPECVVV")
@@ -61,7 +61,7 @@ var ctrl_list = {
 	},
 	//------------------------------------------MAYOR PORCENTAJE GEO
 	byPercDesc : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_list.PercDescLoc,null); 
+		getLastKnownLocation(ctrl_list.PercDescLoc,ctrl_list.onLocationError,false); 
 	},
 	PercDescLoc : function(location){
 		dbC.query("/api/byListaPercGeo","POST",
@@ -87,19 +87,20 @@ var ctrl_list = {
 	//-----------------------------------------------------------
 	render : function(data){
 
-		jqm.hideLoader();
 
+		jqm.hideLoader();
 		
-		var data = { items  : data,
+		var datar = { items  : data,
 					distVis : distVis,
-					empty 	: (data.length==0 ? true : false)
+					empty 	: (data.length==0 ? true : false),
+					img 		: "noimage.png",
 			}
 
 		$('#titleList').text(titleList)
 
-		var mainObj = template.render('#listT',ctrl_list.pageDiv,data)
+		ctrl_list.mainObj = template.render('#listT',ctrl_list.pageDiv,datar)
 
-		mainObj.on('listDetail',function(event){
+		ctrl_list.mainObj.on('listDetail',function(event){
 			mainC.clickAnim(event.node)
 			paramsSuc = { data : event.context }
 			$.mobile.changePage( "#infoSuc");
@@ -109,7 +110,27 @@ var ctrl_list = {
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		 myScroll = new IScroll('#wrapperList',{  
 		 	click:true,useTransition:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
-		
 
+		 ctrl_list.mainObj.on('openLink',function(event){
+				window.open(event.context.urlLink, '_system')
+			});
+		
+		ctrl_list.getBanner();
+
+	},
+	getBanner : function(){
+		$.ajax({
+          type: 'POST',
+            data: {},
+            url: serverURL + '/api/getBanner',
+            crossDomain: true,
+            dataType: 'JSON'
+             }).done(function( response ) {
+             	ctrl_list.mainObj.set('img',response.imagenes[0].url)
+             	ctrl_list.mainObj.set('urlLink',response.imagenes[0].urlLink)
+              	
+          }).fail(function( response ) {
+              console.log("banner error ")  
+    	});   
 	}
 }

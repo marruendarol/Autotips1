@@ -32,6 +32,7 @@ var ctrl_registro = {
 		  	 myScroll = new IScroll('#wrapperReg',{  
 		 	click:true })
  	 
+		  	 $("#movil").mask("99-9999-9999");
 
 	},
 	validateCard : function(idCard,ccv){
@@ -40,17 +41,23 @@ var ctrl_registro = {
 		var params = {idCard:idCard,ccv : ccv};
 		dbC.query("/api/checkCard","POST",params,ctrl_registro.validReturn)
 	},
+	tsPlus : function(dias){
+		var today = new Date();
+		var tomorrow = new Date(today);
+			tomorrow.setDate(today.getDate()+parseInt(dias));
+		console.log(tomorrow , dias)
+		return utils.generateTS(tomorrow);
+	},
 	validReturn : function(response){
 
+		console.log(response)
 		jqm.hideLoader();
-
-		ctrl_registro.life = response[0].end; 
 
 		console.log(response)
 
 		if(response.length==1 && response[0].estatus=="0" ){
-			
-			ctrl_registro.create();
+			ctrl_registro.life = ctrl_registro.tsPlus(response[0].dias); 
+			ctrl_registro.create();	
 
 		}
 
@@ -69,6 +76,7 @@ var ctrl_registro = {
 		dataObj.nombre		  	= $("#nombre").val(); 
 		dataObj.username 	 	= $("#email").val(); 
 		dataObj.password	 	= $("#pass").val(); 
+		dataObj.movil	     	= $("#movil").val(); 
 		dataObj.cpass		  	= $("#cpass").val(); 
 		dataObj.idcard		  	= $("#idcard").val(); 
 		dataObj.origen		  	= $("#origen").val(); 
@@ -98,14 +106,18 @@ var ctrl_registro = {
 		var item = {	ts 			: utils.generateTS(),
 						id 			: utils.generateUUID()};
 
+		console.log(ctrl_registro.card)
+		console.log("DATOS PARA CREAR ")
+
 		var params = {}
 		params.dataB = ctrl_registro.getDataObj(); 
 		params.dataB.clients = [item];
 		params.dataB.userID = "internet"
 		params.dataB.estRCD = 1;
 		params.dataB.end  = ctrl_registro.life;
-		params.dataB.idCard = ctrl_registro.card 
+		params.dataB.idCard = ctrl_registro.card
 		params.dataB.ccv = ctrl_registro.ccv 
+		params.dataB.sourceCard = ctrl_registro.card; 
 		dbC.query("/api/createUserMobile","POST",params,ctrl_registro.create_Return)
 	},
 	create_Return : function(data){

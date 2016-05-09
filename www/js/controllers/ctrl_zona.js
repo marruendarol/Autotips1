@@ -7,23 +7,31 @@ var selDelegacion
 var ctrl_zona = {
 	data : {},
 	pageDiv : "#zonaP",
+	response : null,
 	init : function(data,template){
 		ctrl_zona.data = data;
 		ctrl_zona.getEstados();
 		jqm.showLoader("Generando...");
 	},
 	getEstados : function(){
-		$.ajax({
+		if(ctrl_zona.response==null){
+			$.ajax({
           type: 'GET',
             data: {},
             url: serverURL + '/api/readSucEstados',
             crossDomain: true,
             dataType: 'JSON'
              }).done(function( response ) {
+             	ctrl_zona.response = response
              ctrl_zona.render(response);
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
     	});   
+      } else{
+      
+      	ctrl_zona.render(ctrl_zona.response);
+      }
+		
 	},
 	render : function(data){
 		jqm.hideLoader();
@@ -41,8 +49,11 @@ var ctrl_zona = {
 			$.mobile.changePage( "#delegacion");
 		})
 
-		 myScroll = new IScroll('#wrapperZona',{  
+		var  myScroll = new IScroll('#wrapperZona',{  
 		 	click:true,useTransition:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
+
+
+		setTimeout(function(){ myScroll.refresh() }, 500);
 		
 
 	},

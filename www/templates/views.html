@@ -1,7 +1,7 @@
 <!-- FIRST ============================================================-->
 <script id='firstT' type='text/ractive'>
            <button class="btnGen" on-tap="login">Ingresar a mi cuenta</button>
-           <button class="btnGen" on-tap="registro">Registrarme</button>
+           <button class="btnGen" on-tap="registro">Registrar usuario nuevo</button>
 </script>
 
 <!--  LOGIN ============================================================-->
@@ -62,6 +62,11 @@
 	         </div>   
 
 	          <div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Teléfono Movil:</div>
+	             <input class="" id="movil" type="text" value=""  />
+	         </div>   
+
+	          <div class="small-12 medium-6 large-6 ">
 	             <div class="formLabel">Elija una contraseña:</div>
 	             <input class="" id="pass" type="password" value=""  />
 	         </div>  
@@ -104,6 +109,50 @@
 
 </script>
 
+
+<!--  REGISTRO ============================================================-->
+<script id='cardT' type='text/ractive'>
+    
+
+    <div id="wrapperReg" class="wrapper" >
+	    <div id="scroller" >
+
+	<div class="conte">
+
+	 <form id="dataForm" data-abide="ajax">
+	             
+          	<div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">ID Tarjeta:</div>
+	             <input class="" id="cardA" type="text" value=""  />
+          	</div>
+
+          	<div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">CCV:</div>
+	             <input class="" id="ccvA" type="text" value=""  />
+          	</div>
+
+          	 	<div class="small-12 medium-6 large-6 ">
+	             <div class="formLabel">Obtuve mi tarjeta en:</div>
+	             <select id="origen">
+            	<option>Aseguradora</option>
+            	<option>Outsourcing</option>
+            	<option>Flotilla Empresa</option>
+            	<option>Particular</option>
+            </select>
+          	</div>
+
+       <div class="saveBtn small-12 column">
+          <div on-tap="validate" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Añadir tarjeta</div>
+       </div>
+
+    </form>
+
+     </div>
+
+    	</div>
+    </div>
+
+</script>
 
 
 
@@ -148,8 +197,6 @@
 							</div>
 							</li>
 
-						
-
 							<li>
 							<div class="listMain" on-tap="getEspecialidad">
 								<div class="icoDiv"><img src="img/espec.png"></div>
@@ -167,6 +214,11 @@
 		        </div>
 		</div>
     </div><!-- /content -->
+
+
+    <div data-role="footer" data-position="fixed" style="position:fixed;bottom:0;"> 
+			<img class="imgBanner"  on-click="openLink" id="imgBanner" src="http://192.168.100.15:3018/uploads/docs/{{img}}">
+	</div> 
     
  
       
@@ -189,16 +241,29 @@
 	                	{{#if distVis}}
 	                    <div class="small-8 column rPad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
-	                      
+	                        <div style="margin-left: 6px;">
+								<div data-role="none" class="starMini {{#if rate>0}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>1}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>2}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>3}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
+							</div>
 	                    </div>
+
 	                    <div class="small-2 column rPad">
 	                        <div class="distancia">{{roundDist(dist)}} Km.</div>
 	                        </div>
-	                    
 	                   	{{else}}
 
 	                   	<div class="small-10 column rPad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+	                          <div style="margin-left: 6px;">
+								<div data-role="none" class="starMini {{#if rate>0}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>1}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>2}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>3}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
+							</div>
 	                        
 	                    </div>
 	                    	
@@ -221,6 +286,10 @@
 	    </div>
 	</div>
 
+	<div data-role="footer" data-position="fixed" style="position:fixed;bottom:0;"> 
+			<img class="imgBanner"  on-click="openLink" id="imgBanner" src="http://192.168.100.15:3018/uploads/docs/{{img}}">
+	</div> 
+
 
 </script>
 
@@ -236,6 +305,7 @@
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
 	                    <div class="small-10 column rPad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+
 	                    </div>
 	          
 	                    <div class="small-1 column">
@@ -264,6 +334,7 @@
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
 	                    <div class="small-10 column rPad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+
 	                    </div>
 	          
 	                    <div class="small-1 column">
@@ -338,7 +409,13 @@
 	                    <div class="small-8 column rPad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
 	                        <div class="tags">{{descuentos[0].espec}} {{descuentos[0].perc}}%</div>
-	                      
+	                      	 <div style="margin-left: 6px;">
+								<div data-role="none" class="starMini {{#if rate>0}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>1}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>2}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>3}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
+							</div>
 	                    </div>
 	                    <div class="small-2 column rPad">
 	                       <div class="distancia">{{roundDist(dist)}} Km.</div> 
@@ -366,6 +443,11 @@
 	</div>
 
 
+	<div data-role="footer" data-position="fixed" style="position:fixed;bottom:0;"> 
+			<img class="imgBanner"  on-click="openLink" id="imgBanner" src="http://192.168.100.15:3018/uploads/docs/{{img}}">
+	</div> 
+
+
 
 </script>
 
@@ -384,6 +466,13 @@
 	                    <div class="small-8 column rPad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
 	                        <div class="tags">{{descuentos[0].espec}} {{descuentos[0].perc}}%</div>
+	                         <div style="margin-left: 6px;">
+								<div data-role="none" class="starMini {{#if rate>0}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>1}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>2}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>3}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
+							</div>
 	                      
 	                    </div>
 	                    <div class="small-2 column rPad">
@@ -410,6 +499,10 @@
 	        </ul>
 	    </div>
 	</div>
+
+	<div data-role="footer" data-position="fixed" style="position:fixed;bottom:0;"> 
+			<img class="imgBanner"  on-click="openLink" id="imgBanner" src="http://192.168.100.15:3018/uploads/docs/{{img}}">
+	</div> 
 
 
 </script>
@@ -505,20 +598,51 @@
 
 <div class="conte">
 
-	    <div class="small-12 column">
-	        <div class="small-12 column info_nSucursal">{{nombre}}</div>
-	        <div class="small-12 column info_direccion"><b>Dirección:</b> {{direccion}}</div>
-	        <div class="small-12 column info_direccion"><b>Colonia:</b> {{colonia}}</div>
-	        <div class="small-12 column info_estado"><b>Población:</b> {{delegacion}} - {{estado}} </div>
-	        <div class="small-12 column info_cp"><b>C.P.: </b>{{cp}}</div>
-	        <div class="small-12 column info_tel1"><b>Teléfono:</b> {{telefono1}}</div>
+
+		<div class="small-12 column title_nSucursal">{{cCase(nombre)}}</div>
+
+	    <div class="small-12 column collapse">	       
+	        <div class="column info_direccion"> {{cCase(direccion)}}</div>
+	        <div class="column info_direccion">Col. {{cCase(colonia)}}</div>
+	        <div class="column info_estado">{{cCase(delegacion)}} - {{cCase(estado)}} </div>
+	        <div class="column info_cp">C.P. {{cp}}</div>       
 	    </div>
 
+	     <div class="small-12 column">	
+		       <div class="btnNaranja btHalf ui-btn ui-shadow ui-corner-all " on-tap="genMap">Mapa de ubicación</div>
+		      
+		      <div class="btnNaranja btHalf ui-btn ui-shadow ui-corner-all" on-tap="navigate">Llévame</div>
+	     </div>
+
+
+	    	 <div class="vSpace"></div>
+
+
+	      <div class="small-12 column ">
+	         <div class="small-12 column info_tel1">Teléfono: {{maskTel(telefono1)}}  	
+	      	 
+	      </div>
+
+	      <div class="btnNaranja  column ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="dial">Marcar</div> 
+
+
+	       <div class="vSpace"></div>
+
 	    <div class="small-12 column especialidades">
-	    	 <div class="small-12 column info_nSucursal">Descuentos disponibles</div>
+	    	 <div class=" info_nSucursal">Descuentos disponibles</div>
 	    	{{#each descuentos}}
 	    		 <div class="small-12 column  info_desc">
-	    		 	<b>{{perc}}%</b> {{espec}}  {{value}} 
+	    		 	
+	    		
+
+	    		<div class="percCol">
+	    		   {{perc}}% 
+	    		 </div>
+
+	    		 <div class="descCol">
+	    		 		{{espec}}  {{value}} 
+	    		 </div>
+	    		 	  
 	    		 </div>
 	    	{{/each}}
 
@@ -530,13 +654,23 @@
 	    </div>
 	    {{/if}}
 
-	    <div class="small-12 column">
-	        <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="genMap">Ver mapa de ubicación</div>
-	    </div>
 
-	    <div class="small-12 column">
-	       <div class="btnNaranja ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="navigate">Llévame</div>
+
+	      <div class="btnNaranja small-12 column ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="incidencia">Reportar incidencia</div> 
+
+	       <div class="vSpace"></div>
+
+	     <div class="small-12 column info_nSucursal">Califica al establecimento</div>
+	     <div   class="small-12 column">
+
+	     	{{#each stars:num}}
+				<div data-role="none" class="star" on-hover="hoverStar" on-click="selStar" id="star{{num}}">
+				</div>
+			{{/each}}
+
 	    </div> 
+
+
 </div>
 
 	     </div>
@@ -564,14 +698,49 @@
 			<div class="saveBtn small-12 column">
 			<div class="title">Envía tus comentarios</div>
 	        <div class="formLabel">Comentario:</div>
-            <textarea data-clear-btn="true"  style="margin-left:0px !important;" rows="8" name="textarea" id="comentario" data-mini="true"></textarea>
+            <textarea  data-clear-btn="true"  style="margin-left:7px height:100px; !important;" rows="8" name="textarea" id="comentario" data-mini="true"></textarea>
 
-            <div on-tap="sendComment" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Enviar</div>
+             <div on-tap="sendComment" class="btnNaranja  column ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Enviar Mensaje</div>
+             <div class="vSpace"></div>
+             <hr>
+              <div class="btnNaranja  column ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="dial">Marcar a Autotips 01-800</div>  
+ 
             </div>
+
+
             
-            <div class="saveBtn small-12 column">
-          		
-       		</div>
+            
+          
+</script>
+
+
+<!--  incidencia ============================================================-->
+<script id='incidenciaT' type='text/ractive'>
+    
+			<div class="saveBtn small-12 column">
+			<div class="title">Reportar incidencia</div>
+			<div class="formLabel">Tipo de incidencia:</div>
+			<select id="tipoI" class="comboC">
+				<option>No se respeto el descuento</option>
+				<option>El descuento es diferente al publicado</option>
+				<option>Datos del establecimiento no coinciden</option>
+				<option>Otro</option>
+			</select>
+
+			<div class="vSpace"></div>
+
+	        <div class="formLabel">Breve descripción de la incidencia:</div>
+            <textarea data-clear-btn="true"  style="margin-left:0px !important;" rows="8" name="textarea" id="comIncidencia" data-mini="true"></textarea>
+
+
+            <div on-tap="sendIncidencia" class="btnNaranja  column ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Enviar mensaje</div> 
+
+
+           
+
+            </div>
+           
+            <div class="btnNaranja  column ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" on-tap="dial">Marcar a Autotips 01-800</div> 
 
 </script>
 
@@ -582,18 +751,23 @@
 
     <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
 
-            <h2>Usuario</h2>
-            <label for="name">Nombre de usuario:</label>
-            <h3>{{userData.username}}</h3>
-
             <label for="name">ID tarjeta:</label>
-            <h3>{{userData.idCard}}</h3>
+            <h3>{{userData.cardHypen}}</h3>
 
             <label for="name">Días restantes:</label>
             <h3>{{restantes(userData.end)}}</h3>
-            
+
+            <div id="cardRep">
+            <div class="cardName">{{userData.nombre}}</div>
+             <div class="cardId">{{userData.cardHypen}}</div>
+            <div class="cardVenc">{{userData.vencimiento}}</div>
+            <div class="cardCCV">{{userData.ccv}}</div>
+
+            </div>
             
             <button on-tap="cerrarsesion" class="ui-btn" >cerrar sesión</button>
+
+            <div class="version">versión 1.35</div>
 
     </div><!-- /panel -->
 

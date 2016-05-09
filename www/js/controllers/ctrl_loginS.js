@@ -50,15 +50,17 @@ var ctrl_loginS = {
             }).done(function( response ) {
               	jqm.hideLoader();
             	if(response!=null){
-            		console.log(response)
+            		userdata = response
             		window.localStorage.setItem("username", response.username);
             		window.localStorage.setItem("nombre", response.nombre);
             		window.localStorage.setItem("idCard", response.idCard);
-            		window.localStorage.setItem("end", response.end);
+            		window.localStorage.setItem("end", parseInt(response.end));
+            		window.localStorage.setItem("password", response.password);
+            		window.localStorage.setItem("userId", response._id);
+            		window.localStorage.setItem("ccv", response.ccv);
     				
             		ctrl_loginS.changePage();	
             	}else{
-            		console.log("que onda")
             		jqm.popup( {text:"Usuario y/o contraseña inválido",title:"Error."})
             	}
             	

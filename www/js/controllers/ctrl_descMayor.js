@@ -12,7 +12,7 @@ var ctrl_descMayor = {
 		jqm.showLoader("Generando...");
 	},
 	getLoc : function(){
-		navigator.geolocation.getCurrentPosition(ctrl_descMayor.getQuery,null); 
+		getLastKnownLocation(ctrl_descMayor.getQuery,ctrl_descMayor.onLocationError,false); 
 	},
 	getQuery : function(spec){
 		$.ajax({
@@ -26,6 +26,9 @@ var ctrl_descMayor = {
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
     	});   
+	},
+	onLocationError : function(err){
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
 	},
 	render : function(data){
 
@@ -61,15 +64,15 @@ var ctrl_descMayor = {
 
 		//data.sort(byProperty('dist'))
 
-		var dItems = { items : data, distVis:true}
+		var dItems = { items : data, distVis:true, img 		: "noimage.png",}
 
 		console.log(dItems)
 
-		var mainObj = template.render('#listMayorT',ctrl_descMayor.pageDiv,dItems)
+		ctrl_descMayor.mainObj = template.render('#listMayorT',ctrl_descMayor.pageDiv,dItems)
 		$(ctrl_descMayor.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
-		mainObj.on('getSuc',function(event){
+		ctrl_descMayor.mainObj.on('getSuc',function(event){
 			console.log(event.context._id +"MAMAMIA")
 			paramsSuc = { data : event.context }
 			$.mobile.changePage( "#infoSuc");
@@ -77,9 +80,30 @@ var ctrl_descMayor = {
 
 		 myScroll = new IScroll('#wrapperListDesc',{  
 		 	click:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
+
+		 ctrl_descMayor.mainObj.on('openLink',function(event){
+				window.open(event.context.urlLink, '_system')
+			});
+
+		 ctrl_descMayor.getBanner();
 		
 
 	},
+	getBanner : function(){
+		$.ajax({
+          type: 'POST',
+            data: {},
+            url: serverURL + '/api/getBanner',
+            crossDomain: true,
+            dataType: 'JSON'
+             }).done(function( response ) {
+             	ctrl_descMayor.mainObj.set('img',response.imagenes[0].url)
+             	ctrl_descMayor.mainObj.set('urlLink',response.imagenes[0].urlLink)
+              	
+          }).fail(function( response ) {
+              console.log("banner error ")  
+    	});   
+	}
 }
 
 

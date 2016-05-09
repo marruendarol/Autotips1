@@ -79,9 +79,15 @@ var utils = {
 /* ----------------------------------------------------------------------
 *   TIME UTILS
 *  --------------------------------------------------------------------*/
-    generateTS: function() {
-    return Math.round(+new Date() / 1000);
+   generateTS: function(date) {
+        if(date){
+            return Math.round(date / 1000);        
+        }else{
+            return Math.round(+new Date() / 1000);
+        }
+    
     },
+
 
     timeConverter : function(UNIX_timestamp) {
     var a = new Date(UNIX_timestamp * 1000);
@@ -94,6 +100,22 @@ var utils = {
     var min = utils.pad(a.getMinutes(),2);
     var sec = utils.pad(a.getSeconds(),2);
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+    return time;
+    } else { return ""}
+    
+    },
+
+    dateConv : function(UNIX_timestamp) {
+    var a = new Date(parseInt(UNIX_timestamp) * 1000);
+    if(Object.prototype.toString.call(a)  === '[object Date]' && isFinite(a)){
+    var months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = utils.pad(a.getHours(),2);
+    var min = utils.pad(a.getMinutes(),2);
+    var sec = utils.pad(a.getSeconds(),2);
+    var time = date + '/' + month + '/' + year;
     return time;
     } else { return ""}
     

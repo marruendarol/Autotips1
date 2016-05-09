@@ -27,6 +27,11 @@ var ctrl_contacto = {
 
 		$(ctrl_contacto.pageDiv).trigger("create");
 
+		mainObj.on('dial',function(e){
+			window.open('tel:018002772700', '_system')
+			
+		})
+
 	},
 	sendMsg : function(){
 		jqm.showLoader("Enviando mensaje...")
