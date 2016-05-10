@@ -73,7 +73,10 @@ var ctrl_home = {
 			});
 
 			ctrl_home.mainObj.on('openLink',function(event){
+				console.log(event.context)
+				ctrl_home.updateClick(event.context.bannerId)
 				window.open(event.context.urlLink, '_system')
+				//navigator.app.loadUrl(event.context.urlLink,{openExternal:true})
 			});
 
 		}
@@ -99,6 +102,19 @@ var ctrl_home = {
 	},onLocationError : function(){
 		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional.")
 	},
+	updateClick : function(bannerId){
+		$.ajax({
+          type: 'POST',
+            data: {bannerId:bannerId},
+            url: serverURL + '/api/updateClick',
+            crossDomain: true,
+            dataType: 'JSON'
+             }).done(function( response ) {
+              	console.log(response)
+          }).fail(function( response ) {
+              console.log("banner error ")  
+    	});   
+	},
 	getBanner : function(){
 		$.ajax({
           type: 'POST',
@@ -109,7 +125,8 @@ var ctrl_home = {
              }).done(function( response ) {
              	ctrl_home.mainObj.set('img',response.imagenes[0].url)
              	ctrl_home.mainObj.set('urlLink',response.imagenes[0].urlLink)
-              	
+             	ctrl_home.mainObj.set('bannerId',response._id)
+              	console.log(response)
           }).fail(function( response ) {
               console.log("banner error ")  
     	});   
