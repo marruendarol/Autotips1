@@ -33,7 +33,7 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,false); 
+		getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,true); 
 	},
 	geoRet : function(location){
 		dbC.query("/api/byGeo","POST",{lat:location.coords.latitude,lng:location.coords.longitude},ctrl_list.render)
