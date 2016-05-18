@@ -29,10 +29,25 @@ var ctrl_registro = {
 
 		$(ctrl_registro.pageDiv).trigger("create");
 
+			$("#movil").mask("99-9999-9999");
+
 		  	 myScroll = new IScroll('#wrapperReg',{  
-		 	click:true })
+		 	click:true,
+		 	useTransform: true,
+		 	onBeforeScrollStart: function (e) {
+            var target = e.target;
+            while (target.nodeType != 1) {
+                target = target.parentNode;
+            }
+            if (target.tagName != 'SELECT' && target.tagName != 'INPUT'
+                && target.tagName != 'TEXTAREA'
+            ) {
+                e.preventDefault();
+            }
+        }
+		 	 })
  	 
-		  	 $("#movil").mask("99-9999-9999");
+		  	 
 
 	},
 	validateCard : function(idCard,ccv){
