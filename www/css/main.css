@@ -89,10 +89,15 @@ li{
 	color: #fff !important;
 }
 
+input{
+	-webkit-user-select: none;
+}
+
 .ui-input-text, .ui-input-search {
     margin: .7em 0;
     /* border-width: 1px; */
     /* border-style: solid; */
+    -webkit-user-select: none;
     margin-left: 10px !important;
     margin-right: 10px !important;
 }
