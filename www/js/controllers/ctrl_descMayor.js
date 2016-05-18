@@ -64,7 +64,7 @@ var ctrl_descMayor = {
 
 		//data.sort(byProperty('dist'))
 
-		var dItems = { items : data, distVis:true, img 		: "noimage.png",}
+		var dItems = { items : data, distVis:true, img 		: "noimage.png"}
 
 		console.log(dItems)
 
