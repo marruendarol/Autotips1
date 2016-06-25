@@ -33,12 +33,17 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,true); 
+		console.log("intentando posicion")
+		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,ctrl_list.onLocationError,{enableHighAccuracy: true,
+  timeout: 5000})
+
+		//getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,true); 
 	},
 	geoRet : function(location){
 		dbC.query("/api/byGeo","POST",{lat:location.coords.latitude,lng:location.coords.longitude},ctrl_list.render)
 	},
 	onLocationError : function(err){
+		console.log("error de geo pos ")
 		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
 	},
 	//------------------------------------------ESPECIALIDAD

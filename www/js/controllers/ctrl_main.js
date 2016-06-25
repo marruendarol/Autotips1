@@ -67,13 +67,12 @@ function initApp(){
 function getLastKnownLocation(callback,errorF,refresh){
 
   var options = {
-  enableHighAccuracy: false,
-  timeout: 5000,
-  maximumAge: 0
+  enableHighAccuracy: true,
+  timeout: 5000
 };
 
   var errorF = errorF
-  if(errorF==undefined) { errorF = function(){}}
+  if(errorF==undefined) { errorF = function(err){ console.log(err)}}
 
     if(typeof localStorage.lastKnownPosition == "undefined" || refresh){
         console.log("getttging new position")
@@ -87,7 +86,7 @@ function getLastKnownLocation(callback,errorF,refresh){
            }
               localStorage.lastKnownPosition = JSON.stringify(objPos);
               callback(position); 
-          },errorF);
+          },errorF,options);
     }else{
         callback(JSON.parse(localStorage.lastKnownPosition)); 
     } 
