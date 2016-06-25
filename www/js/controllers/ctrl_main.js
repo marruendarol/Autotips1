@@ -75,13 +75,11 @@ function getLastKnownLocation(callback,errorF,refresh){
   var errorF = errorF
   if(errorF==undefined) { errorF = function(){}}
 
-    console.log(typeof localStorage.lastKnownPosition)
-  console.log(localStorage.lastKnownPosition)
-    console.log("COOKIE LOC")
-
     if(typeof localStorage.lastKnownPosition == "undefined" || refresh){
+        console.log("getttging new position")
           navigator.geolocation.getCurrentPosition(
           function(position){
+            console.log(position)
            var objPos = {
               coords : {
               latitude : position.coords.latitude,

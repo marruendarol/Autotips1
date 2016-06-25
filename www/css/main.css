@@ -89,15 +89,11 @@ li{
 	color: #fff !important;
 }
 
-input{
-	-webkit-user-select: none;
-}
-
 .ui-input-text, .ui-input-search {
     margin: .7em 0;
     /* border-width: 1px; */
     /* border-style: solid; */
-    -webkit-user-select: none;
+    
     margin-left: 10px !important;
     margin-right: 10px !important;
 }
@@ -455,10 +451,10 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 #wrapperReg {
     z-index: 0;
-    top: 66px;
+    /* top: 66px; */
     bottom: 0px;
     width: 100%;
-   margin-bottom: 60px;
+    margin-bottom: 60px;
     position: fixed;
 }
 
