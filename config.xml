@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.nucleo.autotips" version="1.6.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.nucleo.autotips" version="1.6.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Autotips</name>
     <description>
        Autotips
@@ -32,9 +32,9 @@
     <gap:plugin name="cordova-plugin-device" source="npm" />
     <gap:plugin name="cordova-plugin-network-information" source="npm" />
     <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
-    <gap:plugin name="cordova-plugin-geolocation" source="npm" version="1.0.0" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
-    <gap:plugin name="cordova-plugin-inappbrowser" source="npm" version="1.4.0" />
+    <gap:plugin name="cordova-plugin-geolocation" source="npm" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm"  />
+    <gap:plugin name="cordova-plugin-inappbrowser" source="npm"  />
 
 
     <feature name="Geolocation">
@@ -50,8 +50,6 @@
 
     <feature name="http://api.phonegap.com/1.0/geolocation" />
     <feature name="http://api.phonegap.com/1.0/device" />
-    <feature name="http://api.phonegap.com/1.0/geolocation" />
-    <feature name="http://api.phonegap.com/1.0/notification" />
 
     <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <true/>

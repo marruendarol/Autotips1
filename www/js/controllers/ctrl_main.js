@@ -65,51 +65,8 @@ function initApp(){
 
 
 function getLastKnownLocation(callback,errorF,refresh){
-
-  var options = {
-  enableHighAccuracy: true,
-  timeout: 5000
-};
-
-  var errorF = errorF
-  if(errorF==undefined) { errorF = function(err){ console.log(err)}}
-
-    
-          navigator.geolocation.getCurrentPosition(
-          function(position){
-            console.log(position)
-           var objPos = {
-              coords : {
-              latitude : position.coords.latitude,
-              longitude : position.coords.longitude }
-           }
-              localStorage.lastKnownPosition = JSON.stringify(objPos);
-              callback(position); 
-          },errorF,options);
-    
-
-    /*
-     if(typeof localStorage.lastKnownPosition == "undefined" || refresh){
-        console.log("getttging new position")
-          navigator.geolocation.getCurrentPosition(
-          function(position){
-            console.log(position)
-           var objPos = {
-              coords : {
-              latitude : position.coords.latitude,
-              longitude : position.coords.longitude }
-           }
-              localStorage.lastKnownPosition = JSON.stringify(objPos);
-              callback(position); 
-          },errorF,options);
-    }else{
-        callback(JSON.parse(localStorage.lastKnownPosition)); 
-    } */
+      navigator.geolocation.getCurrentPosition(callback,errorF,{ enableHighAccuracy: true,timeout: 5000, maxAge: 30000 });
 }
-
-//keytool -genkey -v -keystore expoina.keystore -alias expoina -keyalg RSA -keysize 2048 -validity 10000
-//pabloneruda14
-
 
 function openDeviceBrowser (externalLinkToOpen){  window.open(externalLinkToOpen, '_system', 'location=no');}
 
