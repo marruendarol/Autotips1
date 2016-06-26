@@ -13,7 +13,7 @@ var ctrl_list = {
 		console.log('LOGER')
 		ctrl_list.data = data;
 		$(ctrl_list.pageDiv).empty();
-		jqm.showLoader("buscando...");
+		
 
 		console.log(paramsPage)
 
@@ -33,9 +33,8 @@ var ctrl_list = {
 	},
 	//-------------------------------------------CERCA
 	getGeo : function(){
-		console.log("intentando posicion")
-		navigator.geolocation.getCurrentPosition(ctrl_list.geoRet,ctrl_list.onLocationError,{enableHighAccuracy: true,
-  timeout: 5000})
+		jqm.showLoader("buscando ubicación...");
+		getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,true)
 
 		//getLastKnownLocation(ctrl_list.geoRet,ctrl_list.onLocationError,true); 
 	},
@@ -48,15 +47,17 @@ var ctrl_list = {
 	},
 	//------------------------------------------ESPECIALIDAD
 	byEspec : function(id){
+		jqm.showLoader("buscando ubicación...");
 		dbC.query("/api/byEspec","POST",{id:id},ctrl_list.render)
 	},
 	//------------------------------------------LISTADO DE DESCUENTOS
 	byListaDesc : function(specV){
-
+		jqm.showLoader("buscando...");
 		spec = specV;
-		getLastKnownLocation(ctrl_list.listaDescLoc,ctrl_list.onLocationError,false); 
+		getLastKnownLocation(ctrl_list.listaDescLoc,ctrl_list.onLocationError,true); 
 	},
 	listaDescLoc : function(location){
+		jqm.showLoader("buscando...");
 		console.log(spec+"SPECVVV")
 		dbC.query("/api/byListaEspecGeo","POST",
 			{lat:location.coords.latitude,
@@ -66,9 +67,11 @@ var ctrl_list = {
 	},
 	//------------------------------------------MAYOR PORCENTAJE GEO
 	byPercDesc : function(){
-		getLastKnownLocation(ctrl_list.PercDescLoc,ctrl_list.onLocationError,false); 
+		jqm.showLoader("buscando...");
+		getLastKnownLocation(ctrl_list.PercDescLoc,ctrl_list.onLocationError,true); 
 	},
 	PercDescLoc : function(location){
+		jqm.showLoader("buscando...");
 		dbC.query("/api/byListaPercGeo","POST",
 			{lat:location.coords.latitude,
 			lng:location.coords.longitude

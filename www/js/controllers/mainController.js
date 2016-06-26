@@ -45,24 +45,29 @@ var mainC = {
 	}
 }
 
-var jqm = {
-	showLoader : function(text){
-		console.log("show loader")
-		$.mobile.loading( "show", {
+function showLoading( on, text ) {  // on: true|false
+    setTimeout( function() {
+      if ( on )
+        $.mobile.loading( "show",  {
 		  text: text || "",
 		  textVisible: true,
 		  theme: "z",
 		  html: ""
-		});
+		} );
+      else {
+        //$.mobile.loading( "hide" );  // does not seem to work (e.g. using with GWT and jQM 1.4.3)
+        $.mobile.loading( "hide")
+        $('.ui-loader').remove();  // removes the loader div from the body
+      }       
+    }, 1);
+}
+
+var jqm = {
+	showLoader : function(text){
+		showLoading(true,text)
 	},
 	hideLoader : function(){
-		console.log("hide loader")
-		$.mobile.loading( "hide", {
-		  text: "",
-		  textVisible: true,
-		  theme: "z",
-		  html: ""
-		});
+		showLoading(false)
 	},
 	popup : function(params){
 		$('#pop_Title').html(params.title)
