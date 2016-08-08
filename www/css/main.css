@@ -5,6 +5,9 @@
 	-webkit-box-shadow: none;
 }
 
+h2{
+	padding-left: 10px !important;
+}
 
 #galCont{
 	position: fixed;

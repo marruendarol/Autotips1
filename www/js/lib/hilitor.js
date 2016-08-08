@@ -1,13 +1,22 @@
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
 // Please acknowledge use of this code by including this header.
 
+<<<<<<< HEAD
 function Hilitor2(id, tag)
+=======
+function Hilitor(id, tag)
+>>>>>>> origin/master
 {
 
   var targetNode = document.getElementById(id) || document.body;
   var hiliteTag = tag || "EM";
+<<<<<<< HEAD
   var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM)$");
   var colors = ["#fff", "#a0ffff", "#9f9", "#f99", "#f6f"];
+=======
+  var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM|SPAN)$");
+  var colors = ["#ff6", "#a0ffff", "#9f9", "#f99", "#f6f"];
+>>>>>>> origin/master
   var wordColor = [];
   var colorIdx = 0;
   var matchRegex = "";
@@ -34,6 +43,7 @@ function Hilitor2(id, tag)
     }
   };
 
+<<<<<<< HEAD
   function addAccents(input)
   {
     retval = input;
@@ -67,6 +77,16 @@ function Hilitor2(id, tag)
       var re = "(" + input + ")";
       if(!this.openLeft) re = "(?:^|[\\b\\s])" + re;
       if(!this.openRight) re = re + "(?:[\\b\\s]|$)";
+=======
+  this.setRegex = function(input)
+  {
+    input = input.replace(/^[^\w]+|[^\w]+$/g, "").replace(/[^\w'-]+/g, "|");
+    input = input.replace(/^\||\|$/g, "");
+    if(input) {
+      var re = "(" + input + ")";
+      if(!this.openLeft) re = "\\b" + re;
+      if(!this.openRight) re = re + "\\b";
+>>>>>>> origin/master
       matchRegex = new RegExp(re, "i");
       return true;
     }
@@ -76,7 +96,12 @@ function Hilitor2(id, tag)
   this.getRegex = function()
   {
     var retval = matchRegex.toString();
+<<<<<<< HEAD
     retval = retval.replace(/(^\/|\(\?:[^\)]+\)|\/i$)/g, "");
+=======
+    retval = retval.replace(/(^\/(\\b)?|\(|\)|(\\b)?\/i$)/g, "");
+    retval = retval.replace(/\|/g, " ");
+>>>>>>> origin/master
     return retval;
   };
 
@@ -93,6 +118,7 @@ function Hilitor2(id, tag)
     }
     if(node.nodeType == 3) { // NODE_TEXT
       if((nv = node.nodeValue) && (regs = matchRegex.exec(nv))) {
+<<<<<<< HEAD
         if(!wordColor[regs[1].toLowerCase()]) {
           wordColor[regs[1].toLowerCase()] = colors[colorIdx++ % colors.length];
         }
@@ -110,6 +136,20 @@ function Hilitor2(id, tag)
           after = node.splitText(regs.index);
         }
         after.nodeValue = after.nodeValue.substring(regs[1].length);
+=======
+        if(!wordColor[regs[0].toLowerCase()]) {
+          wordColor[regs[0].toLowerCase()] = colors[colorIdx++ % colors.length];
+        }
+
+        var match = document.createElement(hiliteTag);
+        match.appendChild(document.createTextNode(regs[0]));
+        match.style.backgroundColor = wordColor[regs[0].toLowerCase()];
+        match.style.fontStyle = "inherit";
+        match.style.color = "#000";
+
+        var after = node.splitText(regs.index);
+        after.nodeValue = after.nodeValue.substring(regs[0].length);
+>>>>>>> origin/master
         node.parentNode.insertBefore(match, after);
       }
     };
@@ -130,13 +170,18 @@ function Hilitor2(id, tag)
   this.apply = function(input)
   {
     this.remove();
+<<<<<<< HEAD
     if(input === undefined || !(input = input.replace(/(^\s+|\s+$)/g, ""))) return;
     input = convertCharStr2jEsc(input);
+=======
+    if(input === undefined || !input) return;
+>>>>>>> origin/master
     if(this.setRegex(input)) {
       this.hiliteWords(targetNode);
     }
   };
 
+<<<<<<< HEAD
   // added by Yanosh Kunsh to include utf-8 string comparison
   function dec2hex4(textString)
   {
@@ -230,3 +275,6 @@ function Hilitor2(id, tag)
   }
 
 }
+=======
+}
+>>>>>>> origin/master
