@@ -7,16 +7,12 @@ var ctrl_busqueda = {
 	data : {},
 	pageDiv : "#busquedaP",
 	init : function(data,template){
-<<<<<<< HEAD
 		
 
-=======
->>>>>>> origin/master
 		ctrl_busqueda.data = data;
 		
 		jqm.showLoader("Generando...");
 		ctrl_busqueda.render();
-<<<<<<< HEAD
 	
 		if(typeof paramsSuc != 'undefined'){
 			ctrl_busqueda.getQuery(paramsSuc.txt)
@@ -30,18 +26,10 @@ var ctrl_busqueda = {
 		$.ajax({
           type: 'POST',
             data: {txt:txt},
-=======
-	},
-	getQuery : function(txt){
-		$.ajax({
-          type: 'POST',
-            data: {spec:spec},
->>>>>>> origin/master
             url: serverURL + '/api/busqueda',
             crossDomain: true,
             dataType: 'JSON'
              }).done(function( response ) {
-<<<<<<< HEAD
             console.log(response)
              for (var i = 0; i < response.length; i++) {
 			
@@ -69,16 +57,13 @@ var ctrl_busqueda = {
 			myScroll.refresh();
              
 
-            var myHilitor = new Hilitor2(".nSucursal");
+         /*   var myHilitor = new Hilitor2(".nSucursal");
              myHilitor.setMatchType("open");
  			 myHilitor.remove();
- 			 myHilitor.apply(txt);
+ 			 myHilitor.apply(txt);*/
                console.log(txt)
 
 
-=======
-             ctrl_busqueda.render(response);
->>>>>>> origin/master
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
     	});   
@@ -88,7 +73,6 @@ var ctrl_busqueda = {
 		console.log(data)
 		jqm.hideLoader();
 		
-<<<<<<< HEAD
 		var data = {
 			data: [],
 			empty : false,
@@ -96,14 +80,11 @@ var ctrl_busqueda = {
 		}
 
 		
-=======
->>>>>>> origin/master
 		ctrl_busqueda.mainObj = template.render('#busquedaT',ctrl_busqueda.pageDiv,{})
 		$(ctrl_busqueda.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 		ctrl_busqueda.mainObj.on('getSearch',function(event){
-<<<<<<< HEAD
 			ctrl_busqueda.getQuery(event.context.busquedaStr)
 		})
 
@@ -117,16 +98,6 @@ var ctrl_busqueda = {
  myScroll = new IScroll('#wrapperBusqueda',{  
 		 	click:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
 		
-=======
-			console.log(event.context._id +"MAMAMIA")
-			paramsSuc = { data : event.context }
-			$.mobile.changePage( "#infoSuc");
-		})
-
-		 myScroll = new IScroll('#wrapperListDesc',{  
-		 	click:true,scrollbars:scrolls,mouseWheel:true,interactiveScrollbars: true })
-
->>>>>>> origin/master
 		 ctrl_busqueda.mainObj.on('openLink',function(event){
 				window.open(event.context.urlLink, '_system')
 			});

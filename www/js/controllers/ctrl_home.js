@@ -45,7 +45,7 @@ var ctrl_home = {
 
 				var width = window.innerWidth;
 				var height = window.innerHeight;
-				$('.listMain').css({'min-height':height /3.2})
+				$('.listMain').css({'min-height':height /3.3})
 
 
 
