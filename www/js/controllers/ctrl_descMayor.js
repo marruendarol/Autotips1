@@ -2,36 +2,40 @@
 *	MAIN SCREEN CONTROLLER
 ***********************************************************/
 
+distVis = false;
 
 var ctrl_descMayor = {
 	data : {},
-	pageDiv : "#listMayorP",
+	pageDiv : "#descuentosP",
 	init : function(data,template){
 		ctrl_descMayor.data = data;
-		ctrl_descMayor.getQuery(paramsPage.id);
-		jqm.showLoader("Generando...");
+		
+		jqm.showLoader("Buscando posición...");
+		ctrl_descMayor.getLoc();
 	},
 	getLoc : function(){
-		getLastKnownLocation(ctrl_descMayor.getQuery,ctrl_descMayor.onLocationError,false); 
+		getLastKnownLocation(ctrl_descMayor.getQuery,ctrl_descMayor.onLocationError,true); 
 	},
-	getQuery : function(spec){
+	getQuery : function(position){
+		jqm.showLoader("Buscando sucursales...");
 		$.ajax({
           type: 'POST',
-            data: {spec:spec},
-            url: serverURL + '/api/byMayorDesc',
+            data: {lat:position.coords.latitude,lng:position.coords.longitude},
+            url: serverURL + '/api/byGeoDesc',
             crossDomain: true,
             dataType: 'JSON'
              }).done(function( response ) {
              ctrl_descMayor.render(response);
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
-    	});   
+    	});    
 	},
 	onLocationError : function(err){
 		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
 	},
 	render : function(data){
 
+		
 		console.log(data)
 		jqm.hideLoader();
 		$(ctrl_descMayor.pageDiv).empty();

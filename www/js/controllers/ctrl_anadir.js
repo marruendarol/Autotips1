@@ -4,7 +4,7 @@
 var ctrl_anadir = {
 	data : {},
 	pageDiv : "#insertCardP",
-	card : {},
+
 	life : "",
 	init : function(data,template){
 		ctrl_anadir.data = data;
@@ -20,7 +20,7 @@ var ctrl_anadir = {
 
 		mainObj.on('validate',function(){
 			jqm.showLoader("verificando tarjeta...");
-			ctrl_anadir.validateCard($("#cardA").val(),$("#ccvA").val());
+			ctrl_anadir.validateCard($("#cardA").val());
 		});	
 
 		mainObj.on('cancelar',function(){
@@ -33,61 +33,30 @@ var ctrl_anadir = {
  	 
 
 	},
-	validateCard : function(idCard,ccv){
-		ctrl_anadir.card = idCard;
-		ctrl_anadir.ccv = ccv;
-		var params = {idCard:idCard,ccv : ccv};
-		dbC.query("/api/checkCard","POST",params,ctrl_anadir.validReturn)
-	},
-	tsPlus : function(dias){
-		var today = new Date();
-		var tomorrow = new Date(today);
-			tomorrow.setDate(today.getDate()+parseInt(dias));
-		console.log(tomorrow)
-		console.log(dias)
-		console.log(utils.generateTS(tomorrow))
-		return utils.generateTS(tomorrow);
+	validateCard : function(code,ccv){
+		var params = {code:code,username:window.localStorage.getItem("username")};
+		dbC.query("/api/addCode","POST",params,ctrl_anadir.validReturn)
 	},
 	validReturn : function(response){
 
 		jqm.hideLoader();
 
-		if(response.length==1 && response[0].estatus=="0" ){ 
-			ctrl_anadir.updateCard(response[0]);	
-		}
 
-		if(response.length==0){
-			jqm.popup( {text:"El ID de la tarjeta o el CCV no es válido.",title:"Error."})
+
+		if(response.res==0){
+			jqm.popup( {text:"El código no es válido.",title:"Error."})
 
 		}
 		
-		if(response.length==1 && response[0].estatus=="1"){
-			jqm.popup( {text:"Esa ya ha sido registrada. verifique de nuevo o pongase en contacto con su proveedor",title:"Error."})	
+		if(response.res==1){
+			jqm.popup( {text:"Ese código ya ha sido registrado.",title:"Error."})	
 		}
-	},
-	updateCard:function(card){
-		jqm.showLoader("actualizando...");
-		// Client Obj	
-		console.log(card.dias)
-		console.log("DASI CARD")
 
-		var params = {}
-		params.end  = ctrl_anadir.tsPlus(card.dias);
-		params.idCard = ctrl_anadir.card 
-		params.ccv = ctrl_anadir.ccv 
-		params.userId = window.localStorage.getItem("userId");
-		params.card = card;
-		console.log(params)
-		console.log("info de update")
-		dbC.query("/api/updateUserMobile","POST",params,ctrl_anadir.updateCard_Return)
+		if(response.res==2){
+			
+			ctrl_loginS.checkLogin({username:window.localStorage.getItem("username"),password:window.localStorage.getItem("password")})
+			//jqm.popup( {text:"Codigo actualizado éxito.",title:"Actualizado."})	
+		}
+		
 	},
-	updateCard_Return : function(data){
-		var params = {idCard:ctrl_anadir.card, username : window.localStorage.getItem("username") }
-		dbC.query("/api/updateCard","POST",params,ctrl_anadir.updateCardCardRet)	
-	},
-	updateCardCardRet : function(){
-		console.log(ctrl_anadir.username)
-		console.log(ctrl_anadir.pass)
-		ctrl_loginS.checkLogin({username:window.localStorage.getItem("username"),password:window.localStorage.getItem("password")})
-	}
 }

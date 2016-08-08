@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel='stylesheet' href='css/jquery.mobile.simultaneous-transitions-replace.css'/>
 
+
 <!-- JS -->
 <script src="js/lib/iscroll.js"></script>
 <script src="cordova.js"></script>
@@ -23,7 +24,7 @@
 <script src="js/lib/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/lib/jquery.animate-colors-min.js"></script>
 
-
+<link rel="stylesheet" href="js/photoswipe/default-skin/default-skin.css"> 
 <script src="js/lib/foundation/foundation.js"></script>
 <script src="js/lib/ractive.js"></script>
 
@@ -33,6 +34,7 @@
 <script src="js/lib/ractive-events-hover.js"></script>
 <script src="js/lib/tappy.js"></script>
 <script src="js/lib/jquery.maskedinput-1.4.min.js"></script>
+<script src="js/lib/hilitor.js"></script>
 
 <script src='js/utilities/utilities.js'></script>
 
@@ -271,6 +273,25 @@
 </div>
 
 
+
+<!-- BUSQUEDA ********************************************************************* -->
+<div data-role="page" id="busqueda">
+     <div data-role="header" data-position="fixed">
+      <div class="small-2 column rPad">
+            <div class="bButton"  data-direction="reverse"><img src="img/backArrow.png"></div>
+        </div>
+         <div class="small-8 column rPad">
+              <div id="titleList" class="titleList">Busqueda</div>
+         </div>
+         <div class="small-2 column rPad">
+            <div class="hButton"  data-direction="reverse"><img src="img/home.png"></div>
+        </div>   
+    </div>
+     <div role="main" id="busquedaP" class=""></div><!-- /content -->
+
+</div>
+
+
 <!-- DESCUENTOS POR PORCENTAJE ********************************************************************* -->
 <div data-role="page" id="porcDesc">
      <div data-role="header" data-position="fixed">
@@ -411,7 +432,7 @@
 
 <div data-role="popup" data-transition="pop" id="pop1" data-overlay-theme="b" data-theme="a" data-dismissible="false">
     <div data-role="header" data-theme="a" class="ui-corner-top ui-header ui-bar-a" role="banner">
-                <h1 id="pop_Title" class="ui-title" role="heading" aria-level="1"></h1>
+                <h1 id="pop_Title" class="loaderT ui-title" role="heading" aria-level="1"></h1>
             </div>
     <div role="main" class="ui-content">
     <p id="pop_text"></p>

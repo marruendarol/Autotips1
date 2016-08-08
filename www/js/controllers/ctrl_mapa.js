@@ -13,8 +13,18 @@ var ctrl_mapa = {
 
 		var data  = {}
 
+
+
 		var mainObj = template.render('#mapaT',ctrl_mapa.pageDiv,data)
 		$(ctrl_mapa.pageDiv).trigger("create");
+
+				var width = window.innerWidth;
+var height = window.innerHeight;
+
+var yourEl = document.getElementById('ubica');
+yourEl.style.height = height-100 + 'px';
+yourEl.style.width =  width- 40+ 'px';
+
 
 		 ctrl_mapa.routeInit()
 

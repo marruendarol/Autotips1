@@ -14,7 +14,7 @@ var ctrl_zona = {
 		jqm.showLoader("Generando...");
 	},
 	getEstados : function(){
-		if(ctrl_zona.response==null){
+		
 			$.ajax({
           type: 'GET',
             data: {},
@@ -27,10 +27,7 @@ var ctrl_zona = {
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
     	});   
-      } else{
-      
-      	ctrl_zona.render(ctrl_zona.response);
-      }
+     
 		
 	},
 	render : function(data){

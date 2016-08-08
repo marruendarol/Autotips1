@@ -20,7 +20,8 @@ var ctrl_registro = {
 
 		mainObj.on('validate',function(){
 			jqm.showLoader("verificando tarjeta...");
-			ctrl_registro.validateCard($("#card").val(),$("#ccv").val());
+			ctrl_registro.create();
+			//ctrl_registro.validateCard($("#card").val(),$("#ccv").val());
 		});	
 
 		mainObj.on('cancelar',function(){
@@ -93,9 +94,8 @@ var ctrl_registro = {
 		dataObj.password	 	= $("#pass").val(); 
 		dataObj.movil	     	= $("#movil").val(); 
 		dataObj.cpass		  	= $("#cpass").val(); 
-		dataObj.idcard		  	= $("#idcard").val(); 
+		dataObj.code		  	= $("#code").val(); 
 		dataObj.origen		  	= $("#origen").val(); 
-
 
 		ctrl_registro.username = dataObj.username;
 		ctrl_registro.password = dataObj.password;
@@ -121,27 +121,32 @@ var ctrl_registro = {
 		var item = {	ts 			: utils.generateTS(),
 						id 			: utils.generateUUID()};
 
-		console.log(ctrl_registro.card)
-		console.log("DATOS PARA CREAR ")
-
 		var params = {}
 		params.dataB = ctrl_registro.getDataObj(); 
 		params.dataB.clients = [item];
 		params.dataB.userID = "internet"
 		params.dataB.estRCD = 1;
-		params.dataB.end  = ctrl_registro.life;
-		params.dataB.idCard = ctrl_registro.card
-		params.dataB.ccv = ctrl_registro.ccv 
-		params.dataB.sourceCard = ctrl_registro.card; 
 		dbC.query("/api/createUserMobile","POST",params,ctrl_registro.create_Return)
 	},
 	create_Return : function(data){
-		var params = {idCard:ctrl_registro.card, username : $("#email").val() }
-		dbC.query("/api/updateCard","POST",params,ctrl_registro.updateCardRet)	
+		jqm.hideLoader();
+		switch (data.res){
+			case 4 : jqm.popup( {text:"Ese correo ya ha sido previamente registrado.",title:"Error."});break;
+			case 0 : jqm.popup( {text:"El código no es válido.",title:"Error."});break;
+			case 1 : jqm.popup( {text:"El código ya ha sido usado.",title:"Error."});break;
+			case 2 : jqm.popup( {text:"Usuario creado con éxito.",title:"Error."});
+					ctrl_loginS.checkLogin({username:ctrl_registro.username,password:ctrl_registro.password});
+					break;
+		}
+		
+		//	var params = {idCard:ctrl_registro.card, username : $("#email").val() }
+		//dbC.query("/api/updateCard","POST",params,ctrl_registro.updateCardRet)	
+		//}
+		
 	},
 	updateCardRet : function(){
 		console.log(ctrl_registro.username)
 		console.log(ctrl_registro.pass)
-		ctrl_loginS.checkLogin({username:ctrl_registro.username,password:ctrl_registro.password})
+		
 	}
 }

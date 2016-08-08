@@ -17,7 +17,13 @@ var ctrl_descuento = {
 		$(ctrl_descuento.pageDiv).empty();
 
 		var data  = {}
+		paramsPage = {  type: "listDesc" }
+			descVar = "mayor";
+			//$.mobile.changePage("#descMayor");
+			$.mobile.changePage("#especialidadR");
 
+		
+/*
 		var mainObj = template.render('#descuentoT',ctrl_descuento.pageDiv,data)
 		$(ctrl_descuento.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);

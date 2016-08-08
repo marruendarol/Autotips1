@@ -964,9 +964,9 @@ html .ui-body-a .ui-body-inherit,
 html body .ui-group-theme-a .ui-body-inherit,
 html .ui-panel-page-container-a {
 	background-color: 			#fff /*{a-body-background-color}*/;
-	border-color:	 		#ddd /*{a-body-border}*/;
+	border-color:	 		#ddd /*{a-body-border}; */
 	color: 					#333 /*{a-body-color}*/;
-	text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ 	#f3f3f3 /*{a-body-shadow-color}*/;
+	/* text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ 	#f3f3f3 /*{a-body-shadow-color}*/ */
 }
 .ui-body-a {
 	border-width: 1px;
@@ -1010,7 +1010,7 @@ html .ui-bar-a .ui-btn:visited,
 html .ui-body-a .ui-btn:visited,
 html body .ui-group-theme-a .ui-btn:visited,
 html head + body .ui-btn.ui-btn-a:visited {
-	background-color: #000000;
+	/* background-color: #ffffff; */
 	border-color:	 		#ddd /*{a-bup-border}*/;
 	color: #2B2B2B /*{a-bup-color}*/;
 	/* text-shadow: 0 /*{a-bup-shadow-x}*/ 1px /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/ #f3f3f3 /*{a-bup-shadow-color}*/ */
@@ -1021,7 +1021,7 @@ html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
 html body .ui-group-theme-a .ui-btn:hover,
 html head + body .ui-btn.ui-btn-a:hover {
-	background-color: 			#000 /*{a-bhover-background-color}*/;
+	background-color: #ececec /*{a-bhover-background-color}*/;
 	border-color:	 		#ddd /*{a-bhover-border}*/;
 	color: 					#333 /*{a-bhover-color}*/;
 	text-shadow: 0 /*{a-bhover-shadow-x}*/ 1px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ #f3f3f3 /*{a-bhover-shadow-color}*/;
@@ -1395,7 +1395,7 @@ div.ui-mobile-viewport {
 	margin-top: -1.4375em;
 }
 .ui-loader-verbose {
-	width: 12.5em;
+	width: 14.5em;
 	filter: Alpha(Opacity=100);
 	opacity: 100;
 	/* box-shadow: 0 1px 1px -1px #fff; */
@@ -3437,7 +3437,7 @@ fieldset.ui-controlgroup {
 	clip: rect(1px,1px,1px,1px);
 }
 .ui-select .ui-btn {
-	margin: 0;
+	margin: 10px;
 	opacity: 1; /* Fixes #2588: When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select (including "inherit") without explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
 }
 .ui-select .ui-btn select {
@@ -3580,7 +3580,7 @@ fieldset.ui-controlgroup {
 .ui-listview > li {
 	display: block;
 	position: relative;
-	overflow: visible;
+	overflow: hidden !important;
 	height: auto;
 	overflow: auto;
 	/* white-space: normal; */

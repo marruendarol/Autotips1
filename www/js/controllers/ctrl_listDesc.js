@@ -32,6 +32,10 @@ var ctrl_listDesc = {
 		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
 	},
 	render : function(data){
+
+
+		console.log(data)
+		console.log("DATOS")
 		jqm.hideLoader();
 		$(ctrl_listDesc.pageDiv).empty();
 
@@ -58,7 +62,7 @@ var ctrl_listDesc = {
 
 		console.log(dItems)
 
-		ctrl_listDesc.mainObj = template.render('#listDescT',ctrl_listDesc.pageDiv,dItems)
+		ctrl_listDesc.mainObj = template.render('#listT',ctrl_listDesc.pageDiv,dItems)
 		$(ctrl_listDesc.pageDiv).trigger("create");
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		

@@ -52,15 +52,9 @@
 	 		<h2>Registro de Usuario</h2>
 
 	 		<div class="small-12 medium-6 large-6 ">
-	             <div class="formLabel">ID Tarjeta:</div>
-	             <input class="" id="card" type="text" value=""  />
+	             <div class="formLabel">Codigo Tarjeta:</div>
+	             <input class="" id="code" type="text" value=""  />
           	</div>
-
-          	<div class="small-12 medium-6 large-6 ">
-	             <div class="formLabel">CCV:</div>
-	             <input class="" id="ccv" type="text" value=""  />
-          	</div>
-
 
 	 		 <div class="small-12 medium-6 large-6 ">
 	             <div class="formLabel">Nombre:</div>
@@ -86,21 +80,9 @@
 	             <div class="formLabel">Repetir Contraseña:</div>
 	             <input class="" id="cpass" type="password" value=""  />
 	         </div>    
-	             
-          
 
-          	 	<div class="small-12 medium-6 large-6 ">
-	             <div class="formLabel">Obtuve mi tarjeta en:</div>
-	             <select id="origen">
-            	<option>Aseguradora</option>
-            	<option>Outsourcing</option>
-            	<option>Flotilla Empresa</option>
-            	<option>Particular</option>
-            	<option>ANCA</option>
-            </select>
-          	</div>
-
-       <div class="saveBtn small-12 column">
+          	 
+       <div class="saveBtn small-12 column collapse">
           <div on-tap="validate" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Crear cuenta</div>
        </div>
 
@@ -124,30 +106,22 @@
 	<div class="conte">
 
 	 <form id="dataForm" data-abide="ajax">
+
+	 <h2>Agregar código a mi cuenta</h2>
 	             
-          	<div class="small-12 medium-6 large-6 ">
-	             <div class="formLabel">ID Tarjeta:</div>
-	             <input class="" id="cardA" type="text" value=""  />
-          	</div>
 
-          	<div class="small-12 medium-6 large-6 ">
-	             <div class="formLabel">CCV:</div>
-	             <input class="" id="ccvA" type="text" value=""  />
-          	</div>
 
-          	 	<div class="small-12 medium-6 large-6 ">
-	             <div class="formLabel">Obtuve mi tarjeta en:</div>
-	             <select id="origen">
-            	<option>Aseguradora</option>
-            	<option>Outsourcing</option>
-            	<option>Flotilla Empresa</option>
-            	<option>Particular</option>
-            </select>
-          	</div>
+	 	<div class="small-12 medium-6 large-6 column ">
+	             <div class="formLabel">Código:</div>
+	             <input style="margin-bottom: 20px;font-size:30px; width: 100%;line-height: 30px;text-align: center;margin-top: 10px" class="" id="cardA" type="text" value=""  />
+	         </div>  
 
-       <div class="saveBtn small-12 column">
-          <div on-tap="validate" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Añadir tarjeta</div>
+
+
+        <div class="saveBtn small-12 column collapse">
+          <div on-tap="validate" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini btnNaranja">Agregar código</div>
        </div>
+
 
     </form>
 
@@ -165,6 +139,9 @@
 <!--  HOME ============================================================-->
 	<script id='mainT' type='text/ractive'>
     
+
+
+
 	{{>menuT}}
 
 	 <div data-role="header" id="headerLogo" data-position="fixed">
@@ -177,6 +154,56 @@
     </div><!-- /header -->
 
     <div role="main" >
+           <div id="wrapperMain" >
+
+
+		       		<div class="listMain" on-tap="getDescuentos">
+
+						<div class="icoDiv"><img src="img/ico1.png"></div>
+
+						<div class="mainIcoText">Descuento</div>
+					</div>
+
+
+       				<div class="listMain" on-tap="getCerca">
+
+						<div class="icoDiv"><img src="img/ico2.png"></div>
+
+						<div class="mainIcoText">Ubicación</div>
+					</div>
+
+
+					<div class="listMain" on-tap="getBusqueda">
+
+						<div class="icoDiv"><img src="img/ico3.png"></div>	
+
+						<div class="mainIcoText">Búsqueda</div>
+					</div>
+
+					
+					<div class="listMain" on-tap="getZona">
+
+						<div class="icoDiv"><img src="img/ico4.png"></div>
+						<div class="mainIcoText">Asociados</div>
+					</div>
+
+
+			<div class="bottomBot"  on-tap="getSos">SOS</div>
+			<div class="bottomBot"  on-tap="getContacto">Contacto</div>
+					
+
+		</div>
+
+
+
+
+     
+
+    </div><!-- /content -->
+
+
+    <!--
+      <div role="main" >
            <div id="wrapperMain" >
 		       <div id="scroller">
 		             <ul class="listMenu" data-role="listview" id="listview">
@@ -217,7 +244,9 @@
 		             </ul>
 		        </div>
 		</div>
-    </div><!-- /content -->
+    </div> -->
+
+
 
 
     <div data-role="footer" data-position="fixed" style="position:fixed;bottom:0;"> 
@@ -299,11 +328,60 @@
 
 
 <!-- Especialidades  ============================================================-->
+<script id='busquedaT' type='text/ractive'>
+
+<div id="wrapperBusqueda" class="wrapper">
+	    <div id="scroller" >
+	      	<input on-change="getSearch" type="text" id="busquedaI" placeholder="filtrar especialidad, nombre del negocio" value="{{busquedaStr}}" name="busqueda">
+
+	      	<ul data-role="listview" id="listviewB" >
+	            {{#each data}}
+	            <li  data-icon="false">
+	                <a class="autoli" on-tap="getSuc" data-transition="fade">
+	                    <div class="small-10 column rpad">
+	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
+	                        <div class="tags"> {{descuentos[0].perc}}% {{descuentos[0].espec}}</div>
+	                      	<div class="" style="margin-bottom:20px;">
+	                      	 <div style="margin-left: 6px;">
+								<div data-role="none" class="starMini {{#if rate>0}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>1}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>2}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>3}}star-fill{{/if}}"></div>
+								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
+							</div>
+							</div>
+	                    </div>
+
+
+	          
+	                    <div class="small-1 column rpad end">
+	                        <div class="fNaranja"> 
+	                        <img src="img/fNaranja.png">
+	                        </div>
+	                    </div>
+	                </a>
+	            </li>
+	            {{/each}}
+	        </ul>
+
+
+	         {{#if empty}}
+	        	<h4 style="margin:20px;"> Sin Resultados, intente otra búsqueda</h4>
+	        {{/if}}
+
+
+	    </div>
+</div>
+
+
+</script>
+
+<!-- Especialidades  ============================================================-->
 <script id='especT' type='text/ractive'>
 
 <div id="wrapperEspec" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar especialidad...">
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="filtrar especialidad...">
 	            {{#each data}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
@@ -332,7 +410,7 @@
 
 <div id="wrapperEspecR" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar especialidad...">
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="filtrar especialidad...">
 	            {{#each data}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
@@ -404,7 +482,7 @@
 
 	<div id="wrapperListDesc" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar..." >
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="filtrar..." >
 	           {{#items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
@@ -461,7 +539,7 @@
 
 	<div id="wrapperListDesc" class="wrapper" >
 	    <div id="scroller" >
-	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="buscar..." >
+	        <ul data-role="listview" id="listview" data-filter="true" data-filter-placeholder="filtrar..." >
 	           {{#items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
@@ -477,10 +555,11 @@
 								<div data-role="none" class="starMini {{#if rate>3}}star-fill{{/if}}"></div>
 								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
 							</div>
+
 	                      
 	                    </div>
 	                    <div class="small-2 column rPad">
-	                       <!-- <div class="distancia">{{roundDist(dist)}} Km.</div> -->
+	                        <div class="distancia">{{roundDist(dist)}} Km.</div> 
 	                        </div>
 	                    
 	                   	{{else}}
@@ -516,7 +595,7 @@
 
 	<div id="wrapperZona" >
 	    <div id="scroller" >
-	        <ul data-role="listview"  id="listview" data-filter="true" data-filter-placeholder="buscar estado..." >
+	        <ul data-role="listview"  id="listview" data-filter="true" data-filter-placeholder="filtrar estado..." >
 	            {{#each items}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getDel" data-transition="fade">
@@ -603,7 +682,7 @@
 <div class="conte">
 
 
-		<div class="small-12 column title_nSucursal">{{cCase(nombre)}}</div>
+		<div class="small-12 column title_nSucursal collapse">{{cCase(nombre)}}</div>
 
 	    <div class="small-12 column collapse">	       
 	        <div class="column info_direccion"> {{cCase(direccion)}}</div>
@@ -612,7 +691,7 @@
 	        <div class="column info_cp">C.P. {{cp}}</div>       
 	    </div>
 
-	     <div class="small-12 column">	
+	     <div class="small-12 column collapse">	
 		       <div class="btnNaranja btHalf ui-btn ui-shadow ui-corner-all " on-tap="genMap">Mapa de ubicación</div>
 		      
 		      <div class="btnNaranja btHalf ui-btn ui-shadow ui-corner-all" on-tap="navigate">Llévame</div>
@@ -622,7 +701,7 @@
 	    	 <div class="vSpace"></div>
 
 
-	      <div class="small-12 column ">
+	      <div class="small-12 column collapse">
 	         <div class="small-12 column info_tel1">Teléfono: {{maskTel(telefono1)}}  	
 	      	 
 	      </div>
@@ -632,10 +711,10 @@
 
 	       <div class="vSpace"></div>
 
-	    <div class="small-12 column especialidades">
+	    <div class="small-12 column especialidades ">
 	    	 <div class=" info_nSucursal">Descuentos disponibles</div>
 	    	{{#each descuentos}}
-	    		 <div class="small-12 column  info_desc">
+	    		 <div class="small-12 column  info_desc collapse">
 	    		 	
 	    		
 
@@ -761,18 +840,33 @@
             <label for="name">Días restantes:</label>
             <h3>{{restantes(userData.end)}}</h3>
 
-            <div id="cardRep">
+            <div id="cardRep"  on-tap="zoomCard">
             <div class="cardName">{{userData.nombre}}</div>
              <div class="cardId">{{userData.cardHypen}}</div>
             <div class="cardVenc">{{userData.vencimiento}}</div>
-            <div class="cardCCV">{{userData.ccv}}</div>
+            <!--<div class="cardCCV">{{userData.ccv}}</div> -->
 
             </div>
             
             <button on-tap="cerrarsesion" class="ui-btn" >cerrar sesión</button>
 
-            <div class="version">versión 1.6.4</div>
+            <div class="version">versión 2.0.1</div>
 
     </div><!-- /panel -->
+
+
+
+		<div id="galCont">
+				<div on-tap="closeZoom" class="closeZoom">X</div>
+				 <div id="cardRepZoom" >
+            <div class="cardName">{{userData.nombre}}</div>
+             <div class="cardId">{{userData.cardHypen}}</div>
+            <div class="cardVenc">{{userData.vencimiento}}</div>
+            <!--<div class="cardCCV">{{userData.ccv}}</div> -->
+
+            </div>
+
+
+		</div>
 
 </script>

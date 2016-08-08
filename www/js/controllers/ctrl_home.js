@@ -36,7 +36,20 @@ var ctrl_home = {
 			alert("Tarjeta Vencida, por favor registre una nueva tarjeta")
 				$.mobile.changePage("#insertCard")
 		}else{
+
+
+
+
 			 ctrl_home.mainObj = template.render('#mainT',ctrl_home.pageDiv,ctrl_home.data,null,{menuT : $('#menuT').html()})
+			
+
+				var width = window.innerWidth;
+				var height = window.innerHeight;
+				$('.listMain').css({'min-height':height /3.2})
+
+
+
+
 			$(ctrl_home.pageDiv).trigger("create");
 			//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 			
@@ -52,6 +65,20 @@ var ctrl_home = {
 				paramsPage = { id : event.context._id, type: "descuentos" }
 				$.mobile.changePage("#descuentos");
 			})
+
+			ctrl_home.mainObj.on('getBusqueda',function(event){
+				mainC.clickAnim(event.node)
+				paramsPage = { id : event.context._id, type: "busqueda" }
+				$.mobile.changePage("#busqueda");
+			})
+
+
+
+			ctrl_home.mainObj.on('getSos',function(event){
+				window.open('tel:018002772700', '_system')
+			})
+
+
 			ctrl_home.mainObj.on('getZona',function(event){
 				mainC.clickAnim(event.node)
 				$.mobile.changePage("#zona");
@@ -70,6 +97,14 @@ var ctrl_home = {
 				mainC.clickAnim(event.node)
 				localStorage.clear();
 				$.mobile.changePage("#firstP");
+			});
+
+			ctrl_home.mainObj.on('zoomCard',function(event){
+				$('#galCont').show();
+			});
+
+			ctrl_home.mainObj.on('closeZoom',function(event){
+				$('#galCont').hide();
 			});
 
 			ctrl_home.mainObj.on('openLink',function(event){
@@ -133,3 +168,4 @@ var ctrl_home = {
 	}
 	
 }
+

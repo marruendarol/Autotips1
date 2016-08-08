@@ -121,8 +121,8 @@ var ctrl_core = {
 	    });
 
 	    $(document).on("pagebeforeshow","#descuentos", function() {
-	      	var params = { init : 'ctrl_descuento.init' }
-	    	ctrl_core.loadController("./js/controllers/ctrl_descuento.js",params);
+	      	var params = { init : 'ctrl_descMayor.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_descMayor.js",params);
 	    });
 
 	    // Descuentos -----------------------------------------------------------------
@@ -130,6 +130,11 @@ var ctrl_core = {
 	     $(document).on("pagebeforeshow","#listDesc", function() {
 	      	var params = { init : 'ctrl_listDesc.init' }
 	    	ctrl_core.loadController("./js/controllers/ctrl_listDesc.js",params);
+	    });
+
+	     $(document).on("pagebeforeshow","#busqueda", function() {
+	      	var params = { init : 'ctrl_busqueda.init' }
+	    	ctrl_core.loadController("./js/controllers/ctrl_busqueda.js",params);
 	    });
 
 	      $(document).on("pagebeforeshow","#descMayor", function() {
