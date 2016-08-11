@@ -157,7 +157,23 @@
            <div id="wrapperMain" >
 
 
-		       		<div class="listMain" on-tap="getDescuentos">
+
+		<div class="container">
+  <div class="carousel">
+    <div class="item a"><img src="img/m1.png"></div>
+    <div class="item b"><img src="img/m2.png"></div>
+    <div class="item c"><img src="img/m3.png"></div>
+    
+  </div>
+</div>
+<!--<div class="next">Next</div>
+<div class="prev">Prev</div>
+-->
+      
+		
+
+<!--
+		       		<div class="listMain" on-tap="getEspecialidad">
 
 						<div class="icoDiv"><img src="img/ico1.png"></div>
 
@@ -186,7 +202,7 @@
 						<div class="icoDiv"><img src="img/ico4.png"></div>
 						<div class="mainIcoText">Asociados</div>
 					</div>
-
+-->
 
 			<div class="bottomBot"  on-tap="getSos">SOS</div>
 			<div class="bottomBot"  on-tap="getContacto">Contacto</div>
@@ -332,15 +348,15 @@
 
 <div id="wrapperBusqueda" class="wrapper">
 	    <div id="scroller" >
-	      	<input on-change="getSearch" type="text" id="busquedaI" placeholder="filtrar especialidad, nombre del negocio" value="{{busquedaStr}}" name="busqueda">
+	      	<input on-change="getSearch" type="text" id="busquedaI" placeholder="Nombre del negocio" value="{{busquedaStr}}" name="busqueda">
 
 	      	<ul data-role="listview" id="listviewB" >
 	            {{#each data}}
 	            <li  data-icon="false">
 	                <a class="autoli" on-tap="getSuc" data-transition="fade">
-	                    <div class="small-10 column rpad">
+	                    <div class="small-8 column rpad">
 	                        <div class="nSucursal">{{correctCase(nombre)}}</div>
-	                        <div class="tags"> {{descuentos[0].perc}}% {{descuentos[0].espec}}</div>
+	                        
 	                      	<div class="" style="margin-bottom:20px;">
 	                      	 <div style="margin-left: 6px;">
 								<div data-role="none" class="starMini {{#if rate>0}}star-fill{{/if}}"></div>
@@ -350,7 +366,14 @@
 								<div data-role="none" class="starMini {{#if rate>4}}star-fill{{/if}}"></div>
 							</div>
 							</div>
+
+						
+
 	                    </div>
+
+	                    <div class="small-2 column rPad">
+	                       <div class="distancia">{{roundDist(dist)}} Km.</div> 
+	                        </div>
 
 
 	          

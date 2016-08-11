@@ -114,6 +114,44 @@ var ctrl_home = {
 				//navigator.app.loadUrl(event.context.urlLink,{openExternal:true})
 			});
 
+			ctrl_home.mainObj.on('previousBt',function(ev) {  
+     		console.log("previous")
+        //    carousel.cycleActive('previous');  
+        });
+
+    		ctrl_home.mainObj.on('nextBt',function(ev) { 
+    		console.log("next") 
+      	//	carousel.cycleActive('next');  
+       }); 
+
+		
+		var carousel = $(".carousel"),
+    currdeg  = 0;
+
+$(".next").on("click", { d: "n" }, rotate);
+$(".prev").on("click", { d: "p" }, rotate);
+
+function rotate(e){
+  if(e.data.d=="n"){
+    currdeg = currdeg - 120;
+  }
+  if(e.data.d=="p"){
+    currdeg = currdeg + 120;
+  }
+  carousel.css({
+    "-webkit-transform": "rotateY("+currdeg+"deg)",
+    "-moz-transform": "rotateY("+currdeg+"deg)",
+    "-o-transform": "rotateY("+currdeg+"deg)",
+    "transform": "rotateY("+currdeg+"deg)"
+  });
+}
+
+
+//var carousel = $('.selector').CircularCarousel(options);
+/*$(".selector").swiperight(function() {  
+    carousel.cycleActive('previous');  
+});  */
+
 		}
 
 

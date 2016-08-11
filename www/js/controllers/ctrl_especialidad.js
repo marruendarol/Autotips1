@@ -14,7 +14,7 @@ var ctrl_espec = {
           type: 'POST',
             data: {id:paramsPage.id},
             crossDomain: true,
-            url: serverURL + '/api/readespecApp' ,
+            url: serverURL + '/api/readespec' ,
             dataType: 'JSON'
              }).done(function( response ) {
              ctrl_espec.render(response);
@@ -23,6 +23,8 @@ var ctrl_espec = {
     	});   
 	},
 	render : function(data){
+
+		console.log(data)
 
 		jqm.hideLoader();
 

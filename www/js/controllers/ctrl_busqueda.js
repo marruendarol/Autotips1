@@ -15,17 +15,23 @@ var ctrl_busqueda = {
 		ctrl_busqueda.render();
 	
 		if(typeof paramsSuc != 'undefined'){
-			ctrl_busqueda.getQuery(paramsSuc.txt)
+			ctrl_busqueda.txt = paramsSuc.txt
+			ctrl_busqueda.getLoc()
 			$('#busquedaI').val(paramsSuc.txt);
 		}
 
 		
 	},
-	getQuery : function(txt){
-		console.log("buscando text... " + txt)
+	getLoc : function(txt){
+		getLastKnownLocation(ctrl_busqueda.getQuery,ctrl_busqueda.onLocationError,true); 
+	},
+	onLocationError : function(err){
+		alert("No se puede obtener su locaclización GPS, por favor revise que la función este habilitada o que su GPS este en un rango operacional. " + err)
+	},
+	getQuery : function(position){
 		$.ajax({
           type: 'POST',
-            data: {txt:txt},
+            data: {lat:position.coords.latitude,lng:position.coords.longitude,txt:ctrl_busqueda.txt},
             url: serverURL + '/api/busqueda',
             crossDomain: true,
             dataType: 'JSON'
@@ -35,8 +41,8 @@ var ctrl_busqueda = {
 			
 			//search Item
 			for (var a = 0; a < response[i].descuentos.length; a++) {
-				console.log(response[i].descuentos[a].espec.search(txt))
-				if(response[i].descuentos[a].espec.search(new RegExp(txt, "i"))!=-1){
+				
+				if(response[i].descuentos[a].espec.search(new RegExp(ctrl_busqueda.txt, "i"))!=-1){
 						
 						response[i].descuentos.move(a,0)
 				}
@@ -61,8 +67,6 @@ var ctrl_busqueda = {
              myHilitor.setMatchType("open");
  			 myHilitor.remove();
  			 myHilitor.apply(txt);*/
-               console.log(txt)
-
 
           }).fail(function( response ) {
               alert("Error de conexión, intente nuevamente mas tarde.");   
@@ -85,7 +89,9 @@ var ctrl_busqueda = {
 		//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 		ctrl_busqueda.mainObj.on('getSearch',function(event){
-			ctrl_busqueda.getQuery(event.context.busquedaStr)
+			ctrl_busqueda.txt = event.context.busquedaStr;
+			ctrl_busqueda.getLoc()
+			//ctrl_busqueda.getQuery(event.context.busquedaStr)
 		})
 
 		ctrl_busqueda.mainObj.on('getSuc',function(event){

@@ -37,7 +37,7 @@ var ctrl_especR = {
 		
 		mainObj.on('getSuc',function(event){
 			paramsPage = { id : event.context.nombre, type: "especialidad" }
-			$.mobile.changePage( "#especialidad");
+			$.mobile.changePage( "#descuentos");
 		})
 		
 			 myScroll = new IScroll('#wrapperEspecR',{  

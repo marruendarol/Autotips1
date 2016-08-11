@@ -20,7 +20,7 @@ var ctrl_descMayor = {
 		jqm.showLoader("Buscando sucursales...");
 		$.ajax({
           type: 'POST',
-            data: {lat:position.coords.latitude,lng:position.coords.longitude},
+            data: {lat:position.coords.latitude,lng:position.coords.longitude,espec:paramsPage.id},
             url: serverURL + '/api/byGeoDesc',
             crossDomain: true,
             dataType: 'JSON'
