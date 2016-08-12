@@ -114,47 +114,36 @@ var ctrl_home = {
 				//navigator.app.loadUrl(event.context.urlLink,{openExternal:true})
 			});
 
+			$("#carousel" ).on( "swipeLeft", function(ev) {  
+     			seccs.move(2,0)
+	        	setPos()
+	        }); 
+
+
+	        $("#carousel" ).on( "swipeRight", function(ev) {  
+     			seccs.move(0,2)
+	        	setPos()
+	        }); 
+
 			ctrl_home.mainObj.on('previousBt',function(ev) {  
-     		console.log("previous")
-        //    carousel.cycleActive('previous');  
-        });
+     			seccs.move(2,0)
+	        	setPos()
+	        });
 
     		ctrl_home.mainObj.on('nextBt',function(ev) { 
-    		console.log("next") 
-      	//	carousel.cycleActive('next');  
-       }); 
+    		console.log("next")
+    		seccs.move(0,2) 
+	      		setPos();
+	       }); 
+
 
 		
-		var carousel = $(".carousel"),
-    currdeg  = 0;
+	
+    		setPos();
+	
 
-$(".next").on("click", { d: "n" }, rotate);
-$(".prev").on("click", { d: "p" }, rotate);
 
-function rotate(e){
-  if(e.data.d=="n"){
-    currdeg = currdeg - 120;
-  }
-  if(e.data.d=="p"){
-    currdeg = currdeg + 120;
-  }
-  carousel.css({
-    "-webkit-transform": "rotateY("+currdeg+"deg)",
-    "-moz-transform": "rotateY("+currdeg+"deg)",
-    "-o-transform": "rotateY("+currdeg+"deg)",
-    "transform": "rotateY("+currdeg+"deg)"
-  });
 }
-
-
-//var carousel = $('.selector').CircularCarousel(options);
-/*$(".selector").swiperight(function() {  
-    carousel.cycleActive('previous');  
-});  */
-
-		}
-
-
 
 		ctrl_home.getBanner();
 		
@@ -207,3 +196,31 @@ function rotate(e){
 	
 }
 
+
+
+
+var steps = [
+	{zoom:.7,x:'3%',y:'30px'},
+	{zoom:1, x:'25%',y:'-15px'},
+	{zoom:.7,x:'60%',y:'30px'},
+]
+
+var seccs = ["item_1","item_2","item_3"]
+
+function setPos(){
+		TweenLite.to(document.getElementById(seccs[0]), .2, {zoom:steps[0].zoom,left:steps[0].x,top:steps[0].y,'z-index':0,ease:Power2.easeOut});
+		TweenLite.to(document.getElementById(seccs[1]), .2, {zoom:steps[1].zoom,left:steps[1].x,top:steps[1].y,'z-index':3,ease:Power2.easeOut});
+		TweenLite.to(document.getElementById(seccs[2]), .2, {zoom:steps[2].zoom,left:steps[2].x,top:steps[2].y,'z-index':2,ease:Power2.easeOut});
+}
+
+
+Array.prototype.move = function (old_index, new_index) {
+    if (new_index >= this.length) {
+        var k = new_index - this.length;
+        while ((k--) + 1) {
+            this.push(undefined);
+        }
+    }
+    this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+    return this; // for testing purposes
+};

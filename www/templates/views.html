@@ -156,21 +156,24 @@
     <div role="main" >
            <div id="wrapperMain" >
 
-<!--
 
-		<div class="container">
+
+<div class="container">
   <div class="carousel">
-    <div class="item a"><img src="img/m1.png"></div>
-    <div class="item b"><img src="img/m2.png"></div>
-    <div class="item c"><img src="img/m3.png"></div>
+    <div id="item_1" class="item" on-tap="getCerca"><img src="img/m1.png"></div>
+    <div id="item_2" class="item" on-tap="getZona"><img src="img/m2.png"></div>
+    <div id="item_3" class="item" on-tap="getEspecialidad"><img src="img/m3.png"></div>
     
   </div>
 </div>
-<div class="next">Next</div>
-<div class="prev">Prev</div>
--->
-      
 
+<div class="bottomBot"  on-tap="getSos">SOS</div>
+			<div class="bottomBot"  on-tap="getContacto">Contacto</div>
+<!--<div on-click="previousBt" class="next">Next</div>-->
+<!--<div on-click="nextBt" class="prev">Prev</div>-->
+
+      
+<!-- 
 		       		<div class="listMain" on-tap="getEspecialidad">
 
 						<div class="icoDiv"><img src="img/ico1.png"></div>
@@ -202,8 +205,7 @@
 					</div>
 
 
-			<div class="bottomBot"  on-tap="getSos">SOS</div>
-			<div class="bottomBot"  on-tap="getContacto">Contacto</div>
+			
 					
 
 		</div>
@@ -213,8 +215,7 @@
 
      
 
-    </div><!-- /content -->
-
+    </div>
 
     <!--
       <div role="main" >
