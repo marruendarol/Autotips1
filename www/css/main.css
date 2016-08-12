@@ -22,20 +22,12 @@ h2{
 }
 
 .container {
-  margin: 10% auto;
-  width: 100%;
-  min-height: 300px;
-  margin-bottom: 96px;
+  margin: 12% auto;
+  min-height: 296px;
 }
 
 
-.carousel {
-  /* height: 100%; */
-  width: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
+.carousel {height: 340px;/* margin-top: 20px; */overflow-x: hidden;}
 
 .item {
  	width: 200px;
@@ -376,14 +368,10 @@ li{
 }
 
 .icoDiv {
-  
-position: absolute;
-  
-bottom: 51px;
-  
-right: 20px;
-  
-width: 80px;
+  position: absolute;
+  bottom: 46px;
+  right: 10px;
+  width: 70px;
   }  
 
 
@@ -524,7 +512,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 	background: #718287; /* Old browsers */
 	background: -moz-linear-gradient(top,  #718287 0%, #445960 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top,  #718287 0%,#445960 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #718287 0%,#445960 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: linear-gradient(to bottom,  #FBA973 0%,#F8690A 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#718287', endColorstr='#445960',GradientType=0 ); /* IE6-9 */
 }
 
@@ -558,6 +546,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     margin-top: 0px;
     height: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 #wrapperList {
     z-index: 0;

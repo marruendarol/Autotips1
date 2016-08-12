@@ -114,14 +114,16 @@ var ctrl_home = {
 				//navigator.app.loadUrl(event.context.urlLink,{openExternal:true})
 			});
 
-			$("#carousel" ).on( "swipeLeft", function(ev) {  
-     			seccs.move(2,0)
+			$("#carousel" ).on( "swipeleft", function(ev) {  
+				console.log("left")
+     			seccs.move(0,2)
 	        	setPos()
 	        }); 
 
 
-	        $("#carousel" ).on( "swipeRight", function(ev) {  
-     			seccs.move(0,2)
+	        $("#carousel" ).on( "swiperight", function(ev) {  
+     			console.log("right")
+     			seccs.move(2,0)
 	        	setPos()
 	        }); 
 
@@ -139,7 +141,7 @@ var ctrl_home = {
 
 		
 	
-    		setPos();
+    		//setPos();
 	
 
 
@@ -208,9 +210,39 @@ var steps = [
 var seccs = ["item_1","item_2","item_3"]
 
 function setPos(){
-		TweenLite.to(document.getElementById(seccs[0]), .2, {zoom:steps[0].zoom,left:steps[0].x,top:steps[0].y,'z-index':0,ease:Power2.easeOut});
-		TweenLite.to(document.getElementById(seccs[1]), .2, {zoom:steps[1].zoom,left:steps[1].x,top:steps[1].y,'z-index':3,ease:Power2.easeOut});
-		TweenLite.to(document.getElementById(seccs[2]), .2, {zoom:steps[2].zoom,left:steps[2].x,top:steps[2].y,'z-index':2,ease:Power2.easeOut});
+
+console.log(seccs)
+
+	$( "#" + seccs[0] ).animate({
+    zoom: steps[0].zoom,
+    left: steps[0].x,
+    top: steps[0].y,
+    'z-index' : 0
+  }, 200, function() {
+    
+  });
+
+	$( "#" + seccs[1]).animate({
+    zoom: steps[1].zoom,
+    left: steps[1].x,
+    top: steps[1].y,
+    'z-index' : 3
+  }, 200, function() {
+    
+  });
+
+	$(  "#" + seccs[2]).animate({
+    zoom: steps[2].zoom,
+    left: steps[2].x,
+    top: steps[2].y,
+    'z-index' : 2
+  }, 200, function() {
+    
+  });
+
+		//TweenLite.to(document.getElementById(seccs[0]), .2, {zoom:steps[0].zoom,left:steps[0].x,top:steps[0].y,'z-index':0,ease:Power2.easeOut});
+		//TweenLite.to(document.getElementById(seccs[1]), .2, {zoom:steps[1].zoom,left:steps[1].x,top:steps[1].y,'z-index':3,ease:Power2.easeOut});
+		//TweenLite.to(document.getElementById(seccs[2]), .2, {zoom:steps[2].zoom,left:steps[2].x,top:steps[2].y,'z-index':2,ease:Power2.easeOut});
 }
 
 

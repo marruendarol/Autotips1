@@ -62,6 +62,7 @@ var ctrl_loginS = {
             		ctrl_loginS.changePage();	
             	}else{
             		jqm.popup( {text:"Usuario y/o contraseña inválido",title:"Error."})
+            		//$.mobile.changePage( "#first", {});
             	}
             	
         });	
