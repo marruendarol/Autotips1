@@ -517,13 +517,13 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 .listMain{
 	cursor: pointer;
-	height: 65px;
+	height: 60px;
 	float: left;
 	border-radius: 5px;
 	width: 95%;
-	margin: 10px 10px 5px 10px;
+	margin: 10px 10px 3px 10px;
 	overflow-y: hidden;
-	line-height: 65px;
+	line-height: 60px;
 	background-color: #E0E0E0;
 }
 
@@ -648,7 +648,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 	font-weight: bold;
 	color: #5d5b5b;
 	text-align: left;
-	line-height: 64px;
+	line-height: 60px;
 	font-size: 19px;
 	/* float: left; */
 	padding-left: 90px;
