@@ -517,13 +517,13 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 .listMain{
 	cursor: pointer;
-	height: 74px;
+	height: 65px;
 	float: left;
 	border-radius: 5px;
 	width: 95%;
 	margin: 10px 10px 5px 10px;
 	overflow-y: hidden;
-	line-height: 72px;
+	line-height: 65px;
 	background-color: #E0E0E0;
 }
 
@@ -550,7 +550,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
     z-index: 1;
     width: 99%;
     /*important for iScroll to have the scroller scroll at max to top:45px on position absolute!*/
-    margin-top: 20px;
+    margin-top: 10px;
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -648,7 +648,7 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 	font-weight: bold;
 	color: #5d5b5b;
 	text-align: left;
-	line-height: 74px;
+	line-height: 64px;
 	font-size: 19px;
 	/* float: left; */
 	padding-left: 90px;
