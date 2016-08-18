@@ -53,8 +53,8 @@ var ctrl_descMayor = {
 			data[i].perc = parseInt(data[i].descuentos[0].perc);
 		};
 
-		data.sort(byProperty('perc'))
-		data.reverse();
+		data.sort(byProperty('dist'))
+		//data.reverse();
 
 
 

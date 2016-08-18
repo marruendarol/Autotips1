@@ -84,12 +84,12 @@ h2{
 	text-align:center;
 	line-height: 36px;
 	float: left;
-	position: relative;
-	margin: 2%;
+	/* position: relative; */
 	border-radius: 5px;
 	margin-bottom: 1%;
 	margin-right: 1%;
 	font-weight: bold;
+	margin-left: 2%;
 }
 
 .removeHL { 
@@ -368,12 +368,33 @@ li{
 }
 
 .icoDiv {
-  position: absolute;
-  bottom: 46px;
-  right: 10px;
-  width: 70px;
+  
+background-color: #F8690A;
+  
+float: left;
+  
+width: 80px;
+  
+height: 100%;
+  
+text-align: center;
   }  
 
+#botCont{
+	position: fixed;
+	bottom: 10px;
+	width: 100%;
+	height: 100px;
+}
+
+.icoImg{
+	
+text-align: center;
+	
+width: 50px;
+	
+margin: 0 auto;
+}
 
 .ui-li-static {
     padding: .4em 1em !important;
@@ -496,24 +517,14 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 .listMain{
 	cursor: pointer;
-	min-height: 174px;
-	height: auto;
-	padding: 5px;
-	border-radius: 5px;
-	width: 46%;
+	height: 74px;
 	float: left;
-	margin: 2%;
-	margin-bottom: 1%;
-	margin-right: 1%;
-	
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#718287+0,445960+100 */
-	position: relative;
+	border-radius: 5px;
+	width: 95%;
+	margin: 10px 10px 5px 10px;
 	overflow-y: hidden;
-	background: #718287; /* Old browsers */
-	background: -moz-linear-gradient(top,  #718287 0%, #445960 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  #718287 0%,#445960 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  #FBA973 0%,#F8690A 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#718287', endColorstr='#445960',GradientType=0 ); /* IE6-9 */
+	line-height: 72px;
+	background-color: #E0E0E0;
 }
 
 
@@ -537,16 +548,13 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 
 #wrapperMain {
     z-index: 1;
-    /* top: 20px; */
-    bottom: 0px;
-    width: 100%;
-    /* overflow: hidden; *//*important for iScroll to have the scroller scroll at max to top:45px on position absolute!*/
-    position: relative;
-    /* float: left; */
-    margin-top: 0px;
+    width: 99%;
+    /*important for iScroll to have the scroller scroll at max to top:45px on position absolute!*/
+    margin-top: 20px;
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
+    position: fixed;
 }
 #wrapperList {
     z-index: 0;
@@ -636,13 +644,16 @@ img { -ms-interpolation-mode: bicubic; image-rendering: -moz-crisp-edges; }
 }
 
 .mainIcoText{
-	float: right;
+	width: 100%;
 	font-weight: bold;
-	color: white;
-	margin-top: 22px;
-	position: absolute;
-	bottom: 10px;
-	right: 15px;
+	color: #5d5b5b;
+	text-align: left;
+	line-height: 74px;
+	font-size: 19px;
+	/* float: left; */
+	padding-left: 90px;
+	text-overflow: ellipsis;
+	overflow: visible;
 }
 
 .mainText{
@@ -899,7 +910,8 @@ line-height: 35px;
 #cardRepZoom{
 	width: 247px;
 	height: 158px;
-	background-image: url('../img/card1.png');
+	background-image: url('../img/card2.png');
+	background-size: cover;
 	webkit-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
