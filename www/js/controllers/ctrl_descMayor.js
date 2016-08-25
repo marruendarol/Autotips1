@@ -45,7 +45,7 @@ var ctrl_descMayor = {
 			
 			//search Item
 			for (var a = 0; a < data[i].descuentos.length; a++) {
-				if(data[i].descuentos[a].espec == paramsPage.id){
+				if(data[i].descuentos[a].parent == 1){
 						data[i].descuentos.move(a,0)
 				}
 			};
