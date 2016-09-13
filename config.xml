@@ -48,7 +48,7 @@
 
     
 
-    <splash src="splash.png" />
+    <splash src="splash.9.png" />
 
 
     <feature name="http://api.phonegap.com/1.0/geolocation" />
@@ -66,7 +66,7 @@
     <preference name="SplashScreen" value="splash"/>
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashMaintainAspectRatio" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashScreenBackgroundColor" value="0x0000" /> 
     <preference name="SplashShowOnlyFirstTime" value="true" />
    
