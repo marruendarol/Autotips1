@@ -46,7 +46,9 @@
 
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
 
-      <splash src="splash.png" />
+    
+
+    <splash src="splash.png" />
 
 
     <feature name="http://api.phonegap.com/1.0/geolocation" />
@@ -61,11 +63,12 @@
 </gap:config-file>
 
 
-    <preference name="SplashScreen" value="screen"/>
+    <preference name="SplashScreen" value="splash"/>
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashScreenBackgroundColor" value="0x0000" /> 
+    <preference name="SplashShowOnlyFirstTime" value="true" />
    
     <icon src="icon.png"/>
     <icon src="iconIOS.png" gap:platform="ios" width="57" height="57"/>
