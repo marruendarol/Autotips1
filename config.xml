@@ -46,7 +46,7 @@
 
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
 
-      <splash src="splash.9.png" />
+      <splash src="splash.png" />
 
 
     <feature name="http://api.phonegap.com/1.0/geolocation" />
